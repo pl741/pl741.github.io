@@ -2,23 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://pl741.github.io/2019/09/16/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E8%AF%84%E4%BB%B7%E6%A0%87%E5%87%86/</loc>
+    <loc>http://pl741.github.io/tags/index.html</loc>
     
-    <lastmod>2019-09-16T07:24:19.337Z</lastmod>
+    <lastmod>2019-09-16T07:44:15.527Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://pl741.github.io/about/index.html</loc>
+    
+    <lastmod>2019-09-16T07:43:50.364Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://pl741.github.io/categories/index.html</loc>
     
-    <lastmod>2019-09-16T05:42:38.066Z</lastmod>
+    <lastmod>2019-09-16T07:43:26.866Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://pl741.github.io/tags/index.html</loc>
+    <loc>http://pl741.github.io/2019/09/16/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E8%AF%84%E4%BB%B7%E6%A0%87%E5%87%86/</loc>
     
-    <lastmod>2019-09-16T05:41:46.778Z</lastmod>
+    <lastmod>2019-09-16T07:24:19.337Z</lastmod>
     
   </url>
   
