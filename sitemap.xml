@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://pl741.github.io/2019/09/16/%E9%93%BE%E6%8E%A5/</loc>
+    
+    <lastmod>2019-09-16T09:51:08.179Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://pl741.github.io/tags/index.html</loc>
     
     <lastmod>2019-09-16T07:44:15.527Z</lastmod>
@@ -30,23 +37,9 @@
   </url>
   
   <url>
-    <loc>http://pl741.github.io/2019/09/16/%E9%93%BE%E6%8E%A5/</loc>
-    
-    <lastmod>2019-07-23T12:39:00.743Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://pl741.github.io/2019/09/16/jupyter_%E4%B8%BB%E9%A2%98%E8%AE%BE%E7%BD%AE/</loc>
     
     <lastmod>2019-07-23T12:38:46.010Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://pl741.github.io/2019/07/23/hello-world/</loc>
-    
-    <lastmod>2019-07-23T05:59:59.367Z</lastmod>
     
   </url>
   
