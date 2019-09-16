@@ -81,20 +81,20 @@
 
 
 
-<meta name="description" content="基本内容True真    False假    Positive正     Negative负 异常检测中，P和N一般是针对预测来说的，Positive正类指的是你更关心的那一类！即“异常”，P指预测为正类，即预测为异常。T和F针对预测与真实情况的比较， True指正确匹配，F指错误匹配。 #  #空| 实际正例|实际负例| —|:–:|:–:|:–: 预测正例P | TP | FP|所有预测为正的">
+<meta name="description" content="基本内容True真    False假    Positive正     Negative负 异常检测中，P和N一般是针对预测来说的，Positive正类指的是你更关心的那一类！即“异常”，P指预测为正类，即预测为异常。T和F针对预测与真实情况的比较， True指正确匹配，F指错误匹配。 空| 实际正例|实际负例| —|:–:|:–:|:–: 预测正例P | TP | FP|所有预测为正的个数TP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="机器学习评价标准">
 <meta property="og:url" content="http://pl741.github.io/2019/09/16/机器学习评价标准/index.html">
 <meta property="og:site_name" content="木木的笔记">
-<meta property="og:description" content="基本内容True真    False假    Positive正     Negative负 异常检测中，P和N一般是针对预测来说的，Positive正类指的是你更关心的那一类！即“异常”，P指预测为正类，即预测为异常。T和F针对预测与真实情况的比较， True指正确匹配，F指错误匹配。 #  #空| 实际正例|实际负例| —|:–:|:–:|:–: 预测正例P | TP | FP|所有预测为正的">
+<meta property="og:description" content="基本内容True真    False假    Positive正     Negative负 异常检测中，P和N一般是针对预测来说的，Positive正类指的是你更关心的那一类！即“异常”，P指预测为正类，即预测为异常。T和F针对预测与真实情况的比较， True指正确匹配，F指错误匹配。 空| 实际正例|实际负例| —|:–:|:–:|:–: 预测正例P | TP | FP|所有预测为正的个数TP">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://pl741.github.io/2019/09/16/机器学习评价标准/72.png">
 <meta property="og:image" content="http://pl741.github.io/2019/09/16/机器学习评价标准/71.png">
 <meta property="og:image" content="http://pl741.github.io/2019/09/16/机器学习评价标准/70.png">
-<meta property="og:updated_time" content="2019-09-16T06:32:35.635Z">
+<meta property="og:updated_time" content="2019-09-16T06:34:32.636Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器学习评价标准">
-<meta name="twitter:description" content="基本内容True真    False假    Positive正     Negative负 异常检测中，P和N一般是针对预测来说的，Positive正类指的是你更关心的那一类！即“异常”，P指预测为正类，即预测为异常。T和F针对预测与真实情况的比较， True指正确匹配，F指错误匹配。 #  #空| 实际正例|实际负例| —|:–:|:–:|:–: 预测正例P | TP | FP|所有预测为正的">
+<meta name="twitter:description" content="基本内容True真    False假    Positive正     Negative负 异常检测中，P和N一般是针对预测来说的，Positive正类指的是你更关心的那一类！即“异常”，P指预测为正类，即预测为异常。T和F针对预测与真实情况的比较， True指正确匹配，F指错误匹配。 空| 实际正例|实际负例| —|:–:|:–:|:–: 预测正例P | TP | FP|所有预测为正的个数TP">
 <meta name="twitter:image" content="http://pl741.github.io/2019/09/16/机器学习评价标准/72.png">
 
 
@@ -307,10 +307,7 @@
       
         <h1 id="基本内容"><a href="#基本内容" class="headerlink" title="基本内容"></a>基本内容</h1><p><strong>True真    False假    Positive正     Negative负</strong></p>
 <p>异常检测中，P和N一般是针对预测来说的，Positive正类指的是你更关心的那一类！即“异常”，P指预测为正类，即预测为异常。T和F针对预测与真实情况的比较， True指正确匹配，F指错误匹配。</p>
-<p># </p>
-<p>#<br>空| 实际正例|实际负例|<br> —|:–:|:–:|:–:<br> 预测正例P | TP | FP|所有预测为正的个数TP+FP<br> 预测负例N | FN | TN |所有预测为负的个数FN+TN<br>  | 所有实际正例的个数TP+FN | 所有实际负例的个数FP+TN |</p>
-<p># </p>
-<p># </p>
+<p>空| 实际正例|实际负例|<br> —|:–:|:–:|:–:<br> 预测正例P | TP | FP|所有预测为正的个数TP+FP<br> 预测负例N | FN | TN |所有预测为负的个数FN+TN<br>  | 所有实际正例的个数TP+FN | 所有实际负例的个数FP+TN |</p>
 <img src="/2019/09/16/机器学习评价标准/72.png">
 
 <p>TPR：真正类率，代表预测是异常实际也是异常的样本数，占实际总异常数的比例——值越大 性能越好</p>
@@ -402,8 +399,8 @@ f1_score = (2 * (precision * recall)) / (precision + recall)</code></pre>
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/09/16/论文/" rel="next" title>
-                <i class="fa fa-chevron-left"></i> 
+              <a href="/2019/09/16/链接/" rel="next" title="链接">
+                <i class="fa fa-chevron-left"></i> 链接
               </a>
             
           </div>
@@ -487,7 +484,7 @@ f1_score = (2 * (precision * recall)) / (precision + recall)</code></pre>
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
