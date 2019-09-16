@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://pl741.github.io/2019/09/16/%E3%80%8ADetecting-Spacecraf-Anomalies-Using-LSTMs-and-Nonparametric-Dynamic-Thresholding%E3%80%8B/</loc>
+    
+    <lastmod>2019-09-16T10:18:54.494Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://pl741.github.io/2019/09/16/%E9%93%BE%E6%8E%A5/</loc>
     
-    <lastmod>2019-09-16T09:54:18.596Z</lastmod>
+    <lastmod>2019-09-16T10:09:59.426Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://pl741.github.io/2019/09/16/jupyter_%E4%B8%BB%E9%A2%98%E8%AE%BE%E7%BD%AE/</loc>
+    
+    <lastmod>2019-09-16T09:57:34.711Z</lastmod>
     
   </url>
   
@@ -33,13 +47,6 @@
     <loc>http://pl741.github.io/2019/09/16/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E8%AF%84%E4%BB%B7%E6%A0%87%E5%87%86/</loc>
     
     <lastmod>2019-09-16T07:24:19.337Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://pl741.github.io/2019/09/16/jupyter_%E4%B8%BB%E9%A2%98%E8%AE%BE%E7%BD%AE/</loc>
-    
-    <lastmod>2019-07-23T12:38:46.010Z</lastmod>
     
   </url>
   
