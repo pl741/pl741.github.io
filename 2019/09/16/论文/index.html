@@ -81,13 +81,20 @@
 
 
 
-<meta property="og:type" content="website">
+<meta name="description" content="论文 abstract 1In the process of dairy farming, the traditional manual cow estrus detection method has the disadvantages of long time, large workload and low accuracy, which has always restricted the de">
+<meta property="og:type" content="article">
 <meta property="og:title" content="木木的笔记">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:url" content="http://yoursite.com/2019/09/16/论文/index.html">
 <meta property="og:site_name" content="木木的笔记">
+<meta property="og:description" content="论文 abstract 1In the process of dairy farming, the traditional manual cow estrus detection method has the disadvantages of long time, large workload and low accuracy, which has always restricted the de">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="e:%5CMachineLearning%5CCow_result%5Ccow1.png">
+<meta property="og:image" content="e:%5CMachineLearning%5CCow_result%5Ccow.png">
+<meta property="og:updated_time" content="2019-07-31T11:56:42.447Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="木木的笔记">
+<meta name="twitter:description" content="论文 abstract 1In the process of dairy farming, the traditional manual cow estrus detection method has the disadvantages of long time, large workload and low accuracy, which has always restricted the de">
+<meta name="twitter:image" content="e:%5CMachineLearning%5CCow_result%5Ccow1.png">
 
 
 
@@ -117,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/">
+  <link rel="canonical" href="http://yoursite.com/2019/09/16/论文/">
 
 
 
 
 
-  <title>木木的笔记</title>
+  <title> | 木木的笔记</title>
   
 
 
@@ -142,8 +149,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -216,192 +222,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/16/评价标准/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="木木">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="木木的笔记">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/09/16/评价标准/" itemprop="url">评价标准</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-16T13:12:47+08:00">
-                2019-09-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="基本内容"><a href="#基本内容" class="headerlink" title="基本内容"></a>基本内容</h1><p><strong>True真    False假    Positive正     Negative负</strong></p>
-<p>异常检测中，P和N一般是针对预测来说的，Positive正类指的是你更关心的那一类！即“异常”，P指预测为正类，即预测为异常。T和F针对预测与真实情况的比较， True指正确匹配，F指错误匹配。<br>空| 实际正例|实际负例|<br> —|:–:|:–:|:–:<br> 预测正例P | TP | FP|所有预测为正的个数TP+FP<br> 预测负例N | FN | TN |所有预测为负的个数FN+TN<br>  | 所有实际正例的个数TP+FN | 所有实际负例的个数FP+TN |</p>
-<p><img src="https://img-blog.csdn.net/20180705124043150?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3doZXRoZXJfeW91/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="img"></p>
-<p>TPR：真正类率，代表预测是异常实际也是异常的样本数，占实际总异常数的比例——值越大 性能越好</p>
-<p>FPR：假正类率，代表预测是异常但实际是正常的样本数，占实际正常总数的比例——值越小 性能越好</p>
-<p>R：召回率，意义同TPR——值越大 性能越好</p>
-<p>P：精确率Precision，代表预测是异常实际也是异常的样本数，占预测是异常的总数的比例——值越大 性能越好</p>
-<p>F：P和R的加权调和平均，常用的是F1值——值越大 性能越好</p>
-<p>A：正确率Accuracy，与精确率的区别是，不仅考虑异常类也考虑正常类，即所有匹配样本数，占所有样本的比例——值越大 性能越好</p>
-<p>另外还有两个，分别为：虚警率和漏警率</p>
-<p>虚警率（<strong>False alarm</strong>）表示负类样本被分为正类样本在所有负类样本中的比例</p>
-<p><img src="https://img-blog.csdn.net/20180801172348939?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NpbmF0XzM1ODIxOTc2/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="img"></p>
-<p>漏警率表示（漏警率表示（Missing alarm）表示正类样本被分为负类样本在所有正类样本中的比例Missing alarm）表示正类样本被分为负类样本在所有正类样本中的比例</p>
-<p><img src="https://img-blog.csdn.net/20180801172539579?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NpbmF0XzM1ODIxOTc2/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="img"></p>
-<h1 id="Tensorflow实现"><a href="#Tensorflow实现" class="headerlink" title="Tensorflow实现"></a>Tensorflow实现</h1><h3 id="损失值："><a href="#损失值：" class="headerlink" title="损失值："></a>损失值：</h3><pre><code>tf.nn.softmax_cross_entropy_with_logits(logits, labels, name=None)</code></pre><h4 id="参数解析："><a href="#参数解析：" class="headerlink" title="参数解析："></a>参数解析：</h4><p>&emsp; logits:神经网络最后一层的输出，如果有batch，大小为[batch_size, n_classes]<br>&emsp; labels:实际标签，大小同上</p>
-<h4 id="执行过程："><a href="#执行过程：" class="headerlink" title="执行过程："></a>执行过程：</h4><p>&emsp;先对网络最后一层的输出做一个softmax，通常是求取输出属于某一类的概率，对于单样本而言，输出就是一个num_classes大小的向量</p>
-<p><img src="https://img-blog.csdn.net/20161128203449282" alt="img"></p>
-<p>&emsp;然后将softmax的输出向量与样本的实际标签做一个交叉熵</p>
-<p><img src="https://img-blog.csdn.net/20161128203840317" alt="img"></p>
-<p>&emsp;其中 y’ 指代实际的标签中第i个的值（用mnist数据举例，如果是3，那么标签是[0，0，0，1，0，0，0，0，0，0]，除了第4个值为1，其他全为0）; y就是softmax的输出向量[Y1，Y2,Y3…]中，第i个元素的值</p>
-<p>&emsp;显而易见，预测越准确，结果的值越小（别忘了前面还有负号），最后求一个平均，得到我们想要的loss</p>
-<p>&emsp;注意！！！这个函数的返回值并不是一个数，而是一个向量，如果要求交叉熵，我们要再做一步tf.reduce_sum操作,就是对向量里面所有元素求和，最后才得到H(y)，如果求loss，则要做一步tf.reduce_mean操作，对向量求均值！</p>
-<pre><code>tf.reduce_mean(input_tensor, axis=None,keep_dims=False,name=None,
-               reduction_indices=None)</code></pre><h4 id="参数解析"><a href="#参数解析" class="headerlink" title="参数解析"></a>参数解析</h4><p>&emsp; 第一个参数input_tensor： 输入的待降维的tensor;<br>&emsp; 第二个参数axis： 指定的轴，如果不指定，则计算所有元素的均值;<br>&emsp; 第三个参数keep_dims：是否降维度，设置为True，输出的结果保持输入tensor的形状，设置为False，输出结果会降低维度;<br>&emsp; 第四个参数name： 操作的名称;<br>&emsp; 第五个参数 reduction_indices：在以前版本中用来指定轴，已弃用;</p>
-<p>&emsp;predict是预测结果，也就是神经网络的输出，real是真实的标签，sess就是tensorflow当前的会话，feed_dict是需要喂的数据。</p>
-<p>&emsp;tf.equal(A, B)是对比这两个矩阵或者向量的相等的元素，如果是相等的那就返回True，反正返回False，返回的值的矩阵维度和A是一样的。</p>
-<p>&emsp;tf.cast()函数的作用是执行 tensorflow 中张量数据类型转换，<br>    tf.cast(x, dtype, name=None)</p>
-<h4 id="参数解析-1"><a href="#参数解析-1" class="headerlink" title="参数解析"></a>参数解析</h4><p>&emsp;第一个参数 x:   待转换的数据（张量）<br>&emsp;第二个参数 dtype： 目标数据类型<br>&emsp;第三个参数 name： 可选参数，定义操作的名称</p>
-<p>&emsp;tf.loical_and()将数值变成逻辑值<br>    tf.logical_and(x, y, name=None)</p>
-<p>&emsp;tf.argmax()返回值是是数值最大值的索引位置，如果最大值位置相同，则分类正确，反之则分类错误</p>
-<pre><code>predictions = tf.argmax(predict, 1)
-actuals = tf.argmax(real, 1)
-
-# 将上述获得的变量设置成元素为0或者为1的矩阵
-ones_like_actuals = tf.ones_like(actuals)
-zeros_like_actuals = tf.zeros_like(actuals)
-ones_like_predictions = tf.ones_like(predictions)
-zeros_like_predictions = tf.zeros_like(predictions)
-
-# 按照前面的计算公式编写如下计算代码
-
-tp_op = tf.reduce_sum(tf.cast(tf.logical_and(
-            tf.equal(actuals, ones_like_actuals),
-            tf.equal(predictions, ones_like_predictions)),&quot;float&quot;))
-
-tn_op = tf.reduce_sum(tf.cast(tf.logical_and(
-            tf.equal(actuals, zeros_like_actuals),
-            tf.equal(predictions, zeros_like_predictions)),&quot;float&quot;))
-
-fp_op = tf.reduce_sum(tf.cast(tf.logical_and(
-            tf.equal(actuals, zeros_like_actuals),
-            tf.equal(predictions, ones_like_predictions)),&quot;float&quot;))
-
-fn_op = tf.reduce_sum(tf.cast(tf.logical_and(
-            tf.equal(actuals, ones_like_actuals),
-            tf.equal(predictions, zeros_like_predictions)),&quot;float&quot;))
-
-tp, tn, fp, fn = session.run([tp_op, tn_op, fp_op, fn_op], feed_dict)
-tpr = float(tp)/(float(tp) + float(fn))
-fpr = float(fp)/(float(fp) + float(tn))
-fnr = float(fn)/(float(tp) + float(fn))
-accuracy = (float(tp) + float(tn))/(float(tp) + float(fp) + float(fn) + float(tn))
-recall = tpr
-precision = float(tp)/(float(tp) + float(fp))
-f1_score = (2 * (precision * recall)) / (precision + recall)</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
 
   
 
@@ -431,9 +254,7 @@ f1_score = (2 * (precision * recall)) / (precision + recall)</code></pre>
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/09/16/论文/" itemprop="url">未命名</a></h1>
+          <h1 class="post-title" itemprop="name headline"></h1>
         
 
         <div class="post-meta">
@@ -483,9 +304,7 @@ f1_score = (2 * (precision * recall)) / (precision + recall)</code></pre>
       
 
       
-        
-          
-            <p>论文</p>
+        <p>论文</p>
 <p>abstract</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">In the process of dairy farming, the traditional manual cow estrus detection method has the disadvantages of long time, large workload and low accuracy, which has always restricted the development of large-scale and intensive intelligent livestock. Massive Internet of Things (IoT) technology provide technical means to solve this problem in dairy farming. The monitoring system collects the activity data of the target cow through the sensor which worn on the cow neck, and then uploads it to the cloud through the NB-IoT network after being locally processed into 6-dimensional data. A LSTM warning of estrus algorithm combining continuous estrus factors is proposed. Compared with the K-means clustering algorithm, the LSTM neural network algorithm has higher accuracy and lower false detection rate in detection of estrus. By comparison, the most suitable continuous estrus factor is 4. This system provides an effective method for cow estrus detection.</span><br></pre></td></tr></table></figure>
 
@@ -788,8 +607,6 @@ f1_score = (2 * (precision * recall)) / (precision + recall)</code></pre>
 
 <p>此外，受限于目前NB-IoT较小的传输带宽，采集到的数据仍需在本地预处理再传输到云端，发情检测算法受本地预处理算法的影响大。随着5G海量机器通信技术演进，未来可将大量实时采集数据上传到云端，可进一步提升提高发情检测率。</p>
 
-          
-        
       
     </div>
     
@@ -806,132 +623,32 @@ f1_score = (2 * (precision * recall)) / (precision + recall)</code></pre>
       
 
       
-
-      
-
       
       
-        <div class="post-eof"></div>
+
       
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/16/链接/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="木木">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="木木的笔记">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/09/16/链接/" itemprop="url">链接</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-16T13:12:47+08:00">
-                2019-09-16
-              </time>
+              <a href="/2019/09/16/链接/" rel="next" title="链接">
+                <i class="fa fa-chevron-left"></i> 链接
+              </a>
             
+          </div>
 
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-
+              <a href="/2019/09/16/评价标准/" rel="prev" title="评价标准">
+                评价标准 <i class="fa fa-chevron-right"></i>
+              </a>
             
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <p>搭建个人博客：<a href="https://www.jianshu.com/p/4eaddcbe4d12" target="_blank" rel="noopener">https://www.jianshu.com/p/4eaddcbe4d12</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -941,286 +658,11 @@ f1_score = (2 * (precision * recall)) / (precision + recall)</code></pre>
   </article>
 
 
-    
-      
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/16/jupyter_主题设置/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="木木">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="木木的笔记">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/09/16/jupyter_主题设置/" itemprop="url">jupyter主题设置</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-16T13:12:47+08:00">
-                2019-09-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="jupyter-主题设置"><a href="#jupyter-主题设置" class="headerlink" title="jupyter 主题设置"></a>jupyter 主题设置</h2><p>安装主题：pip install jupyterthemes</p>
-<p>如果之前安装过可以更新一下：pip install –upgrade jupyterthemes</p>
-<p>设置主题：蓝色主题——jt -t onedork -fs 95 -altp -tfs 11 -nfs 115 -cellw 88% -T</p>
-<p>​                    黑色主题——jt -t monokai -f fira -fs 13 -cellw 90% -ofs 11 -dfs 11 -T -N</p>
-<p>​                    部分参数：-f(字体)  -fs(字体大小) -cellw(占屏比或宽度)  </p>
-<p>​                                      -ofs(输出段的字号)  -T(显示工具栏)  -N(显示自己主机名)</p>
-<h4 id="Conda环境自由切换："><a href="#Conda环境自由切换：" class="headerlink" title="Conda环境自由切换："></a>Conda环境自由切换：</h4><p>​        看一下是否已经把 Anaconda 中创建的所有定制环境作为核心添加在了 Jupyter Notebook 中。这样我们就能简单地利用 Kernel 按钮切换环境。换核的时候不需要重启 notebook。</p>
-<p>​        假设你的 Anaconda 环中有两个自定义的环境 my_NLP 和 gym。按照下面的步骤将这些添加到你的 Jupyter Notebook 中。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">conda activate my_NLP</span><br><span class="line"># Install the IPython Kernel </span><br><span class="line">pip install ipykernel</span><br><span class="line"># Link your environment with Jupyter </span><br><span class="line"># Repeat steps for the other environment, gym</span><br><span class="line">python -m ipykernel install --user --name=my_NLP</span><br><span class="line">pip install ipykernel </span><br><span class="line">python -m ipykernel install --user --name=gym</span><br></pre></td></tr></table></figure>
-
-<p>​        现在打开你的 Jupyter Notebook，找到 kernel 按钮下的 Change Kernel 选项，接下来就是见证奇迹的时刻：所有的核都被列举出来了，你可以通过简单地点击来激活一个服务核。</p>
-<h4 id="其他功能："><a href="#其他功能：" class="headerlink" title="其他功能："></a>其他功能：</h4><p>​        安装 nbextensions for Jupyter Notebooks</p>
-<p>​        安装 nbextensions 是很容易的，简单地遵循下面的步骤就行：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># Stop and exit your Jupyter Notebook server </span><br><span class="line"># Make sure you are in the base environment</span><br><span class="line">conda activate base</span><br><span class="line"># Install the nbextensions </span><br><span class="line">pip install jupyter_contrib_nbextensions</span><br><span class="line"># Install the necessary JS and CSS files </span><br><span class="line">jupyter contrib nbextension install --system</span><br></pre></td></tr></table></figure>
-
-<p>​        启动 Jupyter notebook 服务，你可以在起始页看到第四个叫做 Nbextensions 的选项。点击这个选项，然后就可以看到极妙的功能集，这些都是你一直希望在 Jupyter Notebooks 中拥有的。</p>
-<p>其中一些的简单介绍：</p>
-<p>​          Table of Contents(2)：单击生成整个笔记本的目录，不同的 section 都有对应的超链接。</p>
-<p>​         Scratchpad：在我看来绝对是最好的扩展了。这是一个你可以在里面做代码实验的独立空间，不会干扰笔记本中的其他部分。</p>
-<p>​        Codefolding ：代码折叠，这个不需要做过多的解释。</p>
-<p>​        Hide Input All：隐藏所有的代码单元，同时保持所有的输出和 markdown 单元可见。如果你要向非技术人员解释你的结果，那么这就会是一个很有用的功能。</p>
-<p>​        Variable Inspector：将你从调试的忧伤中拯救出来，这与 Spyder IDE 中的变量检查窗口有些类似。</p>
-<p>​        Spellchecker：对 markdown 单元中的内容进行拼写检查。</p>
-<p>​        Zenmode：移除掉屏幕中杂乱无关的内容，以便你能够聚焦于重要的东西上，例如代码。</p>
-<p>​        Snippets Menu：从 list comprehension 到 pandas 以及它们之间的所有常用代码片段的一个很酷的集合。这是最好的部分？你可以修改窗口的小部件来添加你自己的定制片段。</p>
-
-          
-        
+    <div class="post-spread">
       
     </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
   </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/23/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="木木">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="木木的笔记">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/07/23/hello-world/" itemprop="url">Hello World</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-23T13:04:49+08:00">
-                2019-07-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br><span class="line"><span class="comment"># 可以总结成下面这一句</span></span><br><span class="line">$ hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-  </section>
-
-  
 
 
           </div>
@@ -1228,6 +670,10 @@ f1_score = (2 * (precision * recall)) / (precision + recall)</code></pre>
 
 
           
+
+  
+
+
 
         </div>
         
@@ -1431,6 +877,10 @@ f1_score = (2 * (precision * recall)) / (precision + recall)</code></pre>
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
