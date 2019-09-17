@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="机器学习-时间序列异常检测,">
+  <meta name="keywords" content="时间序列异常检测,">
 
 
 
@@ -81,18 +81,22 @@
 
 
 
-<meta name="description" content="Detecting Spacecraf Anomalies Using LSTMs and Nonparametric Dynamic Thresholding 关键词异常检测&amp;emsp;神经网络&amp;emsp;RNN&amp;emsp;LSTM&amp;emsp;时间序列 主要内容&amp;emsp;&amp;emsp;模型确定后，提供一种非参数、动态无监督的阈值方法来评估残差。">
-<meta name="keywords" content="机器学习-时间序列异常检测">
+<meta name="description" content="Detecting Spacecraf Anomalies Using LSTMs and Nonparametric Dynamic Thresholding 关键词异常检测&amp;emsp;神经网络&amp;emsp;RNN&amp;emsp;LSTM&amp;emsp;时间序列 主要内容利用LSTMs进行遥测值预测&amp;emsp;&amp;emsp;模型确定后，提供一种非参数、动态无监督的阈值方法来评估残差。 &amp;emsp;&amp;emsp">
+<meta name="keywords" content="时间序列异常检测">
 <meta property="og:type" content="article">
 <meta property="og:title" content="《Detecting Spacecraf Anomalies Using LSTMs and Nonparametric Dynamic Thresholding》">
 <meta property="og:url" content="http://pl741.github.io/2019/09/16/《Detecting-Spacecraf-Anomalies-Using-LSTMs-and-Nonparametric-Dynamic-Thresholding》/index.html">
 <meta property="og:site_name" content="木木的博客">
-<meta property="og:description" content="Detecting Spacecraf Anomalies Using LSTMs and Nonparametric Dynamic Thresholding 关键词异常检测&amp;emsp;神经网络&amp;emsp;RNN&amp;emsp;LSTM&amp;emsp;时间序列 主要内容&amp;emsp;&amp;emsp;模型确定后，提供一种非参数、动态无监督的阈值方法来评估残差。">
+<meta property="og:description" content="Detecting Spacecraf Anomalies Using LSTMs and Nonparametric Dynamic Thresholding 关键词异常检测&amp;emsp;神经网络&amp;emsp;RNN&amp;emsp;LSTM&amp;emsp;时间序列 主要内容利用LSTMs进行遥测值预测&amp;emsp;&amp;emsp;模型确定后，提供一种非参数、动态无监督的阈值方法来评估残差。 &amp;emsp;&amp;emsp">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-16T10:41:45.337Z">
+<meta property="og:image" content="http://pl741.github.io/2019/09/16/《Detecting-Spacecraf-Anomalies-Using-LSTMs-and-Nonparametric-Dynamic-Thresholding》/1.png">
+<meta property="og:image" content="http://pl741.github.io/2019/09/16/《Detecting-Spacecraf-Anomalies-Using-LSTMs-and-Nonparametric-Dynamic-Thresholding》/2.png">
+<meta property="og:image" content="http://pl741.github.io/2019/09/16/《Detecting-Spacecraf-Anomalies-Using-LSTMs-and-Nonparametric-Dynamic-Thresholding》/3.png">
+<meta property="og:updated_time" content="2019-09-17T03:33:06.178Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《Detecting Spacecraf Anomalies Using LSTMs and Nonparametric Dynamic Thresholding》">
-<meta name="twitter:description" content="Detecting Spacecraf Anomalies Using LSTMs and Nonparametric Dynamic Thresholding 关键词异常检测&amp;emsp;神经网络&amp;emsp;RNN&amp;emsp;LSTM&amp;emsp;时间序列 主要内容&amp;emsp;&amp;emsp;模型确定后，提供一种非参数、动态无监督的阈值方法来评估残差。">
+<meta name="twitter:description" content="Detecting Spacecraf Anomalies Using LSTMs and Nonparametric Dynamic Thresholding 关键词异常检测&amp;emsp;神经网络&amp;emsp;RNN&amp;emsp;LSTM&amp;emsp;时间序列 主要内容利用LSTMs进行遥测值预测&amp;emsp;&amp;emsp;模型确定后，提供一种非参数、动态无监督的阈值方法来评估残差。 &amp;emsp;&amp;emsp">
+<meta name="twitter:image" content="http://pl741.github.io/2019/09/16/《Detecting-Spacecraf-Anomalies-Using-LSTMs-and-Nonparametric-Dynamic-Thresholding》/1.png">
 
 
 
@@ -396,7 +400,15 @@
       
         <p><a href="https://arxiv.org/pdf/1802.04431.pdf" target="_blank" rel="noopener">Detecting Spacecraf Anomalies Using LSTMs and Nonparametric Dynamic Thresholding</a></p>
 <h3 id="关键词"><a href="#关键词" class="headerlink" title="关键词"></a>关键词</h3><p>异常检测&emsp;神经网络&emsp;RNN&emsp;LSTM&emsp;时间序列</p>
-<h3 id="主要内容"><a href="#主要内容" class="headerlink" title="主要内容"></a>主要内容</h3><p>&emsp;&emsp;模型确定后，提供一种非参数、动态无监督的阈值方法来评估残差。</p>
+<h3 id="主要内容"><a href="#主要内容" class="headerlink" title="主要内容"></a>主要内容</h3><h5 id="利用LSTMs进行遥测值预测"><a href="#利用LSTMs进行遥测值预测" class="headerlink" title="利用LSTMs进行遥测值预测"></a>利用LSTMs进行遥测值预测</h5><p>&emsp;&emsp;模型确定后，提供一种非参数、动态无监督的阈值方法来评估残差。</p>
+<p>&emsp;&emsp;为每个单通道创建一个单独的模型，使用每个模型预测该通道的值。为每个通道单独建模还可以跟踪通道级别，实现航天器异常模式的细粒度检测。考虑时间序列$X=\left{\mathbf{x}^{(1)}, \mathbf{x}^{(2)}, \ldots, \mathbf{x}^{(n)}\right}$，其中时间序列中的每一步$\mathbf{x}^{(t)} \in R^{m}$为$m$维向量$\left{x_{1}^{(t)}, x_{2}^{(t)}, \ldots, x_{m}^{(t)}\right}$对应于输入向量，对于每个点$\mathbf{x}^{(t)}$，序列长度$l_s$决定输入模型进行预测的点的数量，预测长度$l_p$决定预测的步长，预测维度$d$的范围为$1 \leq d \leq m$。要预测单个通道的遥测值则$d=1$，同时使用$l_p=1$限制每个步骤$t$的预测数量，以减少运行时间。在每个步骤$t$为实际遥测值生成单个标量预测值$\hat{y}^{(t)}$。在本次实验中输入到LSTM中的$x^{(t)}$包括给定信道的先验遥测值和发送到航天器的编码命令信息。发出命令的模块和发送或接收命令的模块的组合是一个 one-hot 编码的模块，插入到每个步骤$t$中。</p>
+<img src="/2019/09/16/《Detecting-Spacecraf-Anomalies-Using-LSTMs-and-Nonparametric-Dynamic-Thresholding》/1.png" title="图1. 每个时间步长 tt 预测所用输入矩阵的可视化表示。将当前预测误差与过去预测误差进行比较，以确定其是否异常">
+
+<h5 id="动态误差阈值"><a href="#动态误差阈值" class="headerlink" title="动态误差阈值"></a>动态误差阈值</h5><p>&emsp;&emsp;本文提出一种方法，可以在不做对过去平滑误差分布做高斯假设的情况下有效地标识极值。每一步$t$产生一个预测值$\hat{y}^{(t)}$，预测误差$e^{(t)}=\left|y^{(t)}-\hat{y}^{(t)}\right|$，其中$y^{(t)}=x_{i}^{(t+1)}$，其中$i$对应于真实遥测值得维度，将每个误差$e^{(t)}$添加到一维误差$e$ 向量中，<br>$$<br>\mathbf{e}=\left[e^{(t-h)}, \ldots, e^{\left(t-l_{s}\right)}, \ldots, e^{(t-1)}, e^{(t)}\right]<br>$$<br>其中$h$表示用于评估当前误差的历史误差值的数量，然后对误差集$\mathbf e$进行平滑以抑制LSTM预测中的尖锐误差值，这些尖锐误差会影响预测结果，即使在正常情况下，也会出现误差值的急剧峰值。本文使用指数加权平均（EWMA）来产生平滑误差$\mathbf{e}<em>{s}=\left[e</em>{s}^{(t-h)}, \ldots, e_{s}^{(t-l s)}, \ldots, e_{s}^{(t-1)}, e_{s}^{(t)}\right]$。为评估这些值是否为正常值，本文将为平滑预测误差设置一个阈值，将阈值以上的平滑预测误差值对应的值分类为异常。</p>
+<img src="/2019/09/16/《Detecting-Spacecraf-Anomalies-Using-LSTMs-and-Nonparametric-Dynamic-Thresholding》/2.png">
+
+<img src="/2019/09/16/《Detecting-Spacecraf-Anomalies-Using-LSTMs-and-Nonparametric-Dynamic-Thresholding》/3.png">
+
 
       
     </div>
@@ -414,7 +426,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/机器学习-时间序列异常检测/" rel="tag"># 机器学习-时间序列异常检测</a>
+            <a href="/tags/时间序列异常检测/" rel="tag"># 时间序列异常检测</a>
           
         </div>
       
@@ -576,7 +588,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#关键词"><span class="nav-number">1.</span> <span class="nav-text">关键词</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主要内容"><span class="nav-number">2.</span> <span class="nav-text">主要内容</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#关键词"><span class="nav-number">1.</span> <span class="nav-text">关键词</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主要内容"><span class="nav-number">2.</span> <span class="nav-text">主要内容</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#利用LSTMs进行遥测值预测"><span class="nav-number">2.0.1.</span> <span class="nav-text">利用LSTMs进行遥测值预测</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#动态误差阈值"><span class="nav-number">2.0.2.</span> <span class="nav-text">动态误差阈值</span></a></li></ol></li></ol></div>
             
 
           </div>
