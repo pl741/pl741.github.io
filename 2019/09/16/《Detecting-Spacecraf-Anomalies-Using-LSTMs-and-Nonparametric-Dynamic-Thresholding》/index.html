@@ -94,7 +94,8 @@
 <meta property="og:image" content="http://pl741.github.io/2019/09/16/《Detecting-Spacecraf-Anomalies-Using-LSTMs-and-Nonparametric-Dynamic-Thresholding》/3.png">
 <meta property="og:image" content="http://pl741.github.io/2019/09/16/《Detecting-Spacecraf-Anomalies-Using-LSTMs-and-Nonparametric-Dynamic-Thresholding》/4.png">
 <meta property="og:image" content="http://pl741.github.io/2019/09/16/《Detecting-Spacecraf-Anomalies-Using-LSTMs-and-Nonparametric-Dynamic-Thresholding》/5.png">
-<meta property="og:updated_time" content="2019-09-17T09:31:47.512Z">
+<meta property="og:image" content="http://pl741.github.io/2019/09/16/《Detecting-Spacecraf-Anomalies-Using-LSTMs-and-Nonparametric-Dynamic-Thresholding》/6.png">
+<meta property="og:updated_time" content="2019-09-30T10:00:10.839Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《Detecting Spacecraf Anomalies Using LSTMs and Nonparametric Dynamic Thresholding》">
 <meta name="twitter:description" content="Detecting Spacecraf Anomalies Using LSTMs and Nonparametric Dynamic Thresholding 关键词异常检测&amp;emsp;神经网络&amp;emsp;RNN&amp;emsp;LSTM&amp;emsp;时间序列 主要内容利用LSTMs进行遥测值预测&amp;emsp;&amp;emsp;模型确定后，提供一种非参数、动态无监督的阈值方法来评估残差。 &amp;emsp;&amp;emsp">
@@ -439,6 +440,18 @@ s^{(i)}=\frac{\max \left(\mathbf{e}_{s e q}^{(i)}\right)-\arg \max (\boldsymbol{
 <p>&emsp;&emsp;<strong>参数阈值比较：</strong>使用原始的LSTM进行误差预测，我们还使用参数误差评估方法生成异常，该方法与Numenta异常基准的最精确模型相协调。这种方法递增地处理原始误差-在每个步骤$t$，将历史误差的窗口$W$建模为正态分布，并且在每个步骤$t$更新均值$μ_{w}$和方差$σ_{W}^{2}$。我们设置$W$的长度为$l_{w}=h=2100$，并对两种方法使用相同的预测误差集。然后计算预测误差长度$l_{short}$的短期平均值$μ_{s}$，其平滑效果与第3.2节中的EWMA平滑相似。然后使用尾概率$Q$来定义异常$L$的可能性:</p>
 <script type="math/tex; mode=display">
 L=1-Q\left(\frac{\mu_{s}-\mu_{W}}{\sigma_{W}^{2}}\right)</script><p>如果$L \geq 1-\epsilon_{n o r m}$的值为分类为异常。在下一节中，使用$l_{short}=10$和$\epsilon_{n o r m}=\{0.01,0.0001\}$生成的结果与3.2节中的方法进行比较。</p>
+<h3 id="复现实验"><a href="#复现实验" class="headerlink" title="复现实验"></a>复现实验</h3><p>&emsp;&emsp;GitHub地址：<a href="https://github.com/khundman/telemanom" target="_blank" rel="noopener">https://github.com/khundman/telemanom</a></p>
+<p>&emsp;&emsp;<strong>遥测数据：包含两个分支</strong>  </p>
+<p>&emsp;&emsp;&emsp;1.  master：包含标记异常的数据并用于复现KDD论文中的实验<br>&emsp;&emsp;&emsp;2.  no-labels：未标记的数据（一组时间序列流）</p>
+<p>&emsp;&emsp;<strong>开始</strong>：</p>
+<p>&emsp;&emsp;&emsp;克隆仓库——<code>git clone https://github.com/khundman/telemanom.git &amp;&amp; cd telemanom</code></p>
+<p>&emsp;&emsp;&emsp;Curl和Unzip数据——<code>curl -O https://s3-us-west-2.amazonaws.com/telemanom/data.zip &amp;&amp; unzip data.zip &amp;&amp; rm data.zip</code></p>
+<p>&emsp;&emsp;&emsp;使用Python 3.6+安装依赖项——<code>pip install -r requirements.txt</code></p>
+<p>&emsp;&emsp;&emsp;在<code>config.yaml</code>文件中配置系统/模型参数：<br>&emsp;&emsp;&emsp;&emsp;&emsp;<code>train:</code> 如果是<code>True</code>，将为每个输入流训练一个新模型；如果是 <code>False</code> ，将加载现有的训练模型并用于生成预测。<br>&emsp;&emsp;&emsp;&emsp;&emsp;<code>predict:</code> 如果是<code>Ture</code>，使用模型生成新的预测；如果是<code>False</code>，请在评估中使用现有的已保存预测（用于调整错误阈值并跳过先前的处理步骤）<br>&emsp;&emsp;&emsp;&emsp;&emsp;<code>l_s:</code> 250 确定在每个时间步$t$上输入到模型的先前时间步数（用于生成预测）</p>
+<p>&emsp;&emsp;&emsp;开始实验——<code>python run.py</code></p>
+<p>&emsp;&emsp;&emsp;利用<code>Jupyter notebook</code>来进行结果评估并比较不同参数的运行结果在<code>results/</code>下提供。启动notebook——<code>jupyter notebook results/result-viewer.ipynb</code><br>&emsp;&emsp;&emsp;Plotly用于生成交互式内联图，例如：<br><img src="/2019/09/16/《Detecting-Spacecraf-Anomalies-Using-LSTMs-and-Nonparametric-Dynamic-Thresholding》/6.png"></p>
+<p>&emsp;&emsp;<strong>数据</strong>：</p>
+<p>&emsp;&emsp;&emsp;使用你自己的数据：首先划分数据集为训练数据集和测试数据集并分别放在<code>data/train/</code>和<code>data/test/</code>文件夹下。每个通道或流（训练集和测试集）一个<code>.npy</code>文件应该为</p>
 
       
     </div>
@@ -622,7 +635,7 @@ L=1-Q\left(\frac{\mu_{s}-\mu_{W}}{\sigma_{W}^{2}}\right)</script><p>如果$L \ge
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#关键词"><span class="nav-number">1.</span> <span class="nav-text">关键词</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主要内容"><span class="nav-number">2.</span> <span class="nav-text">主要内容</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#利用LSTMs进行遥测值预测"><span class="nav-number">2.1.</span> <span class="nav-text">利用LSTMs进行遥测值预测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#动态误差阈值"><span class="nav-number">2.2.</span> <span class="nav-text">动态误差阈值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#减少误报"><span class="nav-number">2.3.</span> <span class="nav-text">减少误报</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实验"><span class="nav-number">2.4.</span> <span class="nav-text">实验</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#关键词"><span class="nav-number">1.</span> <span class="nav-text">关键词</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主要内容"><span class="nav-number">2.</span> <span class="nav-text">主要内容</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#利用LSTMs进行遥测值预测"><span class="nav-number">2.1.</span> <span class="nav-text">利用LSTMs进行遥测值预测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#动态误差阈值"><span class="nav-number">2.2.</span> <span class="nav-text">动态误差阈值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#减少误报"><span class="nav-number">2.3.</span> <span class="nav-text">减少误报</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实验"><span class="nav-number">2.4.</span> <span class="nav-text">实验</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#复现实验"><span class="nav-number">3.</span> <span class="nav-text">复现实验</span></a></li></ol></div>
             
 
           </div>
