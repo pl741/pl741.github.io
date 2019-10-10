@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://pl741.github.io/"/>
-  <updated>2019-09-19T11:52:34.929Z</updated>
+  <updated>2019-10-10T11:11:03.614Z</updated>
   <id>http://pl741.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>《Modeling Vehicle Interactions via Modified LSTM Models for Trajectory Prediction》</title>
+    <link href="http://pl741.github.io/2019/10/10/%E3%80%8AModeling-Vehicle-Interactions-via-Modified-LSTM-Models-for-Trajectory-Prediction%E3%80%8B/"/>
+    <id>http://pl741.github.io/2019/10/10/《Modeling-Vehicle-Interactions-via-Modified-LSTM-Models-for-Trajectory-Prediction》/</id>
+    <published>2019-10-10T07:42:13.000Z</published>
+    <updated>2019-10-10T11:11:03.614Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://xs.scihub.ltd/https://ieeexplore.ieee.org/abstract/document/8672889/" target="_blank" rel="noopener">《Modeling Vehicle Interactions via Modified LSTM Models for Trajectory<br>  Prediction》</a></p><h3 id="通过改进的LSTM模型对车辆相互作用进行轨迹预测建模"><a href="#通过改进的LSTM模型对车辆相互作用进行轨迹预测建模" class="headerlink" title=" **通过改进的LSTM模型对车辆相互作用进行轨迹预测建模** "></a><center> **通过改进的LSTM模型对车辆相互作用进行轨迹预测建模** </center></h3><h3 id="ABSTRACT"><a href="#ABSTRACT" class="headerlink" title="ABSTRACT"></a>ABSTRACT</h3><p>&emsp;长短期记忆（LSTM）模型是最常用的车辆轨迹预测模型之一。在本文中，我们研究了现有的LSTM模型在密集交通中进行长期轨迹预测的两个问题。首先，现有的LSTM模型无法同时描述不同车辆之间的空间相互作用以及轨迹时间序列之间的时间关系。因此，现有的模型不能准确地估计车辆交互在密集交通中的影响。其次，基本的LSTM模型经常会遇到梯度消失的问题，因此很难长期训练。这两个问题有时会导致车辆轨迹预测中存在较大的预测误差。 在本文中，我们提出了一种基于时空LSTM的轨迹预测模型（STLSTM），其中涵盖了两个地方的修改。我们将空间交互嵌入到LSTM模型中，以隐式测量相邻车辆之间的交互。 我们还在两个连续LSTM层的输入和输出之间的引入了shortcut connection，以处理梯度消失问题。在I-80和US-101数据集上评估了提出的新模型。 结果表明，我们的新模型比一种最新模型（maneuver-LSTM（M-LSTM））具有更高的轨迹预测精度。</p><h3 id="INDEX-TERMS"><a href="#INDEX-TERMS" class="headerlink" title="INDEX TERMS"></a>INDEX TERMS</h3><p>轨迹预测     车辆交互作用   Shortcut Connection  LSTM（long short-term memory)</p><h3 id="I-INTRODUCTION"><a href="#I-INTRODUCTION" class="headerlink" title="I. INTRODUCTION"></a>I. INTRODUCTION</h3><h4 id="A-MANEUVER-BASED-MODELS"><a href="#A-MANEUVER-BASED-MODELS" class="headerlink" title="A. MANEUVER-BASED MODELS"></a>A. MANEUVER-BASED MODELS</h4><h4 id="B-END-TO-END-MODELS"><a href="#B-END-TO-END-MODELS" class="headerlink" title="B. END-TO-END MODELS"></a>B. END-TO-END MODELS</h4><h3 id="II-PROBLEM-PRESENTATION-AND-THE-MODEL"><a href="#II-PROBLEM-PRESENTATION-AND-THE-MODEL" class="headerlink" title="II. PROBLEM PRESENTATION AND THE MODEL"></a>II. PROBLEM PRESENTATION AND THE MODEL</h3><h4 id="A-THE-FRAMEWORK-OF-ST-LSTM"><a href="#A-THE-FRAMEWORK-OF-ST-LSTM" class="headerlink" title="A. THE FRAMEWORK OF ST-LSTM"></a>A. THE FRAMEWORK OF ST-LSTM</h4><h5 id="1-RESEARCH-SCENARIO"><a href="#1-RESEARCH-SCENARIO" class="headerlink" title="1) RESEARCH SCENARIO"></a>1) RESEARCH SCENARIO</h5><h5 id="2-INPUT-AND-OUTPUT"><a href="#2-INPUT-AND-OUTPUT" class="headerlink" title="2) INPUT AND OUTPUT"></a>2) INPUT AND OUTPUT</h5><h5 id="3-THE-STRUCTURE-OF-ST-LSTM"><a href="#3-THE-STRUCTURE-OF-ST-LSTM" class="headerlink" title="3) THE STRUCTURE OF ST-LSTM"></a>3) THE STRUCTURE OF ST-LSTM</h5><h4 id="B-A-THREE-STEP-TRAJECTORY-PREDICTION"><a href="#B-A-THREE-STEP-TRAJECTORY-PREDICTION" class="headerlink" title="B. A THREE-STEP TRAJECTORY PREDICTION"></a>B. A THREE-STEP TRAJECTORY PREDICTION</h4><h3 id="III-MODEL-DESIGN"><a href="#III-MODEL-DESIGN" class="headerlink" title="III. MODEL DESIGN"></a>III. MODEL DESIGN</h3><h4 id="A-THE-STRUCTURE-AND-FEATURES-OF-ST-LSTM"><a href="#A-THE-STRUCTURE-AND-FEATURES-OF-ST-LSTM" class="headerlink" title="A. THE STRUCTURE AND FEATURES OF ST-LSTM"></a>A. THE STRUCTURE AND FEATURES OF ST-LSTM</h4><h4 id="B-THE-SHORTCUT-CONNECTIONS-FOR-LSTM-MODELS"><a href="#B-THE-SHORTCUT-CONNECTIONS-FOR-LSTM-MODELS" class="headerlink" title="B. THE SHORTCUT CONNECTIONS FOR LSTM MODELS"></a>B. THE SHORTCUT CONNECTIONS FOR LSTM MODELS</h4><h4 id="C-NETWORK-PARAMETER-SELECTION"><a href="#C-NETWORK-PARAMETER-SELECTION" class="headerlink" title="C. NETWORK PARAMETER SELECTION"></a>C. NETWORK PARAMETER SELECTION</h4><h3 id="IV-TRAINING-RESULTS-AND-DISCUSSIONS"><a href="#IV-TRAINING-RESULTS-AND-DISCUSSIONS" class="headerlink" title="IV. TRAINING RESULTS AND DISCUSSIONS"></a>IV. TRAINING RESULTS AND DISCUSSIONS</h3><h4 id="A-DATASET"><a href="#A-DATASET" class="headerlink" title="A. DATASET"></a>A. DATASET</h4><h4 id="B-TRAINING-DETAILS"><a href="#B-TRAINING-DETAILS" class="headerlink" title="B. TRAINING DETAILS"></a>B. TRAINING DETAILS</h4><h4 id="C-TESTING-RESULTS"><a href="#C-TESTING-RESULTS" class="headerlink" title="C. TESTING RESULTS"></a>C. TESTING RESULTS</h4><h4 id="D-THE-ROLE-OF-SHORTCUT-CONNECTIONS"><a href="#D-THE-ROLE-OF-SHORTCUT-CONNECTIONS" class="headerlink" title="D. THE ROLE OF SHORTCUT CONNECTIONS"></a>D. THE ROLE OF SHORTCUT CONNECTIONS</h4><h3 id="V-CONCLUSION"><a href="#V-CONCLUSION" class="headerlink" title="V. CONCLUSION"></a>V. CONCLUSION</h3><h3 id="APPENDIX-A"><a href="#APPENDIX-A" class="headerlink" title="APPENDIX A"></a>APPENDIX A</h3><h4 id="NETWORK-PARAMETER-SELECTION"><a href="#NETWORK-PARAMETER-SELECTION" class="headerlink" title="NETWORK PARAMETER SELECTION"></a>NETWORK PARAMETER SELECTION</h4><h3 id="APPENDIX-B"><a href="#APPENDIX-B" class="headerlink" title="APPENDIX B"></a>APPENDIX B</h3><h4 id="OVERFITTING-ANALYSIS-AND-TRAINING-SET-SCALE-SELECTION"><a href="#OVERFITTING-ANALYSIS-AND-TRAINING-SET-SCALE-SELECTION" class="headerlink" title="OVERFITTING ANALYSIS AND TRAINING SET SCALE SELECTION"></a>OVERFITTING ANALYSIS AND TRAINING SET SCALE SELECTION</h4>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;a href=&quot;https://xs.scihub.ltd/https://ieeexplore.ieee.org/abstract/document/8672889/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;《Modeling Vehicle I
+      
+    
+    </summary>
+    
+    
+      <category term="机器学习" scheme="http://pl741.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="LSTM" scheme="http://pl741.github.io/tags/LSTM/"/>
+    
+  </entry>
   
   <entry>
     <title>《Long Short Term Memory Networks for Anomaly Detection in Time Series》</title>
