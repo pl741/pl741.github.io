@@ -101,7 +101,7 @@
 <meta property="og:image" content="http://pl741.github.io/2019/10/10/《Modeling-Vehicle-Interactions-via-Modified-LSTM-Models-for-Trajectory-Prediction》/10.png">
 <meta property="og:image" content="http://pl741.github.io/2019/10/10/《Modeling-Vehicle-Interactions-via-Modified-LSTM-Models-for-Trajectory-Prediction》/11.png">
 <meta property="og:image" content="http://pl741.github.io/2019/10/10/《Modeling-Vehicle-Interactions-via-Modified-LSTM-Models-for-Trajectory-Prediction》/12.png">
-<meta property="og:updated_time" content="2019-10-14T11:54:00.562Z">
+<meta property="og:updated_time" content="2019-10-17T06:31:09.775Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《Modeling Vehicle Interactions via Modified LSTM Models for Trajectory Prediction》">
 <meta name="twitter:description" content="《Modeling Vehicle Interactions via Modified LSTM Models for Trajectory Prediction》  通过改进的LSTM模型对车辆相互作用进行轨迹预测建模 ABSTRACT长短期记忆（LSTM）模型是最常用的车辆轨迹预测模型之一。在本文中，我们研究了现有的LSTM模型在密集交通中进行长期轨迹预测的两个问题。首先，现有的LSTM模型无">
@@ -440,7 +440,7 @@
 \left\{\begin{array}{l}{\boldsymbol{h}_{i}^{t}=\left[\Delta X_{i}^{(t+\Delta t)}, \Delta Y_{i}^{(t+\Delta t)}, \ldots, \Delta X_{i}^{\left(t+t_{p}\right)}, \Delta Y_{i}^{\left(t+t_{p}\right)}\right]} \\ {\boldsymbol{h}_{s}^{t}=\left[\Delta X_{s}^{(t+\Delta t)}, \Delta Y_{s}^{(t+\Delta t)}, \ldots, \Delta X_{s}^{\left(t+t_{p}\right)}, \Delta Y_{s}^{\left(t+t_{p}\right)}\right]}\end{array}\right.  \tag{3}</script><p><strong>Step 2:</strong> 通过$I_{i}$评估空间相互作用，并输出$V_{s}$的轨迹校正序列。</p>
 <p>$I_{i}$的输入是$\boldsymbol{h}^{t}_{s}$和$\boldsymbol{h}^{t}_{i}$。输出$\boldsymbol{h}^{t}_{i,s}$是$\boldsymbol{h}^{t}_{s}$的轨迹校正序列，它考虑了$V_{i}$和$V_{s}$之间的空间相互作用对$V_{s}$运动的影响。 $\boldsymbol{h}^{t}_{i, s}$，$\boldsymbol{h}^{t}_{s}$和$\boldsymbol{h}^{t}_{i}$的长度都等于$2n_{p}$。</p>
 <p><strong>Step 3:</strong> 校正$V_{s}$的预测轨迹并输出最终的预测轨迹。</p>
-<p>此步骤的输入为$\boldsymbol{h}^{t}_{s}$和所有$\boldsymbol{h}^{t}_{s}$，最终输出预测序列$y^{t}_{s}$由输入的加权和计算得出：</p>
+<p>此步骤的输入为$\boldsymbol{h}^{t}_{s}$和所有$\boldsymbol{h}^{t}_{i, s}$，最终输出预测序列$y^{t}_{s}$由输入的加权和计算得出：</p>
 <script type="math/tex; mode=display">
 \boldsymbol{y}_{s}^{t}=\boldsymbol{h}_{s}^{t}+\sum_{i} w_{i} \boldsymbol{h}_{i,s}^{t}=\boldsymbol{h}_{s}^{t}+\left(\boldsymbol{W}^{t}\right)^{T} \boldsymbol{H}^{t}      \tag{4}</script><p>其中$\boldsymbol{W}^{t}=\left[w_{1}, w_{2}, \cdots, w_{6}\right]^{T}$，$\boldsymbol{H}^{t}=\left[\boldsymbol{h}_{1, s}^{t}, \boldsymbol{h}_{2, s}^{t}, \cdots, \boldsymbol{h}_{6,s}^{t}\right]^{T}$</p>
 <p>权重$w_{i}$反映了$I_{i}$对$V_{s}$未来轨迹的影响程度。我们可以从安全距离的角度估计$w_{i}$，因为每辆车都会主动保持与周围车辆的安全距离，从而产生空间相互作用。</p>
@@ -454,16 +454,16 @@ w_{i} \propto \frac{D_{i, s}}{\Delta d_{i, s}}=\frac{\alpha \bar{v} \Delta v+\be
 <p>在公式（6）中，$\bar{v}$或$\Delta v$的增加和$\Delta d_{i, s}$的减少将导致$w_{i}$的增加。 这表明$V_{i}$将对$V_{s}$产生更大的影响，这与我们的直觉是一致的。</p>
 <p>如果$V_{i}$不存在或$\Delta d_{i, s}$太大，我们可以直接设置$w_{i}=0$，这样$V_{i}$的缺乏将不会影响预测过程。 因此，ST-LSTM可以应用于具有任意数量的周围车辆的车辆，反映了ST-LSTM的灵活性。</p>
 <h3 id="III-MODEL-DESIGN"><a href="#III-MODEL-DESIGN" class="headerlink" title="III. MODEL DESIGN"></a>III. MODEL DESIGN</h3><h4 id="A-THE-STRUCTURE-AND-FEATURES-OF-ST-LSTM"><a href="#A-THE-STRUCTURE-AND-FEATURES-OF-ST-LSTM" class="headerlink" title="A. THE STRUCTURE AND FEATURES OF ST-LSTM"></a>A. THE STRUCTURE AND FEATURES OF ST-LSTM</h4><p>为了使<code>LSTM</code>模型能够同时对车辆之间的空间相互作用和轨迹序列之间的时间关系进行建模，Jain等人。在[25]中提出了一种高级时空模型，称为S-RNN（S-RNN）。关键思想是将空间相互作用视为可以由<code>LSTM</code>模型处理的时间序列。</p>
-<p>如<code>Fig2</code>所示，我们采用<code>S-RNN</code>的思想，并类似地构建时空模型。但是，<code>T-LSTM</code>和<code>S-RNN</code>之间有两个主要区别：</p>
+<p>如<code>Fig2</code>所示，我们采用<code>S-RNN</code>的思想，并类似地构建时空模型。但是，<code>ST-LSTM</code>和<code>S-RNN</code>之间有两个主要区别：</p>
 <p>第一个区别是$C_{i}$和$I_{i}$（$\boldsymbol{h}^{t}_{i}$和$\boldsymbol{h}^{t}_{i, s}$）的输出定义。 在<code>S-RNN</code>中，未指定$C_{i}$和$I_{i}$的输出。 相反，<code>ST-LSTM</code>清楚地区分了$\boldsymbol{h}^{t}_{i}$（时间关系）和$\boldsymbol{h}^{t}_{i, s}$（空间相互作用），以突出它们在轨迹预测中的不同作用。 这是因为时间关系通常主导着整个驾驶行为，而不是空间相互作用。</p>
-<p>第二个差异是<strong>Step 3</strong>中的权重$\boldsymbol{W}^{t}$。在<code>S-RNN</code>中，所有$I_{i}$的输出都通过在训练过程中直接学习的加权总和进行积分。 不同地，我们根据等式（4）-（6）中所示的相互作用影响程度的先验知识来评估$w_{i}$。 引入这些先验知识也将有助于加速学习。</p>
-<p>根据比较，<code>ST-LSTM</code>比<code>S-RNN</code>更适合表征交通场景。</p>
-<h4 id="B-THE-SHORTCUT-CONNECTIONS-FOR-LSTM-MODELS"><a href="#B-THE-SHORTCUT-CONNECTIONS-FOR-LSTM-MODELS" class="headerlink" title="B. THE SHORTCUT CONNECTIONS FOR LSTM MODELS"></a>B. THE SHORTCUT CONNECTIONS FOR LSTM MODELS</h4><p>由于基本的<code>LSTM</code>模型很难在长期轨迹预测中进行训练，因此我们对基本·LSTM·模型的结构进行了一些修改，如图3所示。</p>
+<p>第二个差异是<strong>Step 3</strong>中的权重$\boldsymbol{W}^{t}$。在S-RNN中，所有$I_{i}$的输出都通过在训练过程中直接学习的加权总和进行积分。 不同地，我们根据等式（4）-（6）中所示的相互作用影响程度的先验知识来评估$w_{i}$。 引入这些先验知识也将有助于加速学习。</p>
+<p>根据比较，ST-LSTM比S-RNN更适合表征交通场景。</p>
+<h4 id="B-THE-SHORTCUT-CONNECTIONS-FOR-LSTM-MODELS"><a href="#B-THE-SHORTCUT-CONNECTIONS-FOR-LSTM-MODELS" class="headerlink" title="B. THE SHORTCUT CONNECTIONS FOR LSTM MODELS"></a>B. THE SHORTCUT CONNECTIONS FOR LSTM MODELS</h4><p>由于基本的LSTM模型很难在长期轨迹预测中进行训练，因此我们对基本LSTM模型的结构进行了一些修改，如图3所示。</p>
 <img src="/2019/10/10/《Modeling-Vehicle-Interactions-via-Modified-LSTM-Models-for-Trajectory-Prediction》/3.png" title="Figure3. 带有shortcut connections的修改后的LSTM模型结构。">
 <p>受ResNet [26]的启发，我们引入了<code>shortcut connections</code>来解决梯度消失的问题。输入序列的信息可以直接传输到后续的层。因此，修改后的<code>LSTM</code>模型可以减轻反向传播时的梯度消失。换句话说，修改后的<code>LSTM</code>模型的学习对象变成了类似残差的序列，而不是轨迹序列。我们将证明此更改可以使<code>LSTM</code>在<code>IV-D</code>部分中更容易训练。</p>
 <p>为了构造<code>shortcut connections</code>，输入和输出序列的长度应相等（$n=2n_{h}$）。 <code>LSTM</code>层的数量（<code>Fig3</code>中的$m$）和每层中的<code>LSTM</code>单元的数量（<code>Fig3</code>中的$n$）是修改后的<code>LSTM</code>模型的两个主要结构参数。</p>
 <h4 id="C-NETWORK-PARAMETER-SELECTION"><a href="#C-NETWORK-PARAMETER-SELECTION" class="headerlink" title="C. NETWORK PARAMETER SELECTION"></a>C. NETWORK PARAMETER SELECTION</h4><p>现在，我们专注于每个<code>LSTM</code>（$C_{i}$和$I_{i}$）的详细网络结构。 具体来说，我们需要设置历史时间范围$t_{h}$（$n=2n_{h}=2t_{h}/\Delta t$）和隐藏的<code>LSTM</code>层数$N_{hidden}$（$m=N_{hidden}$）。</p>
-<p>$t_{h}$和$N_{hidden}$的值可以直接影响修改后的<code>LSTM</code>模型的性能。 通常，当$t_{h}$太小时，它无法提供足够的有效历史信息来进行轨迹预测； 当$t_{h}$太大时，冗余的历史信息可能会降低预测的准确性。 当$N_{hidden}$太小时，<code>LSTM</code>模型可能无法对复杂的车辆轨迹进行建模。 当$N_{hidden}太大时，网络可能太深且收敛速度较慢。</p>
+<p>$t_{h}$和$N_{hidden}$的值可以直接影响修改后的<code>LSTM</code>模型的性能。 通常，当$t_{h}$太小时，它无法提供足够的有效历史信息来进行轨迹预测； 当$t_{h}$太大时，冗余的历史信息可能会降低预测的准确性。 当$N_{hidden}$太小时，<code>LSTM</code>模型可能无法对复杂的车辆轨迹进行建模。 当$N_{hidden}$太大时，网络可能太深且收敛速度较慢。</p>
 <p>所有$C_{i}$和$I_{i}$的详细网络参数选择如附录A所示。选择结果如<code>IV-B</code>节所示。</p>
 <h3 id="IV-TRAINING-RESULTS-AND-DISCUSSIONS"><a href="#IV-TRAINING-RESULTS-AND-DISCUSSIONS" class="headerlink" title="IV. TRAINING RESULTS AND DISCUSSIONS"></a>IV. TRAINING RESULTS AND DISCUSSIONS</h3><h4 id="A-DATASET"><a href="#A-DATASET" class="headerlink" title="A. DATASET"></a>A. DATASET</h4><p>本文的研究场景是一条多车道的直路。在这种情况下，我们可以将车辆运动分为两种：直行和换道。</p>
 <p>我们使用<code>NGSIM I-80</code>和<code>US-101</code>轨迹数据集来训练和评估ST-LSTM。</p>
@@ -475,15 +475,14 @@ w_{i} \propto \frac{D_{i, s}}{\Delta d_{i, s}}=\frac{\alpha \bar{v} \Delta v+\be
 <p>但是，如表1和表2所示，两个数据集严重不平衡。 因此，我们仅对<strong>left only</strong>和<strong>no lane change</strong>进行降采样，而对<strong>right only</strong>进行过采样，以确保不同类型轨迹的比例大致相等[29]。</p>
 <p>为了便于学习车道变更的特性，我们使用车道变更来修剪每个轨迹，并且仅保留包含车道变更的部分数据。 我们还在不改变车道的情况下随机修整了轨迹，以保证不同类型轨迹的平衡。</p>
 <p>我们从平衡数据集中随机抽取N条轨迹（表1和表2中所示）进行训练，剩下的轨迹进行测试。 我们将在附录B中讨论训练集大小<code>N</code>的选择。选择结果在<code>IV-B</code>节中显示。</p>
-<h4 id="B-TRAINING-DETAILS"><a href="#B-TRAINING-DETAILS" class="headerlink" title="B. TRAINING DETAILS"></a>B. TRAINING DETAILS</h4><p>根据附录A中的参数选择，我们为所有Ci和Ii设置Nhidden D 3和th D 3。也就是说，所有的Ci和Ii都有三个隐藏层，每个层都有60个LSTM单元。根据附录B中训练集规模的选择，我们分别采用临界规模（具有580条轨迹）和较大规模（具有1350条轨迹）来训练ST-LSTM模型。</p>
-<p>根据附录A中的参数选择，我们为所有$C_{i}$和$I_{i}$设置$N_{hidden} =3$和$t_{h} =3s$。也就是说，所有的$C_{i}$和$I_{i}$都有三个隐藏层，每个层都有60个<code>LSTM</code>单元。根据附录B中训练集规模的选择，我们分别采用临界规模（具有580条轨迹）和较大规模（具有1350条轨迹）来训练ST-LSTM模型。</p>
+<h4 id="B-TRAINING-DETAILS"><a href="#B-TRAINING-DETAILS" class="headerlink" title="B. TRAINING DETAILS"></a>B. TRAINING DETAILS</h4><p>根据附录A中的参数选择，我们为所有$C_{i}$和$I_{i}$设置$N_{hidden} =3$和$t_{h} =3s$。也就是说，所有的$C_{i}$和$I_{i}$都有三个隐藏层，每个层都有60个<code>LSTM</code>单元。根据附录B中训练集规模的选择，我们分别采用临界规模（具有580条轨迹）和较大规模（具有1350条轨迹）来训练ST-LSTM模型。</p>
 <p>由于大多数车辆具有相似的轨迹特性，因此<code>ST-LSTM</code>中的所有$C_{i}$都共享一个公共<code>LSTM</code>模型。相反，由于周围车辆在不同方向上对$V_{s}$的影响是不同的，因此每个$I_{i}$都是独立训练的，彼此之间不共享网络参数。</p>
 <p>使用<code>Tensorflow</code>对<code>ST-LSTM</code>进行了逐步训练。我们首先对$C_{i}$进行预训练，然后根据$C_{i}$对$I_{i}$进行预训练。所有的预训练LSTM模型都以$0.001$的初始学习率进行了约$20k$次迭代的训练。最后，将所有预训练的LSTM模型进行组合并训练约$5k$次迭代，以训练等式（6）的常数项$α$和$β$。</p>
-<p>在训练过程中，每个训练步骤的批次大小$N_{b}$设置为$50×50$，即每个批次含有有50条轨迹，并且每个轨迹序列的长度为$50$（即$5 s$）。 所有网络参数都是随机初始化的。 与其他参数不同，$α$和$β$具有特定的物理含义，但是我们测试了$α$和$β$的初始化值对整体训练结果的影响很小。 我们在训练过程中使用50％的随机失活。 优化器采用<code>ADAM</code>优化器。 训练过程的损失函数在预测位移序列$\boldsymbol{y}_{s}^{t}$和地面真实位移序列$\boldsymbol{y}^{t}$之间采用$MSE$（均方误差）。</p>
+<p>在训练过程中，每个训练步骤的批次大小$N_{b}$设置为$50×50$，即每个批次含有50条轨迹，并且每个轨迹序列的长度为$50$（即$5 s$）。 所有网络参数都是随机初始化的。 与其他参数不同，$α$和$β$具有特定的物理含义，但是我们测试了$α$和$β$的初始化值对整体训练结果的影响很小。 我们在训练过程中使用50％的随机失活。 优化器采用<code>ADAM</code>优化器。 训练过程的损失函数在预测位移序列$\boldsymbol{y}_{s}^{t}$和地面真实位移序列$\boldsymbol{y}^{t}$之间采用$MSE$（均方误差）。</p>
 <script type="math/tex; mode=display">
 \boldsymbol{y}^{t}=\left[\Delta \hat{X}^{(t+\Delta t)}, \Delta \hat{Y}^{(t+\Delta t)}, \cdots, \Delta \hat{X}^{\left(t+t_{p}\right)}, \Delta \hat{Y}^{\left(t+t_{p}\right)}\right]  \tag{7}</script><p>每条轨迹的$MSE$损失函数为：</p>
 <script type="math/tex; mode=display">
-\operatorname{loss}=\sum_{i=1}^{n_{p}}\left(\delta_{i}^{t}\right)^{T} \delta_{i}^{t}  \tag{8}</script><p>其中$\delta_{i}^{t}=\left[a\left(\Delta X^{(t+i \Delta t)}-\Delta \hat{X}^{(t+i \Delta t)}), \Delta Y^{(t+i \Delta t)}-\right. \Delta \hat{Y}^{(t+i \Delta t)}]\right]^{T} $。我们在本文中设置常数$a =10$来放大横向误差对损失函数的影响。</p>
+\operatorname{loss}=\sum_{i=1}^{n_{p}}\left(\delta_{i}^{t}\right)^{T} \delta_{i}^{t}  \tag{8}</script><p>其中$\delta_{i}^{t}=\left[a\left(\Delta X^{(t+i \Delta t)}-\Delta \hat{X}^{(t+i \Delta t)}), \Delta Y^{(t+i \Delta t)}-\right. \Delta \hat{Y}^{(t+i \Delta t)}\right]^{T} $。我们在本文中设置常数$a =10$来放大横向误差对损失函数的影响。</p>
 <p>总体MSE损失函数为：</p>
 <script type="math/tex; mode=display">
 \text {Loss}=\frac{1}{N_{b}} \sum \text {loss}  \tag{9}</script><p>其中$N_{b}$是训练数据集中的轨迹总数。</p>
