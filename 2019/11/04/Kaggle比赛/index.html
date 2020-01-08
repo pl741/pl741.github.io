@@ -98,7 +98,7 @@
 <meta property="og:image" content="http://pl741.github.io/2019/11/04/Kaggle比赛/7.png">
 <meta property="og:image" content="http://pl741.github.io/2019/11/04/Kaggle比赛/8.png">
 <meta property="og:image" content="http://pl741.github.io/2019/11/04/Kaggle比赛/9.png">
-<meta property="og:updated_time" content="2020-01-08T09:47:35.639Z">
+<meta property="og:updated_time" content="2020-01-08T09:54:38.694Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Kaggle比赛">
 <meta name="twitter:description" content="GBDT回归算法GBDT(Gradient Boosting Decision Tree) 梯度提升决策树，是一种迭代的决策树算法，由多棵决策树组成，所有树的结果累加成最终答案，即基函数的线性组合。主要的优点：1. 在深度学习没有广泛被应用时，比赛的效果很不错；2. 即可以做分类同时也可以做回归，同时还可处理排序任务； 3. 可以筛选特征。 Boosting、Bagging和Stacking是集成">
@@ -896,7 +896,7 @@ w_{j}^{*}=-\frac{G_{j}}{H_{j}+\lambda} \quad, \quad O b j=-\frac{1}{2} \sum_{j=1
 <ul>
 <li><p>减少内存占用，比如离散为256个bin时，只需要用8位整形就可以保存一个样本被映射为哪个bin(这个bin可以说就是转换后的特征)，对比预排序的exact greedy算法来说（用int_32来存储索引+ 用float_32保存特征值），可以节省7/8的空间。</p>
 </li>
-<li><p>计算效率提高，预排序的Exact greedy对每个特征都需要遍历一遍数据，并计算增益，复杂度为$𝑂(𝑓𝑒𝑎𝑡𝑢𝑟𝑒<em>𝑑𝑎𝑡𝑎)$。<br>而直方图算法在建立完直方图后，只需要对每个特征遍历直方图即可，复杂度为$𝑂(𝑓𝑒𝑎𝑡𝑢𝑟𝑒</em>b𝑖𝑛𝑠)$ 。</p>
+<li><p>计算效率提高，预排序的Exact greedy对每个特征都需要遍历一遍数据，并计算增益，复杂度为 $𝑂(𝑓𝑒𝑎𝑡𝑢𝑟𝑒<em>𝑑𝑎𝑡𝑎)$ 。<br>而直方图算法在建立完直方图后，只需要对每个特征遍历直方图即可，复杂度为 $𝑂(𝑓𝑒𝑎𝑡𝑢𝑟𝑒</em>b𝑖𝑛𝑠)$ 。</p>
 </li>
 <li><p>LGB还可以使用直方图做差加速，一个节点的直方图可以通过父节点的直方图减去兄弟节点的直方图得到，从而加速计算</p>
 <blockquote>
