@@ -98,7 +98,7 @@
 <meta property="og:image" content="http://pl741.github.io/2019/11/04/Kaggle比赛/7.png">
 <meta property="og:image" content="http://pl741.github.io/2019/11/04/Kaggle比赛/8.png">
 <meta property="og:image" content="http://pl741.github.io/2019/11/04/Kaggle比赛/9.png">
-<meta property="og:updated_time" content="2020-01-08T09:01:40.345Z">
+<meta property="og:updated_time" content="2020-01-08T09:05:10.308Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Kaggle比赛">
 <meta name="twitter:description" content="GBDT回归算法GBDT(Gradient Boosting Decision Tree) 梯度提升决策树，是一种迭代的决策树算法，由多棵决策树组成，所有树的结果累加成最终答案，即基函数的线性组合。主要的优点：1. 在深度学习没有广泛被应用时，比赛的效果很不错；2. 即可以做分类同时也可以做回归，同时还可处理排序任务； 3. 可以筛选特征。 Boosting、Bagging和Stacking是集成">
@@ -557,9 +557,10 @@ $$
 \begin{aligned} O b j^{(t)} &=\sum_{i=1}^{n} l\left(y_{i}, \hat{y}_{i}^{t}\right)+\sum_{i=1}^{t} \Omega\left(f_{i}\right) \\ &=\sum_{i=1}^{n} l\left(y_{i}, \hat{y}_{i}^{t-1}+f_{t}\left(x_{i}\right)\right)+ \Omega(f_{t}) +\sum_{i=1}^{t-1} \Omega\left(f_{i}\right) 
 \\ &=\sum_{i=1}^{n} l\left(y_{i}, \hat{y}_{i}^{t-1}+f_{t}\left(x_{i}\right)\right)+ \Omega(f_{t}) + const \end{aligned}
 $$
-将正则化项进行拆分，由于前 $t-1$ 棵树的结构已经确定，因此，前 $t-1$ 棵树的复杂度之和可以用一个常量 $const$ 表示。 注意到上式中只有一个变量，即第 $t$ 棵树模型的$f_{t}(x_{i})$，最优化目标函数，就相当于求解  $f_{t}(x_{i})$ 。<br>
+将正则化项进行拆分，由于前 $t-1$ 棵树的结构已经确定，因此，前 $t-1$ 棵树的复杂度之和可以用一个常量 $const$ 表示。 注意到上式中只有一个变量，即第 $t$ 棵树模型的$f_{t}(x_{i})$，最优化目标函数，就相当于求解  $f_{t}(x_{i})$ 。
 
 #### 泰勒公式
+
  将一个在 $x = x0$ 处具有 $n$ 阶导数的函数 $f(x)$ 利用关于 $(x-x_{0})$ 的 $n$ 次多项式来逼近。 若函数 $f(x)$ 在包含 $x_{0}$ 的某个闭区间 $[a, b]$ 上具有 $n$ 阶导数，且在开区间 $(a,b)$ 上具有 $n+1$ 阶导数，则对闭区间  $[a, b]$ 上任意一点 $x$ 有：
 
 $$
@@ -588,11 +589,11 @@ $$
 $$
 Obj^{(t)} \simeq \sum_{i=1}^{n}\left[g_{i}f_{t}(x_{i})+\frac{1}{2}h_{i}f_{t}^{2}(x_{i})\right]+\Omega (f_{t})
 $$
- 只需要求出每一步损失函数的一阶导和二阶导的值（由于前一步的 $\hat{y}_{i}^{t-1}$ 是已知的，所以这两个值就是常数），然后最优化目标函数，就可以得到每一步的 $f(x)$ ，最后根据加法模型得到一个整体模型。 <br>
+ 只需要求出每一步损失函数的一阶导和二阶导的值（由于前一步的 $\hat{y}_{i}^{t-1}$ 是已知的，所以这两个值就是常数），然后最优化目标函数，就可以得到每一步的 $f(x)$ ，最后根据加法模型得到一个整体模型。 
 
 #### 基于决策树的目标函数
 
-  XGBoost的基模型不仅支持决策树，还支持线性模型。以下主要介绍基于决策树的目标函数。
+XGBoost的基模型不仅支持决策树，还支持线性模型。以下主要介绍基于决策树的目标函数。
 
 定义一棵树：
 
