@@ -98,7 +98,7 @@
 <meta property="og:image" content="http://pl741.github.io/2019/11/04/Kaggle比赛/7.png">
 <meta property="og:image" content="http://pl741.github.io/2019/11/04/Kaggle比赛/8.png">
 <meta property="og:image" content="http://pl741.github.io/2019/11/04/Kaggle比赛/9.png">
-<meta property="og:updated_time" content="2020-01-08T08:43:44.867Z">
+<meta property="og:updated_time" content="2020-01-08T08:46:22.843Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Kaggle比赛">
 <meta name="twitter:description" content="GBDT回归算法参考：https://www.cnblogs.com/peizhe123/p/5086128.html?clicktime=1572921140&amp;amp;enterid=1572921140 https://mp.weixin.qq.com/s/adMMz8u29OnvqelgZuXWjg  https://mp.weixin.qq.com/s/M2PwsrAnI1S9SxSB1g">
@@ -561,9 +561,7 @@ $$
 \begin{aligned} O b j^{(t)} &=\sum_{i=1}^{n} l\left(y_{i}, \hat{y}_{i}^{t}\right)+\sum_{i=1}^{t} \Omega\left(f_{i}\right) \\ &=\sum_{i=1}^{n} l\left(y_{i}, \hat{y}_{i}^{t-1}+f_{t}\left(x_{i}\right)\right)+ \Omega(f_{t}) +\sum_{i=1}^{t-1} \Omega\left(f_{i}\right) 
 \\ &=\sum_{i=1}^{n} l\left(y_{i}, \hat{y}_{i}^{t-1}+f_{t}\left(x_{i}\right)\right)+ \Omega(f_{t}) + const \end{aligned}
 $$
-将正则化项进行拆分，由于前 $t-1$ 棵树的结构已经确定，因此，前 $t-1$ 棵树的复杂度之和可以用一个常量 $const$ 表示。 注意到上式中只有一个变量，即第 $t$ 棵树模型的$f_{t}(x_{i})$，最优化目标函数，就相当于求解  $f_{t}(x_{i})$。
-
-
+将正则化项进行拆分，由于前 $t-1$ 棵树的结构已经确定，因此，前 $t-1$ 棵树的复杂度之和可以用一个常量 $const$ 表示。 注意到上式中只有一个变量，即第 $t$ 棵树模型的$f_{t}(x_{i})$，最优化目标函数，就相当于求解  $f_{t}(x_{i})$。<br>
 
 #### 泰勒公式 
 
