@@ -98,7 +98,7 @@
 <meta property="og:image" content="http://pl741.github.io/2019/11/04/Kaggle比赛/7.png">
 <meta property="og:image" content="http://pl741.github.io/2019/11/04/Kaggle比赛/8.png">
 <meta property="og:image" content="http://pl741.github.io/2019/11/04/Kaggle比赛/9.png">
-<meta property="og:updated_time" content="2020-01-08T09:15:24.605Z">
+<meta property="og:updated_time" content="2020-01-08T09:17:02.514Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Kaggle比赛">
 <meta name="twitter:description" content="GBDT回归算法GBDT(Gradient Boosting Decision Tree) 梯度提升决策树，是一种迭代的决策树算法，由多棵决策树组成，所有树的结果累加成最终答案，即基函数的线性组合。主要的优点：1. 在深度学习没有广泛被应用时，比赛的效果很不错；2. 即可以做分类同时也可以做回归，同时还可处理排序任务； 3. 可以筛选特征。 Boosting、Bagging和Stacking是集成">
@@ -726,7 +726,7 @@ $$
 稍作整理，便可以看出 $h_{i}$ 有对 loss 加权的作用：<br>
 
 $$
-\begin{aligned} O b j^{(t)} & \approx \sum_{i=1}^{n}\left[g_{i} f_{t}\left(x_{i}\right)+\frac{1}{2} h_{i} f_{t}^{2}\left(x_{i}\right)\right]+\sum_{i=1}^{t} \Omega\left(f_{i}\right) \\ &=\sum_{i=1}^{n}\left[g_{i} f_{t}\left(x_{i}\right)+\frac{1}{2} h_{i} f_{t}^{2}\left(x_{i}\right) \color{red} + \frac{1}{2} \frac{g_{i}^{2}}{h_{i}}\right]+\Omega\left(f_{t}\right)+const \\ &=\sum_{i=1}^{n} \color{red}\frac{1}{2} h_{i}\left[f_{t}\left(x_{i}\right)-\left(-\frac{g_{i}}{h_{i}}\right)\right]^{2}+\Omega\left(f_{t}\right)+const \end{aligned}
+\begin{aligned} O b j^{(t)} & \approx \sum_{i=1}^{n}\left[g_{i} f_{t}\left(x_{i}\right)+\frac{1}{2} h_{i} f_{t}^{2}\left(x_{i}\right)\right]+\sum_{i=1}^{t} \Omega\left(f_{i}\right) \\ &=\sum_{i=1}^{n}\left[g_{i} f_{t}\left(x_{i}\right)+\frac{1}{2} h_{i} f_{t}^{2}\left(x_{i}\right)  + \frac{1}{2} \frac{g_{i}^{2}}{h_{i}}\right]+\Omega\left(f_{t}\right)+const \\ &=\sum_{i=1}^{n} \frac{1}{2} h_{i}\left[f_{t}\left(x_{i}\right)-\left(-\frac{g_{i}}{h_{i}}\right)\right]^{2}+\Omega\left(f_{t}\right)+const \end{aligned}
 $$
 其中 $h_{i}$ 与 $const$ 皆为常数。可以看到 $h_{i}$ 就是平方损失函数中样本的权重。 <font color="red">[不是很懂]</font>
 
