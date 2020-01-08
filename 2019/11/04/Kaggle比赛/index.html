@@ -98,7 +98,7 @@
 <meta property="og:image" content="http://pl741.github.io/2019/11/04/Kaggle比赛/7.png">
 <meta property="og:image" content="http://pl741.github.io/2019/11/04/Kaggle比赛/8.png">
 <meta property="og:image" content="http://pl741.github.io/2019/11/04/Kaggle比赛/9.png">
-<meta property="og:updated_time" content="2020-01-08T08:46:22.843Z">
+<meta property="og:updated_time" content="2020-01-08T08:50:08.097Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Kaggle比赛">
 <meta name="twitter:description" content="GBDT回归算法参考：https://www.cnblogs.com/peizhe123/p/5086128.html?clicktime=1572921140&amp;amp;enterid=1572921140 https://mp.weixin.qq.com/s/adMMz8u29OnvqelgZuXWjg  https://mp.weixin.qq.com/s/M2PwsrAnI1S9SxSB1g">
@@ -561,11 +561,11 @@ $$
 \begin{aligned} O b j^{(t)} &=\sum_{i=1}^{n} l\left(y_{i}, \hat{y}_{i}^{t}\right)+\sum_{i=1}^{t} \Omega\left(f_{i}\right) \\ &=\sum_{i=1}^{n} l\left(y_{i}, \hat{y}_{i}^{t-1}+f_{t}\left(x_{i}\right)\right)+ \Omega(f_{t}) +\sum_{i=1}^{t-1} \Omega\left(f_{i}\right) 
 \\ &=\sum_{i=1}^{n} l\left(y_{i}, \hat{y}_{i}^{t-1}+f_{t}\left(x_{i}\right)\right)+ \Omega(f_{t}) + const \end{aligned}
 $$
-将正则化项进行拆分，由于前 $t-1$ 棵树的结构已经确定，因此，前 $t-1$ 棵树的复杂度之和可以用一个常量 $const$ 表示。 注意到上式中只有一个变量，即第 $t$ 棵树模型的$f_{t}(x_{i})$，最优化目标函数，就相当于求解  $f_{t}(x_{i})$。<br>
+将正则化项进行拆分，由于前 $t-1$ 棵树的结构已经确定，因此，前 $t-1$ 棵树的复杂度之和可以用一个常量 $const$ 表示。 注意到上式中只有一个变量，即第 $t$ 棵树模型的$f_{t}(x_{i})$，最优化目标函数，就相当于求解  $f_{t}(x_{i})$ 。<br>
 
-#### 泰勒公式 
+#### 泰勒公式 <br>
 
-  将一个在 $x = x0$ 处具有 $n$ 阶导数的函数 $f(x)$ 利用关于 $(x-x_{0})$ 的 $n$ 次多项式来逼近。 若函数 $f(x)$ 在包含 $x_{0}$ 的某个闭区间 $[a, b]$ 上具有 $n$ 阶导数，且在开区间 $(a,b)$ 上具有 $n+1$ 阶导数，则对闭区间  $[a, b]$ 上任意一点 $x$ 有：
+ 将一个在 $x = x0$ 处具有 $n$ 阶导数的函数 $f(x)$ 利用关于 $(x-x_{0})$ 的 $n$ 次多项式来逼近。 若函数 $f(x)$ 在包含 $x_{0}$ 的某个闭区间 $[a, b]$ 上具有 $n$ 阶导数，且在开区间 $(a,b)$ 上具有 $n+1$ 阶导数，则对闭区间  $[a, b]$ 上任意一点 $x$ 有：
 
 $$
 f(x)=\sum_{i=0}^{n} \frac{f^{(i)}\left(x_{0}\right)}{i !}\left(x-x_{0}\right)^{i}+R_{n}(x)
@@ -593,7 +593,7 @@ $$
 $$
 Obj^{(t)} \simeq \sum_{i=1}^{n}\left[g_{i}f_{t}(x_{i})+\frac{1}{2}h_{i}f_{t}^{2}(x_{i})\right]+\Omega (f_{t})
 $$
- 只需要求出每一步损失函数的一阶导和二阶导的值（由于前一步的 $\hat{y}_{i}^{t-1}$ 是已知的，所以这两个值就是常数），然后最优化目标函数，就可以得到每一步的 $f(x)$ ，最后根据加法模型得到一个整体模型。 
+ 只需要求出每一步损失函数的一阶导和二阶导的值（由于前一步的 $\hat{y}_{i}^{t-1}$ 是已知的，所以这两个值就是常数），然后最优化目标函数，就可以得到每一步的 $f(x)$ ，最后根据加法模型得到一个整体模型。 <br>
 
 #### 基于决策树的目标函数
 
@@ -638,14 +638,40 @@ $$
 $$
 O b j^{(t)}=\sum_{j=1}^{T}\left[G_{j} w_{j}+\frac{1}{2}\left(H_{j}+\lambda\right) w_{j}^{2}\right]+\gamma T
 $$
-此时表达式中只有第 $t$ 棵树的叶子结点权重$w_{j}$是未知量，一元二次函数变量一阶导为$0$的点为最值点（$y=ax^{2}+bx+c$，如果$a>0$，为最小值，若$a<0$为最大值）， 0 分析一下目标函数$obj$，可以发现，各个叶子结点的目标子式是相互独立的，也就是说，当每个叶子结点的子式都达到最值点时，整个目标函数式$obj$才达到最值点。 将目标函数对 $w_{j}$ 求一阶导，并令其等于 $0$ ，则可以求得叶子结点 $j$ 对应的权值： $$ w_{j}^{*}="-\frac{G_{j}}{H_{j}+\lambda}" 目标函数可以化简为： o b j="-\frac{1}{2}" \sum_{j="1}^{T}" \frac{g_{j}^{2}}{h_{j}+\lambda}+\gamma t #### 最优切分点划分算法 在决策树的生长过程中，一个非常关键的问题是如何找到叶子节点的最优切分点，xgboost 支持两种分裂节点的方法——贪心算法和近似算法。 ##### 贪心算法 全局扫描法 从深度为 的树开始： 1. 对树中的每个叶子结点尝试进行分裂； 2. 每次分裂后，原来的一个叶子结点继续分裂为左右两个子叶子结点，原叶子结点中的样本集将根据该结点的判断规则分散到左右两个叶子结点中； 3. 新分裂一个结点后，我们需要检测这次分裂是否会给损失函数带来增益 假设在某一节点完成特征分裂，则分裂前的目标函数可以写为： j_{l+r}="-\frac{1}{2}" \frac{\left(g_{l}+g_{r}\right)^{2}}{h_{l}+h_{r}+\lambda}+\gamma 分裂后的目标函数为： j_{l}+o j_{r}="-\frac{1}{2}\left[\frac{G_{L}^{2}}{H_{L}+\lambda}+\frac{G_{R}^{2}}{H_{R}+\lambda}\right]+2" \gamma 目标函数来说，每个特征分裂后的收益（ 该特征收益也可作为特征重要性输出的重要依据 ）： \begin{aligned} \text {gain} &="O" j_{l+r}-\left(o j_{r}\right) \\ \frac{\left(g_{l}+g_{r}\right)^{2}}{h_{l}+h_{r}+\lambda}+\gamma\right]-\left[-\frac{1}{2}\left(\frac{g_{l}^{2}}{h_{l}+\lambda}+\frac{g_{r}^{2}}{h_{r}+\lambda}\right)+2 \gamma\right] \end{aligned} 增益$gain>0$，即分裂为两个叶子节点后，目标函数下降了，会考虑此次分裂的结果。但是，在一个结点分裂时，可能有很多个分裂点，每个分裂点都会产生一个增益，如何才能寻找到最优的分裂点呢？ 
+此时表达式中只有第 $t$ 棵树的叶子结点权重$w_{j}$是未知量，一元二次函数变量一阶导为$0$的点为最值点（$y=ax^{2}+bx+c$，如果$a>0$，为最小值，若$a<0$为最大值）， 分析一下目标函数$obj$，可以发现，各个叶子结点的目标子式是相互独立的，也就是说，当每个叶子结点的子式都达到最值点时，整个目标函数式$obj$才达到最值点。 将目标函数对 $w_{j}$ 求一阶导，并令其等于 $0$ ，则可以求得叶子结点 $j$ 对应的权值： $$ w_{j}^{*}="-\frac{G_{j}}{H_{j}+\lambda}" 目标函数可以化简为： o b j="-\frac{1}{2}" \sum_{j="1}^{T}" \frac{g_{j}^{2}}{h_{j}+\lambda}+\gamma t <br>
+
+#### 最优切分点划分算法
+
+  在决策树的生长过程中，一个非常关键的问题是如何找到叶子节点的最优切分点，XGBoost 支持两种分裂节点的方法——贪心算法和近似算法。 <br>
+
+##### 贪心算法 / 全局扫描法
+
+  从深度为 0 的树开始：
+
+1. 对树中的每个叶子结点尝试进行分裂；
+2. 每次分裂后，原来的一个叶子结点继续分裂为左右两个子叶子结点，原叶子结点中的样本集将根据该结点的判断规则分散到左右两个叶子结点中；
+3. 新分裂一个结点后，我们需要检测这次分裂是否会给损失函数带来增益
+
+假设在某一节点完成特征分裂，则分裂前的目标函数可以写为：
+$$
+O b j_{L+R}=-\frac{1}{2} \frac{\left(G_{L}+G_{R}\right)^{2}}{H_{L}+H_{R}+\lambda}+\gamma
+$$
+ 分裂后的目标函数为： 
+$$
+O b j_{L}+O b j_{R}=-\frac{1}{2}\left[\frac{G_{L}^{2}}{H_{L}+\lambda}+\frac{G_{R}^{2}}{H_{R}+\lambda}\right]+2 \gamma
+$$
+ 目标函数来说，每个特征分裂后的收益（ 该特征收益也可作为特征重要性输出的重要依据 ）：
+$$
+\begin{aligned} \text {Gain} &=O b j_{L+R}-\left(O b j_{L}+O b j_{R}\right) \\ &=\left[-\frac{1}{2} \frac{\left(G_{L}+G_{R}\right)^{2}}{H_{L}+H_{R}+\lambda}+\gamma\right]-\left[-\frac{1}{2}\left(\frac{G_{L}^{2}}{H_{L}+\lambda}+\frac{G_{R}^{2}}{H_{R}+\lambda}\right)+2 \gamma\right] \\ &=\frac{1}{2}\left[\frac{G_{L}^{2}}{H_{L}+\lambda}+\frac{G_{R}^{2}}{H_{R}+\lambda}-\frac{\left(G_{L}+G_{R}\right)^{2}}{H_{L}+H_{R}+\lambda}\right]-\gamma \end{aligned}
+$$
+增益$Gain>0$，即分裂为两个叶子节点后，目标函数下降了，会考虑此次分裂的结果。但是，在一个结点分裂时，可能有很多个分裂点，每个分裂点都会产生一个增益，如何才能寻找到最优的分裂点呢？ 
 
 寻找最佳分割点的大致步骤如下： 
 
 1. 对每个叶节点枚举所有的可用特征（遍历每个结点的所有特征 ）；
 2. 针对每个特征，把属于该节点的训练样本根据该特征值进行升序排列，通过线性扫描的方式来决定该特征的最佳分裂点，并记录该特征的分裂收益；
 3. 选择收益最大的特征作为分裂特征，用该特征的最佳分裂点作为分裂位置，在该节点上分裂出左右两个新的叶节点，并为每个新节点关联对应的样本集
-4. 回到第 1 步，递归执行到满足特定条件为止
+4. 回到第 1 步，递归执行到满足特定条件为止<br>
 
 ##### 近似算法
 
