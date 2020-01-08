@@ -98,7 +98,7 @@
 <meta property="og:image" content="http://pl741.github.io/2019/11/04/Kaggle比赛/7.png">
 <meta property="og:image" content="http://pl741.github.io/2019/11/04/Kaggle比赛/8.png">
 <meta property="og:image" content="http://pl741.github.io/2019/11/04/Kaggle比赛/9.png">
-<meta property="og:updated_time" content="2020-01-08T08:09:11.143Z">
+<meta property="og:updated_time" content="2020-01-08T08:26:16.302Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Kaggle比赛">
 <meta name="twitter:description" content="GBDT回归算法参考：  https://www.cnblogs.com/peizhe123/p/5086128.html?clicktime=1572921140&amp;amp;enterid=1572921140   https://mp.weixin.qq.com/s/adMMz8u29OnvqelgZuXWjg   https://mp.weixin.qq.com/s/M2PwsrAnI1S9S">
@@ -541,9 +541,7 @@ p_{c}=\exp \left(f_{c}(x)\right) / \sum_{k=1}^{3} \exp \left(f_{k}(x)\right)</sc
 <p>那么这种情况下，如果采用LR的话，应该也会出现类似过拟合的情况呀：$y = W_{1}<em>f_{1} + W_{i}</em>f_{i}+….$，其中 $W_{1}$特别大以拟合这10个样本。为什么此时树模型就过拟合的更严重呢？</p>
 <p>仔细想想发现，因为现在的模型普遍都会带着正则项，而 LR 等线性模型的正则项是对权重的惩罚，也就是 $W_{1}$一旦过大，惩罚就会很大，进一步压缩 $W_{1}$的值，使其不至于过大。但是，树模型则不一样，树模型的惩罚项通常为叶子节点数和深度等，而我们都知道，对于上面这种 case，树只需要一个节点就可以完美分割9990和10个样本，一个结点，最终产生的惩罚项极其之小。</p>
 <p>这也就是为什么在高维稀疏特征的时候，线性模型会比非线性模型好的原因了：<strong>带正则化的线性模型比较不容易对稀疏特征过拟合。</strong></p>
-<h2 id="XGBoost"><a href="#XGBoost" class="headerlink" title="XGBoost"></a>XGBoost</h2><p>参考：</p>
-<p> <a href="https://mp.weixin.qq.com/s/LoX987dypDg8jbeTJMpEPQ" target="_blank" rel="noopener">终于有人把XGBoost 和 LightGBM 讲明白了，项目中最主流的集成算法！</a></p>
-<p><a href="https://mp.weixin.qq.com/s/wLE9yb7MtE208IVLFlZNkw" target="_blank" rel="noopener">XGBoost超详细推导，终于有人讲明白了！</a></p>
+<h2 id="XGBoost"><a href="#XGBoost" class="headerlink" title="XGBoost"></a>XGBoost</h2><p>参考：<a href="https://mp.weixin.qq.com/s/LoX987dypDg8jbeTJMpEPQ" target="_blank" rel="noopener">终于有人把XGBoost 和 LightGBM 讲明白了，项目中最主流的集成算法！</a> <a href="https://mp.weixin.qq.com/s/wLE9yb7MtE208IVLFlZNkw" target="_blank" rel="noopener">XGBoost超详细推导，终于有人讲明白了！</a></p>
 <p>XGBoost是大规模并行boosting tree的工具，  Xgboost 和 GBDT 两者都是 boosting 方法，除了工程实现、解决问题上的一些差异外，最大的不同就是<font color="RED">目标函数</font>的定义 。 目前已有的 GBDT 工具基本都是基于预排序的方法（pre-sorted）的决策树算法(如 xgboost)。 </p>
 <h3 id="数学推导-1"><a href="#数学推导-1" class="headerlink" title="数学推导"></a>数学推导</h3><img src="/2019/11/04/Kaggle比赛/6.png">
 <h4 id="目标函数"><a href="#目标函数" class="headerlink" title="目标函数"></a>目标函数</h4><p>  XGBoost 是由 $k$ 个基模型组成的一个加法运算式，其中$f_{k}$为第$k$个基模型，$\hat{y}_{i}$为第$i$个样本的预测值：</p>
@@ -570,10 +568,10 @@ $$
 $$
 将正则化项进行拆分，由于前 $t-1$ 棵树的结构已经确定，因此，前 $t-1$ 棵树的复杂度之和可以用一个常量 $const$ 表示。 注意到上式中只有一个变量，即第 $t$ 棵树模型的$f_{t}(x_{i})$，最优化目标函数，就相当于求解  $f_{t}(x_{i})$。
 
+#### 泰勒公式 
 
-#### 泰勒公式
+  将一个在 $x = x0$ 处具有 $n$ 阶导数的函数 $f(x)$ 利用关于 $(x-x_{0})$ 的 $n$ 次多项式来逼近。 若函数 $f(x)$ 在包含 $x_{0}$ 的某个闭区间 $[a, b]$ 上具有 $n$ 阶导数，且在开区间 $(a,b)$ 上具有 $n+1$ 阶导数，则对闭区间  $[a, b]$ 上任意一点 $x$ 有：
 
-将一个在 $x = x0$ 处具有 $n$ 阶导数的函数 $f(x)$ 利用关于 $(x-x_{0})$ 的 $n$ 次多项式来逼近。 若函数 $f(x)$ 在包含 $x_{0}$ 的某个闭区间 $[a, b]$ 上具有 $n$ 阶导数，且在开区间 $(a,b)$ 上具有 $n+1$ 阶导数，则对闭区间  $[a, b]$ 上任意一点 $x$ 有：
 $$
 f(x)=\sum_{i=0}^{n} \frac{f^{(i)}\left(x_{0}\right)}{i !}\left(x-x_{0}\right)^{i}+R_{n}(x)
 $$
@@ -603,8 +601,7 @@ $$
  只需要求出每一步损失函数的一阶导和二阶导的值（由于前一步的 $\hat{y}_{i}^{t-1}$ 是已知的，所以这两个值就是常数），然后最优化目标函数，就可以得到每一步的 $f(x)$ ，最后根据加法模型得到一个整体模型。 
 
 #### 基于决策树的目标函数
-
-XGBoost的基模型不仅支持决策树，还支持线性模型。以下主要介绍基于决策树的目标函数。
+  XGBoost的基模型不仅支持决策树，还支持线性模型。以下主要介绍基于决策树的目标函数。
 
 定义一棵树：
 
@@ -656,7 +653,7 @@ $$
 
 ##### 近似算法
 
-当数据量过大导致内存无法一次载入或者在分布式情况下，贪心算法的效率就会变得很低，全局扫描法不再适用。 基于此，XGBoost提出了一系列加快寻找最佳分裂点的方案： 
+  当数据量过大导致内存无法一次载入或者在分布式情况下，贪心算法的效率就会变得很低，全局扫描法不再适用。 基于此，XGBoost提出了一系列加快寻找最佳分裂点的方案： 
 
 - **特征预排序+缓存：**XGBoost在训练之前，预先对每个特征按照特征值大小进行排序，然后保存为block结构， 并在每个块结构中都采用了稀疏矩阵存储格式（Compressed Sparse Columns Format，CSC）进行存储， 后面的迭代中会重复地使用这个结构，使计算量大大减小。
 
@@ -674,8 +671,8 @@ $$
 
   - 块拆分：将每个块存储到不同的磁盘中，从多个磁盘读取可以增加吞吐量。
 
-- **分位点近似法：**对每个特征按照特征值排序后，采用类似分位点选取的方式，仅仅选出常数个特征值作为该特征的候选分割点，在寻找该特征的最佳分割点时，从候选分割点中选出最优的一个。
-- **并行查找：**由于各个特性已预先存储为block结构，XGBoost支持利用多个线程并行地计算每个特征的最佳分割点，这不仅大大提升了结点的分裂速度，也极利于大规模训练集的适应性扩展。
+- 分位点近似法：对每个特征按照特征值排序后，采用类似分位点选取的方式，仅仅选出常数个特征值作为该特征的候选分割点，在寻找该特征的最佳分割点时，从候选分割点中选出最优的一个。
+- 并行查找：由于各个特性已预先存储为block结构，XGBoost支持利用多个线程并行地计算每个特征的最佳分割点，这不仅大大提升了结点的分裂速度，也极利于大规模训练集的适应性扩展。
 
 该算法会首先根据特征分布的分位数提出候选划分点，然后将连续型特征映射到由这些候选点划分的桶中，然后聚合统计信息找到所有区间的最佳分裂点。
 
@@ -787,27 +784,27 @@ O b j^{(t)}=\sum_{j=1}^{T}\left[G_{j} w_{j}+\frac{1}{2}\left(H_{j}+\lambda\right
 <script type="math/tex; mode=display">
 w_{j}^{*}=-\frac{G_{j}}{H_{j}+\lambda} \quad, \quad O b j=-\frac{1}{2} \sum_{j=1}^{T} \frac{G_{j}^{2}}{H_{j}+\lambda}+\gamma T</script><h4 id="训练一个XGB模型，经历了哪些过程？调参步骤是什么？"><a href="#训练一个XGB模型，经历了哪些过程？调参步骤是什么？" class="headerlink" title="训练一个XGB模型，经历了哪些过程？调参步骤是什么？"></a>训练一个XGB模型，经历了哪些过程？调参步骤是什么？</h4><p>首先需要初始化一些基本变量，例如：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">- max_depth = 5</span><br><span class="line">- min_child_weight = 1</span><br><span class="line">- gamma = 0</span><br><span class="line">- subsample, colsample_bytree = 0.8</span><br><span class="line">- scale_pos_weight = 1</span><br></pre></td></tr></table></figure>
-<p><strong>(1) 确定learning rate和estimator的数量</strong></p>
+<p>(1) 确定learning rate和estimator的数量</p>
 <p>&emsp;&emsp;learning rate可以先用0.1，用cv来寻找最优的estimators</p>
-<p><strong>(2) max_depth和 min_child_weight</strong></p>
+<p>(2) max_depth和 min_child_weight</p>
 <p>&emsp;&emsp;调整这两个参数是因为，这两个参数对输出结果的影响很大。首先将这两个参数设置为较大的数，然后通过迭代的方式不断修正，缩小范围。</p>
 <p>&emsp;&emsp;max_depth，每棵子树的最大深度，check from range(3,10,2)。</p>
 <p>&emsp;&emsp;min_child_weight，子节点的权重阈值，check from range(1,6,2)。</p>
 <p>&emsp;&emsp;如果一个结点分裂后，它的所有子节点的权重之和都大于该阈值，该叶子节点才可以划分。</p>
-<p><strong>(3) gamma</strong></p>
+<p>(3) gamma</p>
 <p>&emsp;&emsp;也称作最小划分损失<code>min_split_loss</code>，check from 0.1 to 0.5，指的是，对于一个叶子节点，当对它采取划分之后，损失函数的降低值的阈值。</p>
 <ul>
 <li>如果大于该阈值，则该叶子节点值得继续划分</li>
 <li>如果小于该阈值，则该叶子节点不值得继续划分</li>
 </ul>
-<p><strong>(4) subsample, colsample_bytree</strong></p>
+<p>(4) subsample, colsample_bytree</p>
 <p>&emsp;&emsp;subsample是对训练的采样比例</p>
 <p>&emsp;&emsp;colsample_bytree是对特征的采样比例</p>
 <p>&emsp;&emsp;both check from 0.6 to 0.9</p>
-<p><strong>(5) 正则化参数</strong></p>
+<p>(5) 正则化参数</p>
 <p>&emsp;&emsp;$alpha$ 是L1正则化系数，try $1e-5, 1e-2, 0.1, 1, 100$</p>
 <p>&emsp;&emsp;$lambda$ 是L2正则化系数</p>
-<p><strong>(6) 降低学习率</strong></p>
+<p>(6) 降低学习率</p>
 <p>&emsp;&emsp;降低学习率的同时增加树的数量，通常最后设置学习率为$0.01~0.1$</p>
 <h4 id="XGB如何给特征评分？"><a href="#XGB如何给特征评分？" class="headerlink" title="XGB如何给特征评分？"></a>XGB如何给特征评分？</h4><p> 采用三种方法来评判XGBoost模型中特征的重要程度： </p>
 <ul>
