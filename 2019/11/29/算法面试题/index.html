@@ -97,7 +97,7 @@
 <meta property="og:image" content="http://pl741.github.io/2019/11/29/算法面试题/6.gif">
 <meta property="og:image" content="http://pl741.github.io/2019/11/29/算法面试题/7.gif">
 <meta property="og:image" content="http://pl741.github.io/2019/11/29/算法面试题/8.gif">
-<meta property="og:updated_time" content="2019-12-22T13:52:59.440Z">
+<meta property="og:updated_time" content="2020-01-08T09:26:48.121Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="算法面试题">
 <meta name="twitter:description" content="决策树1. 交叉熵$X$ 离散型随机变量，概率分布函数 $p(x)=Pr(X=x),x\in \chi $ $X=x_{0}$ 的信息量为 $I(x_{0}) = -log(p(x_{0}))$ ，事件发生概率越大，携带信息量越少。 熵：所有可能取值的信息量的期望（$E[I(x)]$），是对一个随机变量的确定性的度量。熵越大，变量的取值越不确定。$X$ 的熵：$H(X)=E_{p}\log \fr">
@@ -404,14 +404,14 @@
 
       
         <h4 id="决策树"><a href="#决策树" class="headerlink" title="决策树"></a>决策树</h4><h5 id="1-交叉熵"><a href="#1-交叉熵" class="headerlink" title="1. 交叉熵"></a>1. 交叉熵</h5><p>$X$ 离散型随机变量，概率分布函数 $p(x)=Pr(X=x),x\in \chi $</p>
-<p>$X=x_{0}$ 的<font color="yellow">信息量</font>为 $I(x_{0}) = -log(p(x_{0}))$ ，事件发生概率越大，携带信息量越少。</p>
-<p><font color="yellow">熵</font>：所有可能取值的信息量的期望（$E[I(x)]$），是对一个随机变量的确定性的度量。熵越大，变量的取值越不确定。<br>$X$ 的熵：$H(X)=E_{p}\log \frac{1}{p(x)} = -\sum_{x \in \mathcal{X}}p(x)\log p(x)$ ；<br>若 $p(x)$ 是连续型随机变量则熵为：$H(X)=-\int_{x \in \mathcal{X}}p(x)\log p(x) dx$ ，约定$p(x) \to 0$时，$p(x) \log p(x) \to 0$<br>当$X$为$0-1$分布时，熵与概率 $p$ 的关系为抛物线。</p>
-<p><font color="yellow">互信息</font>：两个随机变量 $X,Y$ 的互信息为 $X,Y$ 的联合分布和各自独立分布乘积的相对熵：</p>
+<p>$X=x_{0}$ 的<font color="red">信息量</font>为 $I(x_{0}) = -log(p(x_{0}))$ ，事件发生概率越大，携带信息量越少。</p>
+<p><font color="red">熵</font>：所有可能取值的信息量的期望（$E[I(x)]$），是对一个随机变量的确定性的度量。熵越大，变量的取值越不确定。<br>$X$ 的熵：$H(X)=E_{p}\log \frac{1}{p(x)} = -\sum_{x \in \mathcal{X}}p(x)\log p(x)$ ；<br>若 $p(x)$ 是连续型随机变量则熵为：$H(X)=-\int_{x \in \mathcal{X}}p(x)\log p(x) dx$ ，约定$p(x) \to 0$时，$p(x) \log p(x) \to 0$<br>当$X$为$0-1$分布时，熵与概率 $p$ 的关系为抛物线。</p>
+<p><font color="red">互信息</font>：两个随机变量 $X,Y$ 的互信息为 $X,Y$ 的联合分布和各自独立分布乘积的相对熵：</p>
 <script type="math/tex; mode=display">
-I(X, Y)=\sum_{x, y} p(x, y) \log \frac{p(x, y)}{p(x) p(y)}</script><p><font color="yellow">相对熵</font>：又称为KL散度，KL距离，是两个随机分布间距离的度量，记为 $D_{KL}(p||q)$。度量当真实分布为 $p$ 时，假设分布 $q$ 的无效性。</p>
+I(X, Y)=\sum_{x, y} p(x, y) \log \frac{p(x, y)}{p(x) p(y)}</script><p><font color="red">相对熵</font>：又称为KL散度，KL距离，是两个随机分布间距离的度量，记为 $D_{KL}(p||q)$。度量当真实分布为 $p$ 时，假设分布 $q$ 的无效性。</p>
 <script type="math/tex; mode=display">
 \begin{array}{l}{D_{K L}(p \| q)=E_{p}\left[\log \frac{p(x)}{q(x)}\right]=\sum_{x \in \mathcal{X}} p(x) \log \frac{p(x)}{q(x)}} \\ {=\sum_{x \in \mathcal{X}}[p(x) \log p(x)-p(x) \log q(x)]} \\ {=\sum_{x \in \mathcal{X}} p(x) \log p(x)-\sum_{x \in \mathcal{X}} p(x) \log q(x)} \\ {=-H(p)-\sum_{x \in \mathcal{X}} p(x) \log q(x)} \\ {=-H(p)+E_{p}[-\log q(x)]} \\ {=H_{p}(q)-H(p)}\end{array}</script><p>为保证连续性，约定 $0 \log \frac{0}{0} = 0$，$0 \log \frac{0}{q} = 0$，$p \log \frac{p}{0} = \infty$<br>当 $p=q时$，$D_{KL}(p||q)=0$。$H_{p}(q)$ 表示在 $p$ 分布下，使用 $q$ 进行编码需要的 bit 数。<br>$D_{KL}(p||q)$ 表示在真实分布为 $p$ 的前提下，使用 $q$ 分布进行编码相对于使用真实分布 $p$ 进行编码（最优编码）所多出来的 bit 数。且有 $D_{KL}(p||q) \ne D_{KL}(q||p)$ ，同时 $D_{KL}(p||q)$ 必大于等于 0。</p>
-<p><font color="yellow">交叉熵</font>： 深度学习中的概念，一般用来求目标与预测值之间的差距，假设有两个分布 $p，q$ 则它们在给定样本集上的交叉熵为： </p>
+<p><font color="red">交叉熵</font>： 深度学习中的概念，一般用来求目标与预测值之间的差距，假设有两个分布 $p，q$ 则它们在给定样本集上的交叉熵为： </p>
 <script type="math/tex; mode=display">
 C E H(p, q)=E_{p}[-\log q]=-\sum_{x \in \mathcal{X}} p(x) \log q(x)=H(p)+D_{K L}(p \| q)</script><p>当 $p$ 已知时，$H(p)$ 可看作常数，此时交叉熵与KL距离在行为上是等价的，都反应了分布 $p, q$ 的相似程度，且都将在$p=q$ 时取得最小值 $H(p)$。<br>当需要评估label和predicts之间的差距时，可使用KL散度，即$D_{KL}(y||\hat y)$，由于KL散度中的 $−H(y)$不变，故在优化过程中，只需要关注交叉熵就可以。所以一般在机器学习中直接用交叉熵做loss，进行评估模型。<br>特别的，在logistic regression中，<br>$p$: 真实样本分布，服从参数为 $p$ 的 $0-1$分布，即 $X∼B(1,p)$<br>$q$: 待估计的模型，服从参数为 $q$ 的 $0-1$ 分布，即 $X∼B(1,q)$</p>
 <script type="math/tex; mode=display">

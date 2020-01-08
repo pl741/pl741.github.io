@@ -98,7 +98,7 @@
 <meta property="og:image" content="http://pl741.github.io/2019/11/04/Kaggle比赛/7.png">
 <meta property="og:image" content="http://pl741.github.io/2019/11/04/Kaggle比赛/8.png">
 <meta property="og:image" content="http://pl741.github.io/2019/11/04/Kaggle比赛/9.png">
-<meta property="og:updated_time" content="2020-01-08T09:17:02.514Z">
+<meta property="og:updated_time" content="2020-01-08T09:43:45.881Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Kaggle比赛">
 <meta name="twitter:description" content="GBDT回归算法GBDT(Gradient Boosting Decision Tree) 梯度提升决策树，是一种迭代的决策树算法，由多棵决策树组成，所有树的结果累加成最终答案，即基函数的线性组合。主要的优点：1. 在深度学习没有广泛被应用时，比赛的效果很不错；2. 即可以做分类同时也可以做回归，同时还可处理排序任务； 3. 可以筛选特征。 Boosting、Bagging和Stacking是集成">
@@ -867,7 +867,7 @@ w_{j}^{*}=-\frac{G_{j}}{H_{j}+\lambda} \quad, \quad O b j=-\frac{1}{2} \sum_{j=1
 <p>我们知道特征离散化的具有很多优点，如存储方便、运算更快、鲁棒性强、模型更加稳定等等。对于直方图算法来说最直接的有以下两个优点（以 k=256 为例）：</p>
 <ul>
 <li>内存占用更小：XGBoost 需要用 32 位的浮点数去存储特征值，并用 32 位的整形去存储索引，而 LightGBM 只需要用 8 位去存储直方图，相当于减少了 1/8；</li>
-<li>计算代价更小：计算特征分裂增益时，XGBoost 需要遍历一次数据找到最佳分裂点，而 LightGBM 只需要遍历一次 k 次，直接将时间复杂度从 $O(data  <em> feature) $降低到 $O(k  </em> feature)$  ， $data &gt;&gt; k$ 。</li>
+<li>计算代价更小：计算特征分裂增益时，XGBoost 需要遍历一次数据找到最佳分裂点，而 LightGBM 只需要遍历一次 k 次，直接将时间复杂度从 $O(data  <em> feature)$降低到 $O(k  </em> feature)$  ， $data &gt;&gt; k$ 。</li>
 </ul>
 <p>虽然将特征离散化后无法找到精确的分割点，可能会对模型的精度产生一定的影响，但较粗的分割也起到了正则化的效果，一定程度上降低了模型的方差。</p>
 <h6 id="直方图加速"><a href="#直方图加速" class="headerlink" title="直方图加速"></a>直方图加速</h6><p>在构建叶节点的直方图时，还可以通过父节点的直方图与相邻叶节点的直方图相减的方式构建，从而减少了一半的计算量。在实际操作过程中，还可以先计算直方图小的叶子节点，然后利用直方图作差来获得直方图大的叶子节点。 </p>
