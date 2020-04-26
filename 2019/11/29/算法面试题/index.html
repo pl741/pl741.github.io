@@ -97,7 +97,11 @@
 <meta property="og:image" content="http://pl741.github.io/2019/11/29/算法面试题/6.gif">
 <meta property="og:image" content="http://pl741.github.io/2019/11/29/算法面试题/7.gif">
 <meta property="og:image" content="http://pl741.github.io/2019/11/29/算法面试题/8.gif">
-<meta property="og:updated_time" content="2020-01-08T09:26:48.121Z">
+<meta property="og:image" content="http://pl741.github.io/2019/11/29/算法面试题/Users/warrior/AppData/Roaming/Typora/typora-user-images/image-20200419190033621.png">
+<meta property="og:image" content="http://pl741.github.io/2019/11/29/算法面试题/Users/warrior/AppData/Roaming/Typora/typora-user-images/image-20200419190210473.png">
+<meta property="og:image" content="http://pl741.github.io/2019/11/29/算法面试题/Users/warrior/AppData/Roaming/Typora/typora-user-images/image-20200419190232946.png">
+<meta property="og:image" content="http://pl741.github.io/2019/11/29/算法面试题/9.png">
+<meta property="og:updated_time" content="2020-04-26T03:19:29.544Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="算法面试题">
 <meta name="twitter:description" content="决策树1. 交叉熵$X$ 离散型随机变量，概率分布函数 $p(x)=Pr(X=x),x\in \chi $ $X=x_{0}$ 的信息量为 $I(x_{0}) = -log(p(x_{0}))$ ，事件发生概率越大，携带信息量越少。 熵：所有可能取值的信息量的期望（$E[I(x)]$），是对一个随机变量的确定性的度量。熵越大，变量的取值越不确定。$X$ 的熵：$H(X)=E_{p}\log \fr">
@@ -451,6 +455,291 @@ C E H(p, q)=E_{p}[-\log q]=-\sum_{x \in \mathcal{X}} p(x) \log q(x)=H(p)+D_{K L}
 <p>输出门：  决定在当前输入中哪些重要信息需要被添加 ，决定下个隐藏状态的值，隐藏状态中包含了先前输入的相关信息。 首先把先前的隐藏状态和当前输入传递给Sigmoid函数；接着把新得到的单元状态传递给 Tanh 函数；然后把 Tanh 输出和 Sigmoid 输出相乘，以确定隐藏状态应携带的信息；最后把隐藏状态作为当前单元输出，把新的单元状态和新的隐藏状态传输给下个时间步。</p>
 <img src="/2019/11/29/算法面试题/8.gif"> 
 <p>GRU 门控循环单元，去除单元状态，使用隐藏状态传递信息，含有两种门结构：更新门（ 类似 LSTM 中的遗忘门和输入门，决定要丢弃哪些信息和添加哪些新信息）和重置门（ 决定丢弃先前信息的程度 ）</p>
+<h4 id="面试中涉及到的算法题："><a href="#面试中涉及到的算法题：" class="headerlink" title="面试中涉及到的算法题："></a>面试中涉及到的算法题：</h4><ol>
+<li>剑指offer：<a href="https://leetcode-cn.com/problems/zai-pai-xu-shu-zu-zhong-cha-zhao-shu-zi-lcof/" target="_blank" rel="noopener">面试题53 - I. 在排序数组中查找数字 I</a></li>
+<li>LeetCode: <a href="https://leetcode-cn.com/problems/trapping-rain-water/" target="_blank" rel="noopener">42. 接雨水</a></li>
+<li>最短路径</li>
+<li>最小的k个数</li>
+<li>完全二叉树的节点个数</li>
+<li>LeetCode: 判断一颗二叉树是否为搜索二叉树 <a href="https://leetcode-cn.com/problems/validate-binary-search-tree/" target="_blank" rel="noopener">98. 验证二叉搜索树</a></li>
+<li>完全二叉树最右的节点</li>
+<li>找出数组中所有和为traget的组合</li>
+</ol>
+<h4 id="刷题"><a href="#刷题" class="headerlink" title="刷题"></a>刷题</h4><h5 id="4-22-剑指offer简单题："><a href="#4-22-剑指offer简单题：" class="headerlink" title="4/22 剑指offer简单题："></a>4/22 剑指offer简单题：</h5><ol>
+<li><a href="https://leetcode-cn.com/problems/er-cha-shu-de-jing-xiang-lcof/" target="_blank" rel="noopener">面试题27. 二叉树的镜像</a></li>
+<li><a href="https://leetcode-cn.com/problems/dui-cheng-de-er-cha-shu-lcof/" target="_blank" rel="noopener">面试题28. 对称的二叉树</a>  ⭐</li>
+<li><a href="https://leetcode-cn.com/problems/cong-shang-dao-xia-da-yin-er-cha-shu-ii-lcof/" target="_blank" rel="noopener">面试题32 - II. 从上到下打印二叉树 II</a>  ⭐</li>
+<li><a href="https://leetcode-cn.com/problems/er-cha-shu-de-shen-du-lcof/" target="_blank" rel="noopener">面试题55 - I. 二叉树的深度</a></li>
+<li><a href="https://leetcode-cn.com/problems/er-cha-sou-suo-shu-de-di-kda-jie-dian-lcof/" target="_blank" rel="noopener">面试题54. 二叉搜索树的第k大节点</a>   ⭐</li>
+<li><a href="https://leetcode-cn.com/problems/ping-heng-er-cha-shu-lcof/" target="_blank" rel="noopener">面试题55 - II. 平衡二叉树</a></li>
+<li><a href="https://leetcode-cn.com/problems/er-cha-sou-suo-shu-de-zui-jin-gong-gong-zu-xian-lcof/" target="_blank" rel="noopener">面试题68 - I. 二叉搜索树的最近公共祖先</a>  ⭐</li>
+<li><a href="https://leetcode-cn.com/problems/er-cha-shu-de-zui-jin-gong-gong-zu-xian-lcof/" target="_blank" rel="noopener">面试题68 - II. 二叉树的最近公共祖先</a>  ⭐</li>
+<li><a href="https://leetcode-cn.com/problems/fan-zhuan-dan-ci-shun-xu-lcof/" target="_blank" rel="noopener">面试题58 - I. 翻转单词顺序</a></li>
+<li><a href="https://leetcode-cn.com/problems/xuan-zhuan-shu-zu-de-zui-xiao-shu-zi-lcof/" target="_blank" rel="noopener">面试题11. 旋转数组的最小数字</a>  ⭐</li>
+<li><a href="https://leetcode-cn.com/problems/que-shi-de-shu-zi-lcof/" target="_blank" rel="noopener">面试题53 - II. 0～n-1中缺失的数字</a> ⭐</li>
+<li><a href="https://leetcode-cn.com/problems/shu-zu-zhong-zhong-fu-de-shu-zi-lcof/" target="_blank" rel="noopener">面试题03. 数组中重复的数字</a>  ⭐</li>
+<li><a href="https://leetcode-cn.com/problems/er-wei-shu-zu-zhong-de-cha-zhao-lcof/" target="_blank" rel="noopener">面试题04. 二维数组中的查找</a>  ⭐</li>
+<li><a href="https://leetcode-cn.com/problems/cong-wei-dao-tou-da-yin-lian-biao-lcof/" target="_blank" rel="noopener">面试题06. 从尾到头打印链表</a></li>
+<li><a href="https://leetcode-cn.com/problems/he-bing-liang-ge-pai-xu-de-lian-biao-lcof/" target="_blank" rel="noopener">面试题25. 合并两个排序的链表</a> ⭐</li>
+<li><a href="https://leetcode-cn.com/problems/lian-biao-zhong-dao-shu-di-kge-jie-dian-lcof/" target="_blank" rel="noopener">面试题22. 链表中倒数第k个节点</a>  ⭐</li>
+<li><a href="https://leetcode-cn.com/problems/fan-zhuan-lian-biao-lcof/" target="_blank" rel="noopener">面试题24. 反转链表</a>  ⭐</li>
+<li><a href="https://leetcode-cn.com/problems/shan-chu-lian-biao-de-jie-dian-lcof/" target="_blank" rel="noopener">面试题18. 删除链表的节点</a></li>
+<li><a href="https://leetcode-cn.com/problems/zuo-xuan-zhuan-zi-fu-chuan-lcof/" target="_blank" rel="noopener">面试题58 - II. 左旋转字符串</a>  ⭐</li>
+<li><a href="https://leetcode-cn.com/problems/liang-ge-lian-biao-de-di-yi-ge-gong-gong-jie-dian-lcof/" target="_blank" rel="noopener">面试题52. 两个链表的第一个公共节点</a>  ⭐</li>
+<li><a href="https://leetcode-cn.com/problems/hua-dong-chuang-kou-de-zui-da-zhi-lcof/" target="_blank" rel="noopener">面试题59 - I. 滑动窗口的最大值</a>  ⭐</li>
+<li><a href="https://leetcode-cn.com/problems/zui-xiao-de-kge-shu-lcof/" target="_blank" rel="noopener">面试题40. 最小的k个数</a>  ⭐</li>
+</ol>
+<h5 id="4-23-剑指offer中等"><a href="#4-23-剑指offer中等" class="headerlink" title="4/23 剑指offer中等"></a>4/23 剑指offer中等</h5><h5 id="4-24"><a href="#4-24" class="headerlink" title="4/24"></a>4/24</h5><ol>
+<li>LeetCode <a href="https://leetcode-cn.com/problems/string-to-integer-atoi/" target="_blank" rel="noopener">8. 字符串转换整数 (atoi)</a>  /  <a href="https://leetcode-cn.com/problems/ba-zi-fu-chuan-zhuan-huan-cheng-zheng-shu-lcof/" target="_blank" rel="noopener">面试题67. 把字符串转换成整数</a>  ⭐</li>
+<li><a href="https://leetcode-cn.com/problems/longest-increasing-subsequence/" target="_blank" rel="noopener">300. 最长上升子序列</a>  ⭐（两种方法）</li>
+<li><a href="https://leetcode-cn.com/problems/sorted-merge-lcci/" target="_blank" rel="noopener">面试题 10.01. 合并排序的数组</a>  /  <a href="https://leetcode-cn.com/problems/merge-sorted-array/" target="_blank" rel="noopener">88. 合并两个有序数组</a></li>
+<li><a href="https://leetcode-cn.com/problems/merge-two-sorted-lists/" target="_blank" rel="noopener">21. 合并两个有序链表</a></li>
+<li><a href="https://leetcode-cn.com/problems/merge-k-sorted-lists/" target="_blank" rel="noopener">23. 合并K个排序链表</a>  ⭐</li>
+<li><a href="https://leetcode-cn.com/problems/reverse-linked-list/" target="_blank" rel="noopener">206. 反转链表</a></li>
+<li><a href="https://leetcode-cn.com/problems/reverse-linked-list-ii/" target="_blank" rel="noopener">92. 反转链表 II</a>   ⭐</li>
+</ol>
+<h5 id="4-25"><a href="#4-25" class="headerlink" title="4/25"></a>4/25</h5><ol>
+<li><p><a href="https://leetcode-cn.com/problems/trapping-rain-water/" target="_blank" rel="noopener">42. 接雨水</a>  ⭐</p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/median-of-two-sorted-arrays/" target="_blank" rel="noopener">4. 寻找两个有序数组的中位数</a>  ⭐</p>
+</li>
+</ol>
+<h4 id="什么时候使用归一化什么时候使用标准化"><a href="#什么时候使用归一化什么时候使用标准化" class="headerlink" title="什么时候使用归一化什么时候使用标准化"></a>什么时候使用归一化什么时候使用标准化</h4><h4 id="项目相关问题"><a href="#项目相关问题" class="headerlink" title="项目相关问题"></a>项目相关问题</h4><ol>
+<li><strong>LSTM公式</strong></li>
+<li><strong>RNN为什么出现梯度消失及BPTT的推导</strong></li>
+<li><strong>GBDT和随机森林有什么区别</strong></li>
+<li><strong>GBDT的原理，如何做分类和回归</strong></li>
+<li><strong>随机森林的随机体现在哪方面</strong></li>
+<li><strong>GBDT+LR是怎么做的?</strong></li>
+<li><strong>XGBOOst和GBDT的区别</strong></li>
+<li><strong>boosting和bagging的区别</strong></li>
+<li><strong>bagging为什么能减小方差？</strong></li>
+<li><strong>随即森林的随机体现在哪些方面</strong></li>
+<li><strong>AdaBoost是如何改变样本权重</strong></li>
+<li><strong>GBDT分类树拟合的是什么？</strong> </li>
+</ol>
+<h4 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h4><ol>
+<li><strong>Wide &amp;Deep的原理</strong></li>
+<li><strong>数据之间如果不是独立同分布的会怎样</strong> </li>
+<li><strong>AUC的原理介绍一下</strong></li>
+<li><strong>神经网络里面的损失函数有哪些</strong></li>
+<li><strong>机器学习中常见的激活函数有哪些？为什么通常需要零均值？</strong></li>
+<li><strong>DeepFM介绍</strong></li>
+<li><strong>FM推导</strong></li>
+<li><strong>L1和L2有什么区别，从数学角度解释L2为什么能提升模型的泛化能力。</strong></li>
+<li><strong>深度学习中，L2和dropout有哪些区别？</strong></li>
+<li><strong>L1正则化有哪些好处</strong></li>
+<li><strong>如果有一万个地理坐标，转换成1-10000的数，可以用决策树么？</strong></li>
+<li><strong>CART分类树和ID3以及C4.5有什么区别？</strong></li>
+<li><strong>early stop对参数有什么影响</strong> </li>
+</ol>
+<h4 id="知乎"><a href="#知乎" class="headerlink" title="知乎"></a>知乎</h4><ol>
+<li><p><strong>推导逻辑回归的损失函数以及推导梯度更新公式</strong></p>
+</li>
+<li><p><strong>介绍一下深度学习常用来缓解过拟合的手段（至少5个）</strong> </p>
+</li>
+<li><p><strong>推荐系统常用的召回策略</strong> </p>
+</li>
+<li><p><strong>说一下LR， LR推导 </strong></p>
+</li>
+<li><p><strong>决策树分裂准则</strong></p>
+</li>
+<li><p><strong>信息熵与信息增益公式推导 </strong></p>
+</li>
+<li><p><strong>模型评价标准</strong></p>
+</li>
+<li><p><strong>svm、LR、xgb的损失函数</strong> </p>
+</li>
+<li><p><strong>LR和boost的区别，这次吸取前面的教训，先是细说了LR是什么，怎么推导来的，然后说Boost是什么，干什么用，以Adaboost和GDBT简单举例，最后说二者联系和区别</strong></p>
+</li>
+<li><p><strong>LR和SVM， LR和SVM训练目标的区别  </strong></p>
+</li>
+<li><p><strong>手写BP算法,伪代码</strong></p>
+</li>
+<li><p><strong>LR/Boost和朴素贝叶斯的区别</strong></p>
+</li>
+<li><p><strong>xgboost和随机森林</strong></p>
+</li>
+<li><p><strong>过拟合,  过拟合模型，和额外很大量数据，怎么判断这些数据有没有用？想到了采样，但是一时没想起来具体怎么办，最后面试官说，可以采样了用过拟合的模型去跑跑看误差 </strong></p>
+</li>
+<li><p><strong>知道什么参数范数惩罚？我答L1，L2是主要的，我还在别人的论文里见过Frobenius做参数软共享的。进而问我L1和L2的区别</strong> </p>
+</li>
+<li><p><strong>介绍一下你对推荐算法的了解</strong></p>
+</li>
+<li><p><strong>XGBoost的原理</strong></p>
+</li>
+<li><p><strong>XGBoost相比与GBDT的速度优势和效果优势的原因</strong></p>
+</li>
+<li><p><strong>线性模型和决策树模型对特征选择特征利用有哪些区别</strong></p>
+</li>
+<li><p><strong>决策树和线性模型哪个更好在线更新</strong></p>
+</li>
+<li><p><strong>过拟合出现的原因和解决方法</strong></p>
+</li>
+<li><p><strong>Dropout和BN不能解决过拟合吗</strong></p>
+<p><img src="//pl741.github.io/2019/11/29/算法面试题/Users\warrior\AppData\Roaming\Typora\typora-user-images\image-20200419190033621.png" alt="image-20200419190033621"></p>
+</li>
+<li><p><strong>boosting和bagging的区别</strong><br> 1）样本选择上：<br> Bagging：训练集是在原始集中有放回选取的，从原始集中选出的各轮训练集之间是独立的.<br> Boosting：每一轮的训练集不变，只是训练集中每个样例在分类器中的权重发生变化.而权值是根据上一轮的分类结果进行调整.<br> 2）样例权重：<br> Bagging：使用均匀取样，每个样例的权重相等<br> Boosting：根据错误率不断调整样例的权值，错误率越大则权重越大.<br> 3）预测函数：<br> Bagging：所有预测函数的权重相等.<br> Boosting：每个弱分类器都有相应的权重，对于分类误差小的分类器会有更大的权重.<br> 4）并行计算：<br> Bagging：各个预测函数可以并行生成<br> Boosting：各个预测函数只能顺序生成，因为后一个模型参数需要前一轮模型的结果.</p>
+</li>
+<li><p><strong>bagging为什么能减小方差</strong><br> 参考博客：<a href="https://blog.csdn.net/shenxiaoming77/article/details/53894973" target="_blank" rel="noopener">https://blog.csdn.net/shenxiaoming77/article/details/53894973</a></p>
+<p><img src="//pl741.github.io/2019/11/29/算法面试题/Users\warrior\AppData\Roaming\Typora\typora-user-images\image-20200419190210473.png" alt="image-20200419190210473"></p>
+<p>可能不懂的地方看下面的公式就知道了：</p>
+<p><img src="//pl741.github.io/2019/11/29/算法面试题/Users\warrior\AppData\Roaming\Typora\typora-user-images\image-20200419190232946.png" alt="image-20200419190232946"></p>
+</li>
+<li><p><strong>交叉熵损失函数，0-1分类的交叉熵损失函数的。什么是凸函数？0-1分类如果用平方损失为什么用交叉熵而不是平方损失？</strong><br> 这里我们只回答最后一个问题，也就是说逻辑回归为什么不用平方损失？有两点原因：<br> 1）平方损失函数非凸函数。为什么非凸？凸函数二阶导数大于等于0，证明一下即可。<br> 2）但是会在h(wx)接近0和1的地方梯度很小，不容易学习。</p>
+</li>
+<li><p><strong>快速排序的过程以及最好和最坏情况</strong> </p>
+</li>
+<li><strong>hashmap以及如何解决冲突，红黑树以及平衡搜索树等</strong> </li>
+<li><strong>常用的排序算法</strong> </li>
+<li><strong>打印所有子集</strong></li>
+<li><strong>打印螺旋矩阵</strong></li>
+<li><strong>翻转列表前k个</strong></li>
+<li><strong>字符串出现第k多的字符</strong></li>
+<li><strong>覆盖字符串所有字符的最小子串,Leetcode第76题</strong></li>
+<li><strong>字符串子串问题基本都是滑动窗口</strong></li>
+<li><strong>找出0-1矩阵里，全1组成的最大矩形面积</strong></li>
+<li><strong>矩阵上找路径或者覆盖，直接上DP，我刷过对应的medium难度最大正方形，顺着思路就写了，但是代码写的太丑不简练</strong></li>
+<li><strong>问我有一个地理坐标，怎么从我所有的几千万几百万个poi中快速查询到离它最近的几个。我是想答分治、分层索引之类的，但是面试官实际是在问，怎么设计数据结构能最快，怎么把x,y这样的坐标对存成key，没答上让他满意的答案。</strong></li>
+<li><strong>链表、字符串、迭代、dfs、堆、树、动态规划</strong></li>
+</ol>
+<h4 id="快手"><a href="#快手" class="headerlink" title="快手"></a>快手</h4><ol>
+<li><p><strong>top(k) return sorted(A)[::-1][:k]?</strong></p>
+</li>
+<li><p><strong>算法题leetcode113</strong></p>
+</li>
+<li><p><strong>数据分布改变时，AUC有什么影响</strong></p>
+</li>
+<li><p><strong>auc的定义和计算方法</strong></p>
+</li>
+<li><p><strong>auc实际上衡量的是什么能力</strong></p>
+</li>
+<li><p><strong>roc曲线是否会出现先增后减的情况</strong></p>
+</li>
+<li><p><strong>过拟合怎么解决</strong></p>
+</li>
+<li><p><strong>方差和偏差</strong></p>
+</li>
+<li><p><strong>样本不均衡的处理方法</strong><br>权重调整，采样，对样本不均衡不敏感的指标，数据生成，对于正负样本极不均衡的还可以将问题转换成单类学习问题或者异常检测问题。<br>面试官补充：对样本不均衡不敏感的模型，比如SVM，XGB. 然后讨论了一波为什么XGB对样本不均衡不敏感</p>
+</li>
+<li><p><strong>dropout的原理、作用以及训练测试时的不同</strong></p>
+</li>
+<li><p><strong>BN的原理、作用以及训练测试时的不同</strong></p>
+</li>
+<li><p><strong>二叉搜索树求第2小</strong></p>
+</li>
+<li><p><strong>为什么数组排序都用快排不用归并</strong></p>
+</li>
+<li><p><strong>为什么数组排序都用快排不用归并</strong></p>
+</li>
+<li><p>口述SVM整个过程<br>重复的twosum<br>极大似然估计，条件，样本独立同分布<br>如果有2组独立同分布的数据，但模型分布不一样，怎么解决？EM算法，混合高斯模型<br>链表快排<br>合并两个排序链表并删除重复值</p>
+<p>快排</p>
+</li>
+</ol>
+<h4 id="京东"><a href="#京东" class="headerlink" title="京东"></a>京东</h4><ol>
+<li>字符串转int </li>
+<li>快排</li>
+<li>最长上升子序列 (两个帖子上看到过)</li>
+<li>2^n个数组，每个数组长度都是m，每个都是有序，合并成一个有序的数组 </li>
+<li>链表合并</li>
+<li>链表反转</li>
+<li>链表转化，1-&gt;2-&gt;3-&gt;4-&gt;5-&gt; -&gt;7转化为1-&gt;7-&gt;2-&gt;6-&gt;3-&gt;5-&gt;4 </li>
+<li>找出该节点二叉树中序遍历的下一个节点，如果树有父节点，在空间复杂度O（1）的情况下找出来</li>
+<li></li>
+</ol>
+<p>海量数据找出第K个（~40g数据）<br>一道经典的DP问题，接着让我介绍DP和递归的区别，以及详细介绍了根本的原因 </p>
+<p>给一个检索词，怎么给出库中相似度高的标签<br>根据你的项目问了问：<br>项目做什么的？<br>你怎么优化的？<br>你的参数是怎么初始化的。全部为0？随机初始化？高斯分布中随机取点？<br>比赛做了哪些工程<br>在京东有许多的不同的消费群体，我们如何找到学生群体并把他介绍给我们的用户。 </p>
+<p>介绍BN层<br>归一化的作用<br>了解哪些机器学习方法<br>推导逻辑回归过程<br>正则化是怎么防止过拟合的？<br>L1正则化和L2正则化的区别？<br>介绍一下XGboost。<br>LSTM和GRU区别<br>rf和gbdt的区别<br>GBDT原理<br>boosting和bagging怎么减小偏差的</p>
+<p>介绍一下决策树原理。介绍一下ID3、CART，逻辑树，描述一下交叉熵，通过交叉熵做loss 怎样体现，输入x1 x2 输出y1，y2 交叉熵如何计算，比如y1和y1’越接近loss为何越小 ，讲讲lr，svm（中间穿插提问，lr损失，svm损失，核函数，作用……） ，了解过svm？有哪些常用的核函数？介绍常用的loss，正负样本差异很大时怎么做（特征：归一化，样本上：采样：具体如何采样？？）， 出个题：概率题 （贝叶斯相关）  a,b丢硬币吃苹果，问吃到的概率 ，全连接层的定义 ，relu 好处 relu后面为0是为了什么（面试官说是为了解决梯度发散问题，小于0时梯度为负，而且可能负得越来越大），这个问题是这样解释吗？如果relu的左半轴为负那么它的梯度不是还是定值吗只是为负了….，常见的分类算法以及评估指标</p>
+<p>卷积参数量计算，尺寸计算<br>ADAM算法比SGD优化好在哪儿？<br>是否用过时间序列相关的模型<br>如果自己写一个LR的话，要包含哪些模块（我只说到了训练部分，面试官补充了还有分类预测的模块）<br>Followup：接着问了我在做特征工程时很多的实际操作。<br>如何评估我们的聚类结果，以及如何提升<br>还问了如何Embedding的具体操作<br>python 参数 <em> 和 *</em> 区别 </p>
+<h4 id="概率题："><a href="#概率题：" class="headerlink" title="概率题："></a>概率题：</h4><ol>
+<li><p><strong>50个红球和50个篮球，放入两个箱子，怎么样放置才能使拿到红球的概率最大？</strong></p>
+<p>两个箱子概率是1/2，选中某个箱子后又有选择的是不是红球的概率，所以最大概率就是一个红球放在一个箱子里，其余的99个球全放到另一个箱子。这样概率=0.5+0.5*（49/99）约等于0.75，这样为最大概率。 </p>
+</li>
+<li><p><strong>从一副52张扑克牌中随机抽两种，颜色相等的概率</strong> （$C_{4}^1 C_{13}^2/C_{52}^2$）</p>
+</li>
+<li><p><strong>54张牌，分成6份，每份9张牌，大小王在一起的概率</strong></p>
+<p>无论大王在那个位置，此时小王与大王在一起的位置一共8个，共53个位置可选，概率为 $8/53$</p>
+</li>
+<li><p><strong>52张牌去掉大小王，分成26*2两堆，从其中一堆取4张牌为4个a的概率</strong> </p>
+<p>直觉告诉我分不分堆没有关系，这样想的话，答案是：$\frac{C_4^4}{C_{52}^{4}}$</p>
+<p>考虑分堆的话：</p>
+<p>1 先求分两堆，4张A出现在同一堆的概率： $ \frac{C_2^1 C_4^4 C_{48}^{22} C_{26}^{26}}{C_{52}^{26}C_{26}^{26}}$</p>
+<p>2 在这两堆中，选中4张A同时出现的那一堆：$ \frac{1}{2}\frac{C_2^1 C_4^4 C_{48}^{22} C_{26}^{26}}{C_{52}^{26}C_{26}^{26}}$</p>
+<p>3 从选中的这堆中，选4张牌出来是A的概率：$ \frac{1}{2}\frac{C_2^1 C_4^4 C_{48}^{22} C_{26}^{26}}{C_{52}^{26}C_{26}^{26}} \frac{C_{4}^{4}}{C_{26}^{4}}$</p>
+</li>
+<li><p><strong>一枚硬币，扔了一亿次都是正面朝上，再扔一次反面朝上的概率是多少？</strong></p>
+<p>贝叶斯：有理由相信硬币的两面都是正面；频率学派：50%</p>
+</li>
+<li><p><strong>一对夫妻有2个孩子，求一个孩子是女孩的情况下，另一个孩子也是女孩的概率</strong> </p>
+<p>一个家庭中有两个小孩只有四种可能{男， 男}，{男，女}， {女， 女}， {女， 男}，记事件A为：其中一个是女孩，事件B：另一个也是女孩，$P(A)=3/4$ ，$P(AB)=1/4$，求$P(B|A) = P(AB)/P(A)=1/3$</p>
+</li>
+<li><p><strong>已知N枚真硬币，M枚假硬币（两面都是国徽），取一枚硬币抛R次都是国徽，问真硬币的概率？</strong></p>
+<img src="/2019/11/29/算法面试题/9.png">
+</li>
+<li><p><strong>有8个箱子，现在有一封信，这封信放在这8个箱子中每一个的概率均为4/5, 不放在任何一个箱子的概率为1/5, 现在我打开1号箱子发现是空的，求下面7个箱子中含有这封信的概率？</strong></p>
+<p>事件A：放信封事件，事件B：1号为空</p>
+<script type="math/tex; mode=display">
+p(A|B) = \frac{p(AB)}{p(B)} = \frac{p(B|A)p(A)}{p(B|A)p(A) + p(B| \hat A)p(\hat A)}</script></li>
+<li><p><strong>某城市发生了一起汽车撞人逃跑事件，该城市只有两种颜色的车，蓝20%绿80%，事发时现场有一个目击者，他指证是蓝车，但是根据专家在现场分析，当时那种条件能看正确的可能性是80%，那么，肇事的车是蓝车的概率是多少？</strong></p>
+<p>事件A：肇事的车是蓝车，事件B：目击者指证蓝车，求$P(A|B)$，$P(A|B) = P(B|A)P(A)/P(B)$，$P(A)=0.2$，$P(B|A)=0.8$，计算$P(B)=P(A)P(B|A)+P(A^-)P(B|A^-)$， $P(A^-)=1-0.2$ ，关键是最后一项 $P(B|A^-)$ ，即肇事的车是绿车的条件下，目击者指正该车为蓝车的概率， 这一概率就是目击者看错的概率0.2。 $P(A|B)=(0.2<em>0.2)/(0.2</em>0.8+0.2*0.8)=0.5$</p>
+</li>
+<li><p><strong>有种癌症，早期的治愈率为0.8，中期的治愈率为0.5，晚期的治愈率为0.2.若早期没治好就会转为中期，中期没治好就会变成晚期。现在有一个人被诊断为癌症早期，然后被治愈了，问他被误诊为癌症的概率是多少？</strong></p>
+<p>$p(cur|早) = 0.8$</p>
+<p>$p(cur|中) = 0.2 * 0.5 = 0.1$</p>
+<p>$p(cur|晚) = 0.2 <em> 0.5 </em> 0.2 = 0.02$</p>
+</li>
+<li><p><strong>100人坐飞机，第一个乘客在座位中随便选一个坐下，第100人正确坐到自己坐位的概率是？</strong></p>
+<p>等价于这个描述：2-99号乘客登机后如果发现1号(疯子)坐在本属于自己的位子上，就会请疯子离开，然后疯子再随机找个空座。(就是平时大家在一票一座的交通工具上对号入座时的方式)这样到100号登机时，2-99号都在自己座位上，1号疯子在自己座位上和100号乘客座位上概率相同，所以是1/2。另外这个结果和总乘客数无关，可以由100推广至任意k。 </p>
+</li>
+<li><p><strong>一个国家重男轻女，只要生了女孩就继续生，直到生出男孩为止，问这个国家的男女比例？</strong>(每个孩子出生男女概率是50%，所以每次出生的男女比例是相同的。假设这个国家有n对夫妇，那么n对夫妇将生下n个男孩，这n个男孩是这样生下的，假设生男生女的概率是50%，那么n/2个男孩是第一胎生下的，同时将有 n/2个女孩生下，n/2对生女孩的夫妇将继续生，其中n/4的夫妇生下男孩，n/4的夫妇继续生下女孩，然后是n/8的夫妇顺利得到男孩，又有n/8的 夫妇生下女孩，依此类推，这个国家将生下n/2 + n/4 + n/8 + …的女孩，所以男女比例是n : (n/2 + n/4 + n/8 + …) = n : n = 1 : 1)</p>
+</li>
+<li><p><strong>某个一直函数返回0/1，0的概率为p，写一函数返回两数概率相等。</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">g</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        a = f()</span><br><span class="line">        b = f()</span><br><span class="line">        <span class="keyword">if</span> a == <span class="number">0</span> <span class="keyword">and</span> b == <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        <span class="keyword">elif</span> a == <span class="number">1</span> <span class="keyword">and</span> b== <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>给你一个函数，这个函数是能得出1-5之间的随机数的，概率相同。现在求1-7之间随机函数，你如何做 </strong></p>
+<p>要生成一个1-7的随机数，等可能概率。首先，考虑第一个问题：等可能概率。随机数是等概率的事件，就是1，2，3，4，5 出现的概率应该是相同的，而不是其中某一种概率大一点。看这个公式 $5<em>(x-1)+x$（x是1-5的随机数）那么 $5</em>(x-1)$会是等可能的0，5，10，15，20, x会是等可能的1，2，3，4，5；那么这个值就是等可能的0-25。<br>然后，考虑第二个问题：如何产生1-7？产生1-7最直观的方法就是：对7取模加一；但是0-25对7取模最后结果0-6产生的概率不一样；很简单，如果大于21，再随机一次就好了。 </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">random7</span><span class="params">()</span>:</span></span><br><span class="line">    x = <span class="number">5</span> * (random5()<span class="number">-1</span>) + random5()</span><br><span class="line">    <span class="keyword">if</span> x &gt; <span class="number">21</span>:</span><br><span class="line">        <span class="keyword">return</span> random7()</span><br><span class="line">    <span class="keyword">return</span> x % <span class="number">7</span> + <span class="number">1</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>X是一个以p的概率产生1,1-p的概率产生0的随机变量，利用X等概率生成1~n的数 </strong></p>
+<p> 调用n次，每次出一个位，这样每个的概率都是 $p*(1-p)^n$ </p>
+</li>
+<li><p><strong>给你一个硬币，你如何获得2/3的概率 </strong></p>
+<p>把这枚硬币扔两次，以下情况出现的概率相等：1. 正正，2. 正反，3.反正，4.反反，如果出现第4种情况则相当于采样失败，继续实验，如果在1~3种情况中出现1~2的情况则是一个2/3的概率</p>
+</li>
+<li><p><strong>一个袋子里有100个黑球和100个白球，每次随机拿出两个球丢掉，如果丢掉的是不同颜色的球，则从其他地方补充一个白球到袋子里，如果颜色相同，则补充一个黑球到袋子里。问：最后一个球是黑球和白球的概率分别为多大？</strong> ( 使用(黑球个数, 白球个数)来表示桶中黑球和白球的个数变动，正数表示增加，负数表示减少，根据规则找规律：<br>1、如果每次从桶里面拿出两个白球，则应放入一个黑球：(0, -2) + (1, 0) = (1, -2)；<br>2、如果每次从桶里面拿出两个黑球，则应放入一个黑球：(-2, 0) + (1, 0) = (-1, 0)；<br>3、如果每次从桶里面拿出一个白球和一个黑球，则应放入一个白球：(-1, -1) + (0, 1) = (-1, 0)；</p>
+<pre><code>从以上各种情况可以看出以下规律：
+</code></pre><p>1）每次都会减少一个球，那么最后的结果肯定是桶内只剩一个球，要么是白球，要么是黑球；<br>2）每次拿球后，白球的数目要么不变，要么两个两个地减少；</p>
+<pre><code>所以从上面的分析可以得知，最后不可能只剩下一个白球，那么必然就只能是黑球了。 )
+</code></pre></li>
+<li><p><strong>一个公交站在1分钟内有车经过概率是p，问3分钟内有车经过概率</strong>（$1-(1-p)^3$）</p>
+</li>
+<li><p><strong>某段公路上1小时有车通过的概率是0.96，半小时有车通过的概率是多少 </strong></p>
+<p>设半个小时有车经过的概率是p，那么一个小时内没有车经过的概率为$(1-p)^2$,那么一个小时内有车经过的概率为$1-(1-p)^2 = 0.96$， p=0.8 </p>
+</li>
+<li><p><strong>某大公司有这么一个规定：只要有一个员工过生日，当天所有员工全部放假一天。但在其余时候，所有员工都没有假期，必须正常上班。这个公司需要雇用多少员工，才能让公司一年内所有员工的总工作时间期望值最大？</strong>($E=n*(1-1/365)^n$，求导可得 $n=365$。 </p>
+<p>一个人，对于任意一天，过生日的概率是 $1 / 365$, 不过生日的概率是 $ 364 / 365$</p>
+<p>n个人，对于任意一天，没任何人过生日的概率是$(364 / 365)^n$ </p>
+<p>n个人，对于任意一天，有人过生日的概率是 $1 - (364/ 365)^n$ </p>
+<p>那么365天里有人过生日的期望天数是 $365(1 - (364 / 365)^n)$天，</p>
+<p>则n个人，365天，每个人工作的期望天数是 $365 - 365(1 - (364 / 365)^n) = 365(364 /365)^n$ 从而所有人的期望工作天数的和为：$365n(364 / 365)^n$，求导数，导数不小于0，递增。)</p>
+</li>
+<li><p><strong>两人轮流扔硬币，扔出正面获胜，求：先扔者获胜的概率</strong> ( 设甲先抛。设甲胜率为x。则第一次甲抛了反面后，乙胜率为0.5x，从而甲胜率+乙胜率=x+0.5x=1，从而x=2/3。 )</p>
+</li>
+<li><p><strong>a b c 分别循环投掷硬币，直到正面出现胜利，求a b c获胜的概率</strong> ( $P(B) = 1/2<em>P(A)$; $P(C) = 1/4 </em> P(A)$; $P(A) + P(B) + P(C) = 1;$<br>得$P(A) = 4/7, P(B) = 2/7, P(C) = 1/7 $)</p>
+</li>
+<li><p><strong>硬币正反概率是1/2,一直抛硬币,直到连续两次正面停止，问期望次数</strong> </p>
+<p>设期望为E，当开局抛到两次正面时，$0.5<em>0.5</em>2$</p>
+<p>当开局抛到了反面时，需要重新抛，此时的期望分量时：$0.5*(E+1)$</p>
+<p>当开局抛到了正面，但是紧接着抛到了反面，此时有需要重新抛，期望分量为：$0.5<em>0.5</em>(E+2)$</p>
+<p>所以有：</p>
+<script type="math/tex; mode=display">
+E = 0.5 * 0.5 * 2 + 0.5 *(E + 1) + 0.5* 0.5 *(E+2)</script><p>求解E=6</p>
+</li>
+<li><p><strong>扔骰子，最多扔两次，第一次扔完可以自行决定要不要扔第二次，取最后一次扔色子的结果为准，求：尽可能得到最大点数的数学期望 </strong></p>
+<p> 对于扔一次骰子，他的期望是$\frac{1}{6} (1 + 2 ,\cdots, + 6) = 3.5$ ，那么此时的扔骰子的策略为，当我扔到1-3时，继续抛，当我扔到4-6时，停止。在选择继续抛的时候，之前的结果作废，此时相当于抛一次骰子。他的期望为3.5。当只投一次的时候，只会在[4, 5, 6]之间，他的期望是5，所以最终的期望是，（5+3.5）/2 = 4.25 </p>
+</li>
+</ol>
 
       
     </div>
@@ -481,8 +770,8 @@ C E H(p, q)=E_{p}[-\log q]=-\sum_{x \in \mathcal{X}} p(x) \log q(x)=H(p)+D_{K L}
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/11/08/剑指offer-Python/" rel="next" title="剑指offer-Python">
-                <i class="fa fa-chevron-left"></i> 剑指offer-Python
+              <a href="/2019/11/08/剑指offer-Python/" rel="next" title="剑指Offer-Python">
+                <i class="fa fa-chevron-left"></i> 剑指Offer-Python
               </a>
             
           </div>
@@ -572,7 +861,7 @@ C E H(p, q)=E_{p}[-\log q]=-\sum_{x \in \mathcal{X}} p(x) \log q(x)=H(p)+D_{K L}
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -583,7 +872,7 @@ C E H(p, q)=E_{p}[-\log q]=-\sum_{x \in \mathcal{X}} p(x) \log q(x)=H(p)+D_{K L}
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -594,7 +883,7 @@ C E H(p, q)=E_{p}[-\log q]=-\sum_{x \in \mathcal{X}} p(x) \log q(x)=H(p)+D_{K L}
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -634,7 +923,7 @@ C E H(p, q)=E_{p}[-\log q]=-\sum_{x \in \mathcal{X}} p(x) \log q(x)=H(p)+D_{K L}
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#决策树"><span class="nav-number">1.</span> <span class="nav-text">决策树</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-交叉熵"><span class="nav-number">1.1.</span> <span class="nav-text">1. 交叉熵</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#逻辑回归"><span class="nav-number">2.</span> <span class="nav-text">逻辑回归</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-LR"><span class="nav-number">2.1.</span> <span class="nav-text">1. LR</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LSTM"><span class="nav-number">3.</span> <span class="nav-text">LSTM</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#决策树"><span class="nav-number">1.</span> <span class="nav-text">决策树</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-交叉熵"><span class="nav-number">1.1.</span> <span class="nav-text">1. 交叉熵</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#逻辑回归"><span class="nav-number">2.</span> <span class="nav-text">逻辑回归</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-LR"><span class="nav-number">2.1.</span> <span class="nav-text">1. LR</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LSTM"><span class="nav-number">3.</span> <span class="nav-text">LSTM</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#面试中涉及到的算法题："><span class="nav-number">4.</span> <span class="nav-text">面试中涉及到的算法题：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#刷题"><span class="nav-number">5.</span> <span class="nav-text">刷题</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#4-22-剑指offer简单题："><span class="nav-number">5.1.</span> <span class="nav-text">4/22 剑指offer简单题：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-23-剑指offer中等"><span class="nav-number">5.2.</span> <span class="nav-text">4/23 剑指offer中等</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-24"><span class="nav-number">5.3.</span> <span class="nav-text">4/24</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-25"><span class="nav-number">5.4.</span> <span class="nav-text">4/25</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#什么时候使用归一化什么时候使用标准化"><span class="nav-number">6.</span> <span class="nav-text">什么时候使用归一化什么时候使用标准化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#项目相关问题"><span class="nav-number">7.</span> <span class="nav-text">项目相关问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#其他"><span class="nav-number">8.</span> <span class="nav-text">其他</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#知乎"><span class="nav-number">9.</span> <span class="nav-text">知乎</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#快手"><span class="nav-number">10.</span> <span class="nav-text">快手</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#京东"><span class="nav-number">11.</span> <span class="nav-text">京东</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#概率题："><span class="nav-number">12.</span> <span class="nav-text">概率题：</span></a></li></ol></div>
             
 
           </div>

@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="算法题,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="木木的博客" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="算法题1：获胜一方的三张牌的点数最大和 (2020/3/24)输入：第行仅包含一个正整数n，代表双方掌握的牌的数量，(1&amp;lt;=n&amp;lt;=20000)接下来有2行，每行有n个数字，数字的范围在1 ~ 10^9以内，分别代表双方可选的n张牌。 输出：仅包含个正警数， 即获胜的一方三张牌的最大牌型的点数之和， 当然是可能有平局的，此时答家也是唯一的。 12345678910111213141516">
+<meta name="keywords" content="算法题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="算法题">
+<meta property="og:url" content="http://pl741.github.io/2020/03/24/算法题/index.html">
+<meta property="og:site_name" content="木木的博客">
+<meta property="og:description" content="算法题1：获胜一方的三张牌的点数最大和 (2020/3/24)输入：第行仅包含一个正整数n，代表双方掌握的牌的数量，(1&amp;lt;=n&amp;lt;=20000)接下来有2行，每行有n个数字，数字的范围在1 ~ 10^9以内，分别代表双方可选的n张牌。 输出：仅包含个正警数， 即获胜的一方三张牌的最大牌型的点数之和， 当然是可能有平局的，此时答家也是唯一的。 12345678910111213141516">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-03-31T06:29:40.661Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="算法题">
+<meta name="twitter:description" content="算法题1：获胜一方的三张牌的点数最大和 (2020/3/24)输入：第行仅包含一个正整数n，代表双方掌握的牌的数量，(1&amp;lt;=n&amp;lt;=20000)接下来有2行，每行有n个数字，数字的范围在1 ~ 10^9以内，分别代表双方可选的n张牌。 输出：仅包含个正警数， 即获胜的一方三张牌的最大牌型的点数之和， 当然是可能有平局的，此时答家也是唯一的。 12345678910111213141516">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: 'D7ALJV5SO6',
+      apiKey: '6e20ed4f9126e4bd7125665a8b2f2a43',
+      indexName: 'MUMU',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"找不到关于 ${query} 的文章","hits_stats":"共找到 ${hits} 篇文章，花了 ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://pl741.github.io/2020/03/24/算法题/">
+
+
+
+
+
+  <title>算法题 | 木木的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">木木的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">木木的博客</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          <!--增加的代码 start-->
+
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://pl741.github.io/2020/03/24/算法题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="木木">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/header.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="木木的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">算法题</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-24T09:43:48+08:00">
+                2020-03-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="算法题1：获胜一方的三张牌的点数最大和-2020-3-24"><a href="#算法题1：获胜一方的三张牌的点数最大和-2020-3-24" class="headerlink" title="算法题1：获胜一方的三张牌的点数最大和 (2020/3/24)"></a>算法题1：获胜一方的三张牌的点数最大和 (2020/3/24)</h3><p>输入：第行仅包含一个正整数n，代表双方掌握的牌的数量，(1&lt;=n&lt;=20000)接下来有2行，每行有n个数字，数字的范围在1 ~ 10^9以内，分别代表双方可选的n张牌。</p>
+<p>输出：仅包含个正警数， 即获胜的一方三张牌的最大牌型的点数之和， 当然是可能有平局的，此时答家也是唯一的。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">n = int(input())</span><br><span class="line">L1 = list(map(int, input().split(<span class="string">" "</span>)))</span><br><span class="line">L2 = list(map(int, input().split(<span class="string">" "</span>)))</span><br><span class="line"><span class="keyword">import</span> heapq</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">WinMaxValue</span><span class="params">(self, n, FirstList, SecondList)</span>:</span></span><br><span class="line">		<span class="keyword">if</span> n &lt; <span class="number">3</span>:</span><br><span class="line">			<span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">		firstmax = self.MaxValue(n, FirstList)</span><br><span class="line">		secondmax = self.MaxValue(n, SecondList)</span><br><span class="line">		<span class="keyword">return</span> max(firstmax, secondmax)</span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">MaxValue</span><span class="params">(self, n, N_list)</span>:</span></span><br><span class="line">		heap = []</span><br><span class="line">		index = <span class="number">0</span></span><br><span class="line">		<span class="keyword">while</span> index &lt; <span class="number">3</span>:</span><br><span class="line">			heapq.heappush(heap, N_list[index])</span><br><span class="line">			index += <span class="number">1</span></span><br><span class="line">		<span class="keyword">while</span> index &lt; n:</span><br><span class="line">			heap_min = heap[<span class="number">0</span>]</span><br><span class="line">			<span class="keyword">if</span> heap_min &lt; N_list[index]:</span><br><span class="line">				heapq.heappushpop(heap, N_list[index])</span><br><span class="line">			index += <span class="number">1</span></span><br><span class="line">		<span class="keyword">return</span> sum(heap)</span><br></pre></td></tr></table></figure>
+<h3 id="算法题2：LeetCode-17-按摩师-2020-3-24"><a href="#算法题2：LeetCode-17-按摩师-2020-3-24" class="headerlink" title="算法题2：LeetCode  17.按摩师 (2020/3/24)"></a>算法题2：LeetCode  17.<a href="https://leetcode-cn.com/problems/the-masseuse-lcci" target="_blank" rel="noopener">按摩师</a> (2020/3/24)</h3><p>一个有名的按摩师会收到源源不断的预约请求，每个预约都可以选择接或不接。在每次预约服务之间要有休息时间，因此她不能接受相邻的预约。给定一个预约请求序列，替按摩师找到最优的预约集合（总预约时间最长），返回总的分钟数。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">massage</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">    	<span class="keyword">if</span> nums == <span class="literal">None</span> <span class="keyword">or</span> len(nums) == <span class="number">0</span>:</span><br><span class="line">    		<span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    	<span class="keyword">if</span> len(nums) == <span class="number">1</span>:</span><br><span class="line">    		<span class="keyword">return</span> nums[<span class="number">0</span>]</span><br><span class="line">    	<span class="keyword">if</span> len(nums) == <span class="number">2</span>:</span><br><span class="line">    		<span class="keyword">return</span> max(nums[<span class="number">0</span>], nums[<span class="number">1</span>])</span><br><span class="line">    	p, p_1, p_2 = nums[<span class="number">-3</span>]+nums[<span class="number">-1</span>], nums[<span class="number">-2</span>], nums[<span class="number">-1</span>]</span><br><span class="line">    	index = len(nums) - <span class="number">4</span></span><br><span class="line">    	<span class="keyword">while</span> index &gt;= <span class="number">0</span>:</span><br><span class="line">    		temp = max(p_1, p_2) + nums[index]</span><br><span class="line">    		p_2 = p_1</span><br><span class="line">    		p_1 = p</span><br><span class="line">    		p = temp</span><br><span class="line">    		index -= <span class="number">1</span></span><br><span class="line">    	<span class="keyword">return</span> max(p, p_1)</span><br></pre></td></tr></table></figure>
+<h3 id="算法题3：LeetCode-892-三维形体的表面积-2020-3-25"><a href="#算法题3：LeetCode-892-三维形体的表面积-2020-3-25" class="headerlink" title="算法题3：LeetCode 892. 三维形体的表面积 (2020/3/25)"></a>算法题3：LeetCode 892. <a href="https://leetcode-cn.com/problems/surface-area-of-3d-shapes/" target="_blank" rel="noopener">三维形体的表面积</a> (2020/3/25)</h3><p>在 $N <em> N$ 的网格上，我们放置一些 $1 </em> 1 * 1$  的立方体。每个值 $v = grid[i][j]$ 表示 v 个正方体叠放在对应单元格 $(i, j)$ 上。请你返回最终形体的表面积。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">surfaceArea</span><span class="params">(self, grid)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> grid == <span class="literal">None</span> <span class="keyword">or</span> len(grid) == <span class="number">0</span> <span class="keyword">or</span> len(grid[<span class="number">0</span>]) == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        area = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> row <span class="keyword">in</span> range(len(grid)):</span><br><span class="line">            <span class="keyword">for</span> col <span class="keyword">in</span> range(len(grid[<span class="number">0</span>])):</span><br><span class="line">                dp = <span class="number">0</span></span><br><span class="line">                <span class="keyword">if</span> row &gt; <span class="number">0</span>: dp += min(grid[row][col], grid[row<span class="number">-1</span>][col])</span><br><span class="line">                <span class="keyword">if</span> row &lt; len(grid) - <span class="number">1</span>: dp += min(grid[row][col], grid[row+<span class="number">1</span>][col])</span><br><span class="line">                <span class="keyword">if</span> col &gt; <span class="number">0</span>: dp += min(grid[row][col], grid[row][col<span class="number">-1</span>])</span><br><span class="line">                <span class="keyword">if</span> col &lt; len(grid[<span class="number">0</span>]) - <span class="number">1</span>: dp += min(grid[row][col], grid[row][col+<span class="number">1</span>])</span><br><span class="line">                area += self.Area(grid[row][col]) - dp</span><br><span class="line">        <span class="keyword">return</span> area</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">Area</span><span class="params">(self, num)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> num == <span class="number">0</span>: <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        <span class="keyword">else</span>: <span class="keyword">return</span> <span class="number">2</span> * (<span class="number">2</span> * num + <span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="算法题4：A获奖的概率-2020-3-25"><a href="#算法题4：A获奖的概率-2020-3-25" class="headerlink" title="算法题4：A获奖的概率 (2020/3/25)"></a>算法题4：A获奖的概率 (2020/3/25)</h3><p>有一个抽奖箱，里面有 $n$ 张中将票，$m$ 张不中奖票。A和B轮流从中那个抽一张奖票出来。有人抽到中奖票就结束抽奖过程，抽到中奖票的人胜利。抽过的奖票会被丢弃。其次，B每次抽后，会再次抽取一张票并丢弃掉（这张票中奖不算B胜利）。现在，A先抽，请问A的胜率，保留4位小数后输出。如果两人到最后也没有抽到中奖票算作B胜利。<br>原文链接：<a href="https://blog.csdn.net/sinat_27990891/article/details/105085392" target="_blank" rel="noopener">https://blog.csdn.net/sinat_27990891/article/details/105085392</a></p>
+<pre><code>样例输入: 1 3  样例输出:0.5000
+解释：
+如果A第一轮抽到中奖票，A胜利，概率0.25。
+如果A第二轮抽到中奖票，情况为A第一轮没有抽到中奖票，B也没有抽到中奖票，并且B丢弃掉的奖票也不是中奖票。概率位3/4 * 2/3 * 1/2 = 0.25。
+综上，中奖率为0.5。
+样例输入: 2 3  样例输出:0.6000
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="算法题5：LeetCode-820-单词的压缩编码-2020-3-28-★★★"><a href="#算法题5：LeetCode-820-单词的压缩编码-2020-3-28-★★★" class="headerlink" title="算法题5：LeetCode 820. 单词的压缩编码 (2020/3/28) ★★★"></a>算法题5：LeetCode <a href="https://leetcode-cn.com/problems/short-encoding-of-words/" target="_blank" rel="noopener">820. 单词的压缩编码</a> (2020/3/28) ★★★</h3><p>给定一个单词列表，我们将这个列表编码成一个索引字符串 S 与一个索引列表 A。例如，如果这个列表是 [“time”, “me”, “bell”]，我们就可以将其表示为 S = “time#bell#” 和 indexes = [0, 2, 5]。对于每一个索引，我们可以通过从字符串 S 中索引的位置开始读取字符串，直到 “#” 结束，来恢复我们之前的单词列表。那么成功对给定单词列表进行编码的最小字符串长度是多少呢？</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 目标就是保留所有不是其他单词后缀的单词，最后的结果就是这些单词长度加一的总和，因为每个单词编码后后面还需要跟一个 # 符号。</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">minimumLengthEncoding</span><span class="params">(self, words: List[str])</span> -&gt; int:</span></span><br><span class="line">        good = set(words)</span><br><span class="line">        <span class="keyword">for</span> word <span class="keyword">in</span> words:</span><br><span class="line">            <span class="keyword">for</span> k <span class="keyword">in</span> range(<span class="number">1</span>, len(word)):</span><br><span class="line">                good.discard(word[k:])</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> sum(len(word) + <span class="number">1</span> <span class="keyword">for</span> word <span class="keyword">in</span> good)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 字典树的叶子节点（没有孩子的节点）就代表没有后缀的单词，统计叶子节点代表的单词长度加一的和即为我们要的答案。</span></span><br><span class="line"><span class="keyword">import</span> collections</span><br><span class="line"><span class="keyword">from</span> functools <span class="keyword">import</span> reduce</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">minimumLengthEncoding</span><span class="params">(self, words)</span>:</span></span><br><span class="line">        words = list(set(words)) <span class="comment">#remove duplicates</span></span><br><span class="line">        Trie = <span class="keyword">lambda</span>: collections.defaultdict(Trie)</span><br><span class="line">        trie = Trie()</span><br><span class="line">        <span class="comment">#reduce(..., S, trie) is trie[S[0]][S[1]][S[2]][...][S[S.length - 1]]</span></span><br><span class="line">        <span class="comment"># reduce() 函数会对参数序列中元素进行累积。</span></span><br><span class="line">        <span class="comment"># 函数将一个数据集合（链表，元组等）中的所有数据进行下列操作：用传给 reduce 中的函数 function（有两个参数）先对集合中的第 1、2 个元素进行操作，得到的结果再与第三个数据用 function 函数运算，最后得到一个结果。</span></span><br><span class="line">        nodes = [reduce(dict.__getitem__, word[::<span class="number">-1</span>], trie)</span><br><span class="line">                 <span class="keyword">for</span> word <span class="keyword">in</span> words]</span><br><span class="line">        <span class="comment">#Add word to the answer if it's node has no neighbors</span></span><br><span class="line">        <span class="keyword">return</span> sum(len(word) + <span class="number">1</span></span><br><span class="line">                   <span class="keyword">for</span> i, word <span class="keyword">in</span> enumerate(words)</span><br><span class="line">                   <span class="keyword">if</span> len(nodes[i]) == <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="算法题6-LeetCode-1162-地图分析-2020-3-29-BFS-动态规划-★★★"><a href="#算法题6-LeetCode-1162-地图分析-2020-3-29-BFS-动态规划-★★★" class="headerlink" title="算法题6.  LeetCode. 1162. 地图分析 (2020/3/29) BFS 动态规划 ★★★"></a>算法题6.  LeetCode. <a href="https://leetcode-cn.com/problems/as-far-from-land-as-possible/" target="_blank" rel="noopener">1162. 地图分析</a> (2020/3/29) BFS 动态规划 ★★★</h3><p>你现在手里有一份大小为 $N * N$ 的『地图』（网格） grid，上面的每个『区域』（单元格）都用 0 和 1 标记好了。其中 0 代表海洋，1 代表陆地，你知道距离陆地区域最远的海洋区域是是哪一个吗？请返回该海洋区域到离它最近的陆地区域的距离。我们这里说的距离是『曼哈顿距离』（ Manhattan Distance）：$(x_{0}, y_{0})$ 和 $(x_{1}, y_{1})$ 这两个区域之间的距离是 $|x_{0} - x_{1}| + |y_{0} - y_{1}|$ 。如果我们的地图上只有陆地或者海洋，请返回 -1。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">maxDistance</span><span class="params">(self, grid)</span>:</span></span><br><span class="line">        n = len(grid)</span><br><span class="line">        steps = <span class="number">-1</span></span><br><span class="line">        queue = [(i, j) <span class="keyword">for</span> i <span class="keyword">in</span> range(n) <span class="keyword">for</span> j <span class="keyword">in</span> range(n) <span class="keyword">if</span> grid[i][j] == <span class="number">1</span>]</span><br><span class="line">        <span class="keyword">if</span> len(queue) == <span class="number">0</span> <span class="keyword">or</span> len(queue) == n ** <span class="number">2</span>: <span class="keyword">return</span> steps</span><br><span class="line">        <span class="keyword">while</span> len(queue) &gt; <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">for</span> _ <span class="keyword">in</span> range(len(queue)): </span><br><span class="line">                x, y = queue.pop(<span class="number">0</span>)</span><br><span class="line">                <span class="keyword">for</span> xi, yj <span class="keyword">in</span> [(x + <span class="number">1</span>, y), (x - <span class="number">1</span>, y), (x, y + <span class="number">1</span>), (x, y - <span class="number">1</span>)]:</span><br><span class="line">                    <span class="keyword">if</span> xi &gt;= <span class="number">0</span> <span class="keyword">and</span> xi &lt; n <span class="keyword">and</span> yj &gt;= <span class="number">0</span> <span class="keyword">and</span> yj &lt; n <span class="keyword">and</span> grid[xi][yj] == <span class="number">0</span>:</span><br><span class="line">                        queue.append((xi, yj))</span><br><span class="line">                        grid[xi][yj] = <span class="number">-1</span></span><br><span class="line">            steps += <span class="number">1</span></span><br><span class="line">                </span><br><span class="line">        <span class="keyword">return</span> steps</span><br></pre></td></tr></table></figure>
+<h3 id="算法题7-数字游戏-2020-3-30-★★★"><a href="#算法题7-数字游戏-2020-3-30-★★★" class="headerlink" title="算法题7.   数字游戏 (2020/3/30)   ★★★"></a>算法题7.   数字游戏 (2020/3/30)   ★★★</h3><p>小W发明了一个游戏，他在黑板上写出了一行数字$a_{1},a_{2},….a_{n}$，然后给你m个回合的机会，每回合你可以从中选择一个数擦去它，接着剩下来的每个数字 $a_{i}$ 都要递减一个值 $b_{i}$。如此重复m个回合，所有你擦去的数字之和就是你所得到的分数。 求出最多可得多少分。</p>
+<pre><code>输入：5 (第一行输入整数, 1&lt;=n&lt;=100，表示数字的个数)
+     5 (一个整数，表示回合数， 1&lt;=m&lt;=n)
+     10 20 30 40 50 (n个不超过10000的正整数，分别为a1, a2, a3...)
+     4 5 6 7 8 (n个不超过500的正整数，分别为b1, b2, b3...)
+输出：100
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 动态规划表</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">MaxValue</span><span class="params">(self, n, m, list1, list2)</span>:</span></span><br><span class="line">		<span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">			<span class="keyword">for</span> j <span class="keyword">in</span> range(i+<span class="number">1</span>, n):</span><br><span class="line">				<span class="keyword">if</span> list2[i] &lt; list2[j]:</span><br><span class="line">					self.swap(list2, i, j)</span><br><span class="line">					self.swap(list1, i, j)</span><br><span class="line">		dp = [[<span class="number">0</span> <span class="keyword">for</span> i <span class="keyword">in</span> range(m+<span class="number">1</span>)] <span class="keyword">for</span> j <span class="keyword">in</span> range(n+<span class="number">1</span>)]</span><br><span class="line">		<span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, n+<span class="number">1</span>):</span><br><span class="line">			<span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">1</span>, min(m, i)+<span class="number">1</span>):</span><br><span class="line">				dp[i][j] = max(dp[i<span class="number">-1</span>][j], dp[i<span class="number">-1</span>][j<span class="number">-1</span>]+list1[i<span class="number">-1</span>]-list2[i<span class="number">-1</span>]*(j<span class="number">-1</span>))</span><br><span class="line">		<span class="keyword">return</span> dp[n][m]</span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">swap</span><span class="params">(self, nums, index1, index2)</span>:</span></span><br><span class="line">		temp = nums[index1]</span><br><span class="line">		nums[index1] = nums[index2]</span><br><span class="line">		nums[index2] = temp</span><br><span class="line"><span class="comment"># 数字生成器</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">NumberGenerator</span><span class="params">(n_range, list1_range, list2_range)</span>:</span></span><br><span class="line">	<span class="keyword">import</span> random</span><br><span class="line">	n = random.randint(<span class="number">1</span>, n_range)</span><br><span class="line">	m = random.randint(<span class="number">1</span>, n)</span><br><span class="line">	list1 = []</span><br><span class="line">	<span class="keyword">for</span> _ <span class="keyword">in</span> range(n):</span><br><span class="line">		list1.append(random.randint(<span class="number">1</span>, list1_range))</span><br><span class="line">	list2 = []</span><br><span class="line">	<span class="keyword">for</span> _ <span class="keyword">in</span> range(n):</span><br><span class="line">		list2.append(random.randint(<span class="number">1</span>, list2_range))</span><br><span class="line">	<span class="keyword">return</span> n, m, list1, list2</span><br><span class="line"><span class="comment"># 暴力解法</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ViolentSolution</span>:</span></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">ViolentSolution</span><span class="params">(self, n, m, list1, list2)</span>:</span></span><br><span class="line">		<span class="keyword">from</span> itertools <span class="keyword">import</span> combinations</span><br><span class="line">		index = list(combinations([i <span class="keyword">for</span> i <span class="keyword">in</span> range(n)], m))</span><br><span class="line">		maxvalue = []</span><br><span class="line">		print(len(index))</span><br><span class="line">		<span class="keyword">for</span> i <span class="keyword">in</span> index:</span><br><span class="line">			nums1, nums2 = [], []</span><br><span class="line">			<span class="keyword">for</span> j <span class="keyword">in</span> i:</span><br><span class="line">				nums1.append(list1[j])</span><br><span class="line">				nums2.append(list2[j])</span><br><span class="line">			print(<span class="string">"包含m个数的列表"</span>, nums1, nums2)</span><br><span class="line">			maxvalue.append(self.ListMaxValue(nums1, nums2))</span><br><span class="line">		print(maxvalue, len(maxvalue))</span><br><span class="line">		<span class="keyword">return</span> max(maxvalue)</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">ListMaxValue</span><span class="params">(self, list1, list2)</span>:</span></span><br><span class="line">		maxvalue = <span class="number">0</span></span><br><span class="line">		<span class="keyword">for</span> i <span class="keyword">in</span> range(len(list1)):</span><br><span class="line">			<span class="keyword">for</span> j <span class="keyword">in</span> range(i+<span class="number">1</span>, len(list1)):</span><br><span class="line">				<span class="keyword">if</span> list2[i] &lt; list2[j]:</span><br><span class="line">					self.swap(list2, i, j)</span><br><span class="line">					self.swap(list1, i, j)</span><br><span class="line">		print(list1, list2)</span><br><span class="line">		<span class="keyword">for</span> i <span class="keyword">in</span> list1:</span><br><span class="line">			maxvalue += i</span><br><span class="line">		<span class="keyword">for</span> i <span class="keyword">in</span> range(m):</span><br><span class="line">			maxvalue -= list2[i] * i</span><br><span class="line">		<span class="keyword">return</span> maxvalue</span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">swap</span><span class="params">(self, nums, index1, index2)</span>:</span></span><br><span class="line">		temp = nums[index1]</span><br><span class="line">		nums[index1] = nums[index2]</span><br><span class="line">		nums[index2] = temp</span><br><span class="line"><span class="keyword">import</span> copy</span><br><span class="line">TN = <span class="number">0</span></span><br><span class="line">SUM = <span class="number">1</span></span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> range(SUM):</span><br><span class="line">	n, m, list1, list2 = NumberGenerator(<span class="number">10</span>, <span class="number">100</span>, <span class="number">50</span>)</span><br><span class="line">	value1 = ViolentSolution().ViolentSolution(n, m, copy.deepcopy(list1), copy.deepcopy(list2))</span><br><span class="line">	value2 = Solution().MaxValue(n, m, list1, list2)</span><br><span class="line">	print(<span class="string">'当前的一组数字是：'</span>, n, m, list1, list2, value1, value2)</span><br><span class="line">	<span class="keyword">if</span> value1 == value2:</span><br><span class="line">		TN += <span class="number">1</span></span><br><span class="line">print(TN/SUM)</span><br><span class="line"><span class="comment"># 还有一部分数据最总结果两个对不上，继续思考。</span></span><br></pre></td></tr></table></figure>
+<h3 id="算法题8-LeetCode-面试题62-圆圈中最后剩下的数字-2020-3-30-★★★"><a href="#算法题8-LeetCode-面试题62-圆圈中最后剩下的数字-2020-3-30-★★★" class="headerlink" title="算法题8. LeetCode. 面试题62. 圆圈中最后剩下的数字 (2020/3/30)  ★★★"></a>算法题8. LeetCode. <a href="https://leetcode-cn.com/problems/yuan-quan-zhong-zui-hou-sheng-xia-de-shu-zi-lcof/" target="_blank" rel="noopener">面试题62. 圆圈中最后剩下的数字</a> (2020/3/30)  ★★★</h3><p>$0,1,\dots,n-1$这n个数字排成一个圆圈，从数字0开始，每次从这个圆圈里删除第m个数字。求出这个圆圈里剩下的最后一个数字。例如，0、1、2、3、4这5个数字组成一个圆圈，从数字0开始每次删除第3个数字，则删除的前4个数字依次是2、0、4、1，因此最后剩下的数字是3。</p>
+<p>经典解法：利用环形链表模拟圆圈，创建一个共有 n 个节点的环形链表，然后每次在这个链表中删除第 m 个节点。每删除一个数字需要 m 步运算，共有 n 个数字，总的时间复杂度为 $O(mn)$，同时还需要一个辅助链表来模拟圆圈，额外空间复杂度为 $O(n)$。</p>
+<p>找规律法：设 $f(n, m)$，表示每次在 n 个数字0，1，…，n-1中删除第 m 个数字最后剩下的数字，删除的第一个数字$(m-1)\%n$，记为 k，$f^{‘}(n-1, m)$ 表示在第一个数字被删除后，序列重新调整后删除第 m 个节点最后剩下的数字，因此 $f^{<code>}(n-1, m)=f(n, m)$；设 $p(x)=(x-k-1)\%n$，表示如果映射前的数字是 $x$，映射后的数字是 $(x-k-1)\%n$，逆映射为 $p^{-1}(x) = (x+k+1)\%n$。因此 $f^{</code>}(n-1, m)=p^{-1}[f(n-1,m)]=[f(n-1, m)+k+1] \%n$。</p>
+<script type="math/tex; mode=display">
+f(n, m)=\begin{cases}0, & \text{n=1} \\[3ex][f(n-1, m)+m]\%n, & \text{n>1}\end{cases}</script><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">LastRemaining_Solution</span><span class="params">(self, n, m)</span>:</span></span><br><span class="line">        <span class="comment"># write code here</span></span><br><span class="line">        <span class="keyword">if</span> n &lt; <span class="number">1</span> <span class="keyword">or</span> m &lt; <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">        last = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">2</span>, n + <span class="number">1</span>):</span><br><span class="line">            last = (last + m) % i</span><br><span class="line">        <span class="keyword">return</span> last</span><br></pre></td></tr></table></figure>
+<h3 id="算法题9-LeetCode-912-排序数组-2020-3-31"><a href="#算法题9-LeetCode-912-排序数组-2020-3-31" class="headerlink" title="算法题9. LeetCode. 912. 排序数组 (2020/3/31)"></a>算法题9. LeetCode. <a href="https://leetcode-cn.com/problems/sort-an-array/" target="_blank" rel="noopener">912. 排序数组</a> (2020/3/31)</h3><p> 给定一个整数数组 $nums$，将该数组升序排列。 <a href="https://leetcode-cn.com/problems/sort-an-array/solution/pai-xu-shu-zu-by-leetcode-solution/" target="_blank" rel="noopener">LeetCode-Solution</a></p>
+<p>方法一：堆排序 </p>
+<p>堆排序的思想就是先将待排序的序列建成大根堆，使得每个父节点的元素大于等于它的子节点。此时整个序列最大值即为堆顶元素，我们将其与末尾元素交换，使末尾元素为最大值，然后再调整堆顶元素使得剩下的 n-1 个元素仍为大根堆，再重复执行以上操作我们即能得到一个有序的序列。</p>
+<p>时间复杂度：$O(n\log n)$。初始化建堆的时间复杂度为 O(n)O(n)，建完堆以后需要进行 n-1 次调整，一次调整（即 maxHeapify） 的时间复杂度为 $O(\log n)$，那么 n-1 次调整即需要 $O(n\log n)$ 的时间复杂度。因此，总时间复杂度为 $O(n+n\log n)=O(n\ logn)$。</p>
+<p>空间复杂度：$O(1)$。只需要常数的空间存放若干变量。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">sortArray</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">		self.heap_sort(nums)</span><br><span class="line">		<span class="keyword">return</span> nums</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">heap_sort</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">		self.build_heap(nums)</span><br><span class="line">		<span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums)<span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>):</span><br><span class="line">			nums[i], nums[<span class="number">0</span>] = nums[<span class="number">0</span>], nums[i]</span><br><span class="line">			self.heapify(nums, <span class="number">0</span>, i)</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">build_heap</span><span class="params">(self, heap)</span>:</span></span><br><span class="line">		<span class="keyword">for</span> i <span class="keyword">in</span> range(len(heap)<span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>):</span><br><span class="line">			self.heapify(heap, i, len(heap))</span><br><span class="line">            </span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">heapify</span><span class="params">(self, heap, root, heap_len)</span>:</span></span><br><span class="line">		p = root</span><br><span class="line">		<span class="keyword">while</span> p * <span class="number">2</span> + <span class="number">1</span> &lt; heap_len:</span><br><span class="line">			l, r = p*<span class="number">2</span>+<span class="number">1</span>, p*<span class="number">2</span>+<span class="number">2</span></span><br><span class="line">			<span class="keyword">if</span> heap_len &lt;= r <span class="keyword">or</span> heap[r] &lt; heap[l]:</span><br><span class="line">				nex = l</span><br><span class="line">			<span class="keyword">else</span>:</span><br><span class="line">				nex = r</span><br><span class="line">			<span class="keyword">if</span> heap[p] &lt; heap[nex]:</span><br><span class="line">				heap[p], heap[nex] = heap[nex], heap[p]</span><br><span class="line">				p = nex</span><br><span class="line">			<span class="keyword">else</span>:</span><br><span class="line">				<span class="keyword">break</span></span><br></pre></td></tr></table></figure>
+<p> <strong>⭐️</strong> </p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/算法题/" rel="tag"># 算法题</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/03/01/找工作/" rel="next" title="找工作">
+                <i class="fa fa-chevron-left"></i> 找工作
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/header.jpg" alt="木木">
+            
+              <p class="site-author-name" itemprop="name">木木</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#算法题1：获胜一方的三张牌的点数最大和-2020-3-24"><span class="nav-number">1.</span> <span class="nav-text">算法题1：获胜一方的三张牌的点数最大和 (2020/3/24)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算法题2：LeetCode-17-按摩师-2020-3-24"><span class="nav-number">2.</span> <span class="nav-text">算法题2：LeetCode  17.按摩师 (2020/3/24)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算法题3：LeetCode-892-三维形体的表面积-2020-3-25"><span class="nav-number">3.</span> <span class="nav-text">算法题3：LeetCode 892. 三维形体的表面积 (2020/3/25)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算法题4：A获奖的概率-2020-3-25"><span class="nav-number">4.</span> <span class="nav-text">算法题4：A获奖的概率 (2020/3/25)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算法题5：LeetCode-820-单词的压缩编码-2020-3-28-★★★"><span class="nav-number">5.</span> <span class="nav-text">算法题5：LeetCode 820. 单词的压缩编码 (2020/3/28) ★★★</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算法题6-LeetCode-1162-地图分析-2020-3-29-BFS-动态规划-★★★"><span class="nav-number">6.</span> <span class="nav-text">算法题6.  LeetCode. 1162. 地图分析 (2020/3/29) BFS 动态规划 ★★★</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算法题7-数字游戏-2020-3-30-★★★"><span class="nav-number">7.</span> <span class="nav-text">算法题7.   数字游戏 (2020/3/30)   ★★★</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算法题8-LeetCode-面试题62-圆圈中最后剩下的数字-2020-3-30-★★★"><span class="nav-number">8.</span> <span class="nav-text">算法题8. LeetCode. 面试题62. 圆圈中最后剩下的数字 (2020/3/30)  ★★★</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算法题9-LeetCode-912-排序数组-2020-3-31"><span class="nav-number">9.</span> <span class="nav-text">算法题9. LeetCode. 912. 排序数组 (2020/3/31)</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">木木</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
