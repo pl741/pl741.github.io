@@ -101,7 +101,7 @@
 <meta property="og:image" content="http://pl741.github.io/2019/11/29/算法面试题/Users/warrior/AppData/Roaming/Typora/typora-user-images/image-20200419190210473.png">
 <meta property="og:image" content="http://pl741.github.io/2019/11/29/算法面试题/Users/warrior/AppData/Roaming/Typora/typora-user-images/image-20200419190232946.png">
 <meta property="og:image" content="http://pl741.github.io/2019/11/29/算法面试题/9.png">
-<meta property="og:updated_time" content="2020-05-06T01:30:16.534Z">
+<meta property="og:updated_time" content="2020-05-08T01:36:59.898Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="算法面试题">
 <meta name="twitter:description" content="刷题4/22 剑指offer简单题： 面试题27. 二叉树的镜像 面试题28. 对称的二叉树  ⭐ 面试题32 - II. 从上到下打印二叉树 II  ⭐ 面试题55 - I. 二叉树的深度 面试题54. 二叉搜索树的第k大节点   ⭐ 面试题55 - II. 平衡二叉树 面试题68 - I. 二叉搜索树的最近公共祖先  ⭐ 面试题68 - II. 二叉树的最近公共祖先  ⭐ 面试题58 - I.">
@@ -442,8 +442,21 @@
 <li><a href="https://leetcode-cn.com/problems/reverse-linked-list-ii/" target="_blank" rel="noopener">92. 反转链表 II</a>   ⭐</li>
 </ol>
 <h5 id="4-25"><a href="#4-25" class="headerlink" title="4/25"></a>4/25</h5><ol>
-<li><a href="https://leetcode-cn.com/problems/trapping-rain-water/" target="_blank" rel="noopener">42. 接雨水</a>  ⭐</li>
-<li><a href="https://leetcode-cn.com/problems/median-of-two-sorted-arrays/" target="_blank" rel="noopener">4. 寻找两个有序数组的中位数</a>  ⭐</li>
+<li><p><a href="https://leetcode-cn.com/problems/trapping-rain-water/" target="_blank" rel="noopener">42. 接雨水</a>  ⭐</p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/median-of-two-sorted-arrays/" target="_blank" rel="noopener">4. 寻找两个有序数组的中位数</a>  ⭐⭐</p>
+</li>
+<li><p>两个有序数组找第k大  ⭐</p>
+<p>a. O(m + n) 的解法比较直观，直接merge 两个数组，然后求第k 大的元素；</p>
+<p>b. 可以用一个计数器，记录当前已经找到第m 大的元素了。同时使用两个指针pA 和pB，分别指向A 和B 数组的第一个元素，使用类似于merge sort 的原理，如果数组A 当前元素小，那么pA++，同时m++；如果数组B 当前元素小，那么pB++，同时m++。最终当m 等于k 的时候，就得到了我们的答案，O(k)时间，O(1) 空间。但是，当k 很接近m + n 的时候，这个方法还是O(m + n) 的。</p>
+<p>c. 可以考虑从 k 入手。如果每次都能够删除一些一定在第k 大元素之前的元素，那么只需要进行k 次。 由于A 和B 都是有序的，类似于二分查找。假设 A 和 B 的元素个数都大于k/2，将A 的第 k/2 个元素（即A[k/2-1]）和 B 的第 k/2<br>个元素（即B[k/2-1]）进行比较，有以下三种情况（为了简化这里先假设k 为偶数，所得到的结论对于k 是奇数也是成立的）：</p>
+<p>A[k/2-1] &lt; B[k/2-1]，意味着A[0] 到A[k/2-1] 的肯定在的top k 元素的范围内，换句话说，A[k/2-1] 不可能大于第k 大元素。删除A 数组的这k/2 个元素。</p>
+<p>A[k/2-1] &gt; B[k/2-1] 时，可以删除B 数组的k/2 个元素。<br>当A[k/2-1] == B[k/2-1] 时，说明找到了第k 大的元素，直接返回A[k/2-1] 或B[k/2-1]即可。</p>
+<div><div class="fold_hider"><div class="close hider_title">ViewCode</div></div><div class="fold">
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">Find_kth</span><span class="params">(self, nums1, nums2, k)</span>:</span></span><br><span class="line">		m = len(nums1)</span><br><span class="line">		n = len(nums2)</span><br><span class="line">		<span class="keyword">if</span> m &gt; n:</span><br><span class="line">			nums1, nums2, m, n = nums2, nums1, n, m</span><br><span class="line">		imin = <span class="number">0</span></span><br><span class="line">		imax = min(m, k)</span><br><span class="line">		<span class="keyword">while</span> imin &lt;= imax:</span><br><span class="line">			i = (imax + imin) // <span class="number">2</span></span><br><span class="line">			j = k - i</span><br><span class="line">			<span class="keyword">if</span> j &gt; n <span class="keyword">or</span> (i &lt; min(m, k) <span class="keyword">and</span> nums2[j<span class="number">-1</span>] &gt; nums1[i]):</span><br><span class="line">				imin = i + <span class="number">1</span></span><br><span class="line">			<span class="keyword">elif</span> i &gt; <span class="number">0</span> <span class="keyword">and</span> j &lt; n <span class="keyword">and</span> nums1[i<span class="number">-1</span>] &gt; nums2[j]:</span><br><span class="line">				imax = i - <span class="number">1</span></span><br><span class="line">			<span class="keyword">else</span>:</span><br><span class="line">				<span class="keyword">if</span> i == <span class="number">0</span>:<span class="keyword">return</span> nums2[j<span class="number">-1</span>]</span><br><span class="line">				<span class="keyword">elif</span> j == <span class="number">0</span>: <span class="keyword">return</span> nums1[i<span class="number">-1</span>]</span><br><span class="line">				<span class="keyword">else</span>:<span class="keyword">return</span> max(nums1[i<span class="number">-1</span>], nums2[j<span class="number">-1</span>])</span><br><span class="line">print(Solution().Find_kth([<span class="number">1</span>, <span class="number">2</span>, <span class="number">5</span>], [<span class="number">3</span>, <span class="number">4</span>, <span class="number">9</span>], <span class="number">6</span>))</span><br></pre></td></tr></table></figure>
+
+</div></div>
+</li>
 </ol>
 <h5 id="4-28"><a href="#4-28" class="headerlink" title="4/28"></a>4/28</h5><ol>
 <li><a href="https://leetcode-cn.com/problems/delete-node-in-a-bst/" target="_blank" rel="noopener">450. 删除二叉搜索树中的节点</a>  ⭐</li>
@@ -451,15 +464,28 @@
 <li><a href="https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-ii/" target="_blank" rel="noopener">122. 买卖股票的最佳时机 II</a>  ⭐</li>
 </ol>
 <h5 id="4-29"><a href="#4-29" class="headerlink" title="4/29"></a>4/29</h5><ol>
-<li><a href="https://leetcode-cn.com/problems/yong-liang-ge-zhan-shi-xian-dui-lie-lcof/" target="_blank" rel="noopener">面试题09. 用两个栈实现队列</a>   ⭐</li>
-<li><a href="https://leetcode-cn.com/problems/min-stack/" target="_blank" rel="noopener">155. 最小栈</a>   ⭐</li>
-<li><a href="https://leetcode-cn.com/problems/single-number-ii/" target="_blank" rel="noopener">137. 只出现一次的数字 II</a>   ⭐</li>
-<li><a href="https://blog.csdn.net/hanyajun0123/article/details/84320469" target="_blank" rel="noopener">圆环回原点问题</a>  ⭐</li>
-<li><a href="https://leetcode-cn.com/problems/move-zeroes/" target="_blank" rel="noopener">283. 移动零</a>  ⭐</li>
-<li><a href="https://leetcode-cn.com/problems/diameter-of-binary-tree/" target="_blank" rel="noopener">543. 二叉树的直径</a>  ⭐</li>
-<li><a href="https://leetcode-cn.com/problems/smallest-k-lcci/" target="_blank" rel="noopener">面试题 17.14. 最小K个数</a>   ⭐</li>
-<li><a href="https://leetcode-cn.com/problems/word-search/" target="_blank" rel="noopener">79. 单词搜索</a>  ⭐</li>
-<li><a href="https://leetcode-cn.com/problems/er-cha-sou-suo-shu-yu-shuang-xiang-lian-biao-lcof/" target="_blank" rel="noopener">面试题36. 二叉搜索树与双向链表</a>  ⭐</li>
+<li><p><a href="https://leetcode-cn.com/problems/yong-liang-ge-zhan-shi-xian-dui-lie-lcof/" target="_blank" rel="noopener">面试题09. 用两个栈实现队列</a>   ⭐</p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/min-stack/" target="_blank" rel="noopener">155. 最小栈</a>   ⭐</p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/single-number-ii/" target="_blank" rel="noopener">137. 只出现一次的数字 II</a>   ⭐</p>
+</li>
+<li><p><a href="https://blog.csdn.net/hanyajun0123/article/details/84320469" target="_blank" rel="noopener">圆环回原点问题</a>  ⭐</p>
+<div><div class="fold_hider"><div class="close hider_title">ViewCode</div></div><div class="fold">
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">GetSteps</span><span class="params">(self, n, k)</span>:</span></span><br><span class="line">		<span class="keyword">if</span> n == <span class="number">0</span>:</span><br><span class="line">			<span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">		<span class="keyword">if</span> n == <span class="number">2</span>:</span><br><span class="line">			<span class="keyword">if</span> k % <span class="number">2</span> ==<span class="number">0</span>:</span><br><span class="line">				<span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">			<span class="keyword">else</span>:</span><br><span class="line">				<span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">		dp = [[<span class="number">0</span> <span class="keyword">for</span> i <span class="keyword">in</span> range(n)] <span class="keyword">for</span> j <span class="keyword">in</span> range(k+<span class="number">1</span>)]</span><br><span class="line">		dp[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">1</span></span><br><span class="line">		<span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, k+<span class="number">1</span>):</span><br><span class="line">			<span class="keyword">for</span> j <span class="keyword">in</span> range(n):</span><br><span class="line">				dp[i][j] = dp[i<span class="number">-1</span>][(j<span class="number">-1</span>+n)%n] + dp[i<span class="number">-1</span>][(j+<span class="number">1</span>)%n]</span><br><span class="line">		<span class="keyword">return</span> dp[k][<span class="number">0</span>]</span><br><span class="line">print(Solution().GetSteps(<span class="number">10</span>, <span class="number">2</span>))</span><br></pre></td></tr></table></figure>
+
+</div></div>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/move-zeroes/" target="_blank" rel="noopener">283. 移动零</a>  ⭐</p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/diameter-of-binary-tree/" target="_blank" rel="noopener">543. 二叉树的直径</a>  ⭐</p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/smallest-k-lcci/" target="_blank" rel="noopener">面试题 17.14. 最小K个数</a>   ⭐</p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/word-search/" target="_blank" rel="noopener">79. 单词搜索</a>  ⭐</p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/er-cha-sou-suo-shu-yu-shuang-xiang-lian-biao-lcof/" target="_blank" rel="noopener">面试题36. 二叉搜索树与双向链表</a>  ⭐</p>
+</li>
 </ol>
 <h5 id="4-30"><a href="#4-30" class="headerlink" title="4/30"></a>4/30</h5><ol>
 <li><a href="https://leetcode-cn.com/problems/minimum-path-sum/" target="_blank" rel="noopener">64. 最小路径和</a></li>
@@ -471,76 +497,43 @@
 <li><a href="https://leetcode-cn.com/problems/subtree-of-another-tree/" target="_blank" rel="noopener">572. 另一个树的子树</a>  ⭐</li>
 </ol>
 <h5 id="5-1"><a href="#5-1" class="headerlink" title="5/1"></a>5/1</h5><ol>
-<li><p><a href="https://leetcode-cn.com/problems/fei-bo-na-qi-shu-lie-lcof/" target="_blank" rel="noopener">面试题10- I. 斐波那契数列</a></p>
-</li>
-<li><p><a href="https://leetcode-cn.com/problems/qing-wa-tiao-tai-jie-wen-ti-lcof/" target="_blank" rel="noopener">面试题10- II. 青蛙跳台阶问题</a></p>
-</li>
-<li><p><a href="https://leetcode-cn.com/problems/diao-zheng-shu-zu-shun-xu-shi-qi-shu-wei-yu-ou-shu-qian-mian-lcof/" target="_blank" rel="noopener">面试题21. 调整数组顺序使奇数位于偶数前面</a></p>
-</li>
-<li><p><a href="https://leetcode-cn.com/problems/er-jin-zhi-zhong-1de-ge-shu-lcof/" target="_blank" rel="noopener">面试题15. 二进制中1的个数</a>  ⭐</p>
-</li>
-<li><p><a href="https://leetcode-cn.com/problems/da-yin-cong-1dao-zui-da-de-nwei-shu-lcof/" target="_blank" rel="noopener">面试题17. 打印从1到最大的n位数</a>  ⭐</p>
-</li>
-<li><p><a href="https://leetcode-cn.com/problems/shun-shi-zhen-da-yin-ju-zhen-lcof/" target="_blank" rel="noopener">面试题29. 顺时针打印矩阵</a> ⭐</p>
-</li>
-<li><p><a href="https://leetcode-cn.com/problems/bao-han-minhan-shu-de-zhan-lcof/" target="_blank" rel="noopener">面试题30. 包含min函数的栈</a></p>
-</li>
-<li><p><a href="https://leetcode-cn.com/problems/shu-zu-zhong-chu-xian-ci-shu-chao-guo-yi-ban-de-shu-zi-lcof/" target="_blank" rel="noopener">面试题39. 数组中出现次数超过一半的数字</a>  ⭐</p>
-</li>
-<li><p><a href="https://leetcode-cn.com/problems/lian-xu-zi-shu-zu-de-zui-da-he-lcof/" target="_blank" rel="noopener">面试题42. 连续子数组的最大和</a>  ⭐</p>
-</li>
-<li><p><a href="https://leetcode-cn.com/problems/di-yi-ge-zhi-chu-xian-yi-ci-de-zi-fu-lcof/" target="_blank" rel="noopener">面试题50. 第一个只出现一次的字符</a></p>
-</li>
-<li><p><a href="https://leetcode-cn.com/problems/he-wei-sde-liang-ge-shu-zi-lcof/" target="_blank" rel="noopener">面试题57. 和为s的两个数字</a>  ⭐</p>
-</li>
-<li><p><a href="https://leetcode-cn.com/problems/he-wei-sde-lian-xu-zheng-shu-xu-lie-lcof/" target="_blank" rel="noopener">面试题57 - II. 和为s的连续正数序列</a>   ⭐</p>
-</li>
-<li><p><a href="https://leetcode-cn.com/problems/nge-tou-zi-de-dian-shu-lcof/" target="_blank" rel="noopener">面试题60. n个骰子的点数</a>  ⭐</p>
-</li>
-<li><p><a href="https://leetcode-cn.com/problems/bu-ke-pai-zhong-de-shun-zi-lcof/" target="_blank" rel="noopener">面试题61. 扑克牌中的顺子</a>  ⭐</p>
-</li>
-<li><p><a href="https://leetcode-cn.com/problems/two-sum/" target="_blank" rel="noopener">1. 两数之和</a></p>
-</li>
+<li><a href="https://leetcode-cn.com/problems/fei-bo-na-qi-shu-lie-lcof/" target="_blank" rel="noopener">面试题10- I. 斐波那契数列</a></li>
+<li><a href="https://leetcode-cn.com/problems/qing-wa-tiao-tai-jie-wen-ti-lcof/" target="_blank" rel="noopener">面试题10- II. 青蛙跳台阶问题</a></li>
+<li><a href="https://leetcode-cn.com/problems/diao-zheng-shu-zu-shun-xu-shi-qi-shu-wei-yu-ou-shu-qian-mian-lcof/" target="_blank" rel="noopener">面试题21. 调整数组顺序使奇数位于偶数前面</a></li>
+<li><a href="https://leetcode-cn.com/problems/er-jin-zhi-zhong-1de-ge-shu-lcof/" target="_blank" rel="noopener">面试题15. 二进制中1的个数</a>  ⭐</li>
+<li><a href="https://leetcode-cn.com/problems/da-yin-cong-1dao-zui-da-de-nwei-shu-lcof/" target="_blank" rel="noopener">面试题17. 打印从1到最大的n位数</a>  ⭐</li>
+<li><a href="https://leetcode-cn.com/problems/shun-shi-zhen-da-yin-ju-zhen-lcof/" target="_blank" rel="noopener">面试题29. 顺时针打印矩阵</a> ⭐</li>
+<li><a href="https://leetcode-cn.com/problems/bao-han-minhan-shu-de-zhan-lcof/" target="_blank" rel="noopener">面试题30. 包含min函数的栈</a></li>
+<li><a href="https://leetcode-cn.com/problems/shu-zu-zhong-chu-xian-ci-shu-chao-guo-yi-ban-de-shu-zi-lcof/" target="_blank" rel="noopener">面试题39. 数组中出现次数超过一半的数字</a>  ⭐</li>
+<li><a href="https://leetcode-cn.com/problems/lian-xu-zi-shu-zu-de-zui-da-he-lcof/" target="_blank" rel="noopener">面试题42. 连续子数组的最大和</a>  ⭐</li>
+<li><a href="https://leetcode-cn.com/problems/di-yi-ge-zhi-chu-xian-yi-ci-de-zi-fu-lcof/" target="_blank" rel="noopener">面试题50. 第一个只出现一次的字符</a></li>
+<li><a href="https://leetcode-cn.com/problems/he-wei-sde-liang-ge-shu-zi-lcof/" target="_blank" rel="noopener">面试题57. 和为s的两个数字</a>  ⭐</li>
+<li><a href="https://leetcode-cn.com/problems/he-wei-sde-lian-xu-zheng-shu-xu-lie-lcof/" target="_blank" rel="noopener">面试题57 - II. 和为s的连续正数序列</a>   ⭐</li>
+<li><a href="https://leetcode-cn.com/problems/nge-tou-zi-de-dian-shu-lcof/" target="_blank" rel="noopener">面试题60. n个骰子的点数</a>  ⭐</li>
+<li><a href="https://leetcode-cn.com/problems/bu-ke-pai-zhong-de-shun-zi-lcof/" target="_blank" rel="noopener">面试题61. 扑克牌中的顺子</a>  ⭐</li>
+<li><a href="https://leetcode-cn.com/problems/two-sum/" target="_blank" rel="noopener">1. 两数之和</a></li>
 </ol>
 <h5 id="5-2"><a href="#5-2" class="headerlink" title="5/2"></a>5/2</h5><ol>
-<li><p><a href="https://leetcode-cn.com/problems/valid-parentheses/" target="_blank" rel="noopener">20. 有效的括号</a>   ⭐</p>
-</li>
-<li><p><a href="https://leetcode-cn.com/problems/maximum-subarray/" target="_blank" rel="noopener">53. 最大子序和</a>   </p>
-</li>
-<li><p><a href="https://leetcode-cn.com/problems/climbing-stairs/" target="_blank" rel="noopener">70. 爬楼梯</a></p>
-</li>
-<li><p><a href="https://leetcode-cn.com/problems/symmetric-tree/" target="_blank" rel="noopener">101. 对称二叉树</a></p>
-</li>
-<li><p><a href="https://leetcode-cn.com/problems/maximum-depth-of-binary-tree/" target="_blank" rel="noopener">104. 二叉树的最大深度</a></p>
-</li>
-<li><p><a href="https://leetcode-cn.com/problems/linked-list-cycle/" target="_blank" rel="noopener">141. 环形链表</a>   ⭐</p>
-</li>
-<li><p><a href="https://leetcode-cn.com/problems/intersection-of-two-linked-lists/" target="_blank" rel="noopener">160. 相交链表</a></p>
-</li>
-<li><p><a href="https://leetcode-cn.com/problems/palindrome-linked-list/" target="_blank" rel="noopener">234. 回文链表</a>  ⭐</p>
-</li>
+<li><a href="https://leetcode-cn.com/problems/valid-parentheses/" target="_blank" rel="noopener">20. 有效的括号</a>   ⭐</li>
+<li><a href="https://leetcode-cn.com/problems/maximum-subarray/" target="_blank" rel="noopener">53. 最大子序和</a> </li>
+<li><a href="https://leetcode-cn.com/problems/climbing-stairs/" target="_blank" rel="noopener">70. 爬楼梯</a></li>
+<li><a href="https://leetcode-cn.com/problems/symmetric-tree/" target="_blank" rel="noopener">101. 对称二叉树</a></li>
+<li><a href="https://leetcode-cn.com/problems/maximum-depth-of-binary-tree/" target="_blank" rel="noopener">104. 二叉树的最大深度</a></li>
+<li><a href="https://leetcode-cn.com/problems/linked-list-cycle/" target="_blank" rel="noopener">141. 环形链表</a>   ⭐</li>
+<li><a href="https://leetcode-cn.com/problems/intersection-of-two-linked-lists/" target="_blank" rel="noopener">160. 相交链表</a></li>
+<li><a href="https://leetcode-cn.com/problems/palindrome-linked-list/" target="_blank" rel="noopener">234. 回文链表</a>  ⭐</li>
 </ol>
 <h5 id="5-3"><a href="#5-3" class="headerlink" title="5/3"></a>5/3</h5><ol>
-<li><p><a href="https://leetcode-cn.com/problems/house-robber/" target="_blank" rel="noopener">198. 打家劫舍</a></p>
-</li>
-<li><p><a href="https://leetcode-cn.com/problems/majority-element/" target="_blank" rel="noopener">169. 多数元素</a>  ⭐</p>
-</li>
-<li><p><a href="https://leetcode-cn.com/problems/find-all-numbers-disappeared-in-an-array/" target="_blank" rel="noopener">448. 找到所有数组中消失的数字</a>   ⭐</p>
-</li>
-<li><p><a href="https://leetcode-cn.com/problems/hamming-distance/" target="_blank" rel="noopener">461. 汉明距离</a>   ⭐</p>
-</li>
-<li><p><a href="https://leetcode-cn.com/problems/shortest-unsorted-continuous-subarray/" target="_blank" rel="noopener">581. 最短无序连续子数组</a>    ⭐</p>
-</li>
-<li><p><a href="https://leetcode-cn.com/problems/merge-two-binary-trees/" target="_blank" rel="noopener">617. 合并二叉树</a>   ⭐</p>
-</li>
-<li><p><a href="https://leetcode-cn.com/problems/convert-bst-to-greater-tree/" target="_blank" rel="noopener">538. 把二叉搜索树转换为累加树</a>    ⭐</p>
-</li>
-<li><p><a href="https://leetcode-cn.com/problems/valid-palindrome/" target="_blank" rel="noopener">125. 验证回文串</a>   ⭐</p>
-</li>
-<li><p><a href="https://leetcode-cn.com/problems/zhong-jian-er-cha-shu-lcof/" target="_blank" rel="noopener">面试题07. 重建二叉树</a></p>
-</li>
-<li><p><a href="https://leetcode-cn.com/problems/cong-shang-dao-xia-da-yin-er-cha-shu-lcof/" target="_blank" rel="noopener">面试题32 - I. 从上到下打印二叉树</a></p>
-</li>
+<li><a href="https://leetcode-cn.com/problems/house-robber/" target="_blank" rel="noopener">198. 打家劫舍</a></li>
+<li><a href="https://leetcode-cn.com/problems/majority-element/" target="_blank" rel="noopener">169. 多数元素</a>  ⭐</li>
+<li><a href="https://leetcode-cn.com/problems/find-all-numbers-disappeared-in-an-array/" target="_blank" rel="noopener">448. 找到所有数组中消失的数字</a>   ⭐</li>
+<li><a href="https://leetcode-cn.com/problems/hamming-distance/" target="_blank" rel="noopener">461. 汉明距离</a>   ⭐</li>
+<li><a href="https://leetcode-cn.com/problems/shortest-unsorted-continuous-subarray/" target="_blank" rel="noopener">581. 最短无序连续子数组</a>    ⭐</li>
+<li><a href="https://leetcode-cn.com/problems/merge-two-binary-trees/" target="_blank" rel="noopener">617. 合并二叉树</a>   ⭐</li>
+<li><a href="https://leetcode-cn.com/problems/convert-bst-to-greater-tree/" target="_blank" rel="noopener">538. 把二叉搜索树转换为累加树</a>    ⭐</li>
+<li><a href="https://leetcode-cn.com/problems/valid-palindrome/" target="_blank" rel="noopener">125. 验证回文串</a>   ⭐</li>
+<li><a href="https://leetcode-cn.com/problems/zhong-jian-er-cha-shu-lcof/" target="_blank" rel="noopener">面试题07. 重建二叉树</a></li>
+<li><a href="https://leetcode-cn.com/problems/cong-shang-dao-xia-da-yin-er-cha-shu-lcof/" target="_blank" rel="noopener">面试题32 - I. 从上到下打印二叉树</a></li>
 </ol>
 <h5 id="5-4"><a href="#5-4" class="headerlink" title="5/4"></a>5/4</h5><ol>
 <li><a href="https://leetcode-cn.com/problems/cong-shang-dao-xia-da-yin-er-cha-shu-iii-lcof/" target="_blank" rel="noopener">面试题32 - III. 从上到下打印二叉树 III</a>    ⭐</li>
@@ -550,27 +543,23 @@
 <li><a href="https://leetcode-cn.com/problems/jian-sheng-zi-ii-lcof/" target="_blank" rel="noopener">面试题14- II. 剪绳子 II</a>   ⭐</li>
 </ol>
 <h5 id="5-6"><a href="#5-6" class="headerlink" title="5/6"></a>5/6</h5><ol>
-<li><p><a href="https://leetcode-cn.com/problems/longest-palindromic-substring/" target="_blank" rel="noopener">5. 最长回文子串</a></p>
-</li>
-<li><p><a href="https://leetcode-cn.com/problems/shu-de-zi-jie-gou-lcof/" target="_blank" rel="noopener">面试题26. 树的子结构</a></p>
-</li>
-<li><p><a href="https://leetcode-cn.com/problems/zhan-de-ya-ru-dan-chu-xu-lie-lcof/" target="_blank" rel="noopener">面试题31. 栈的压入、弹出序列</a></p>
-</li>
-<li><p><a href="https://leetcode-cn.com/problems/er-cha-sou-suo-shu-de-hou-xu-bian-li-xu-lie-lcof/" target="_blank" rel="noopener">面试题33. 二叉搜索树的后序遍历序列</a></p>
-</li>
-<li><p><a href="https://leetcode-cn.com/problems/fu-za-lian-biao-de-fu-zhi-lcof/" target="_blank" rel="noopener">面试题35. 复杂链表的复制</a></p>
-</li>
-<li><p><a href="https://leetcode-cn.com/problems/xu-lie-hua-er-cha-shu-lcof/" target="_blank" rel="noopener">面试题37. 序列化二叉树</a></p>
-</li>
-<li><p><a href="https://leetcode-cn.com/problems/dui-lie-de-zui-da-zhi-lcof/" target="_blank" rel="noopener">面试题59 - II. 队列的最大值</a></p>
-</li>
+<li><a href="https://leetcode-cn.com/problems/longest-palindromic-substring/" target="_blank" rel="noopener">5. 最长回文子串</a>    ⭐</li>
+<li><a href="https://leetcode-cn.com/problems/shu-de-zi-jie-gou-lcof/" target="_blank" rel="noopener">面试题26. 树的子结构</a></li>
+<li><a href="https://leetcode-cn.com/problems/zhan-de-ya-ru-dan-chu-xu-lie-lcof/" target="_blank" rel="noopener">面试题31. 栈的压入、弹出序列</a></li>
+<li><a href="https://leetcode-cn.com/problems/er-cha-sou-suo-shu-de-hou-xu-bian-li-xu-lie-lcof/" target="_blank" rel="noopener">面试题33. 二叉搜索树的后序遍历序列</a>  ⭐</li>
+<li><a href="https://leetcode-cn.com/problems/edit-distance/" target="_blank" rel="noopener">72. 编辑距离</a>   ⭐</li>
+<li><a href="https://leetcode-cn.com/problems/set-matrix-zeroes/" target="_blank" rel="noopener">73. 矩阵置零</a>  ⭐</li>
+<li><a href="https://leetcode-cn.com/problems/binary-tree-maximum-path-sum/" target="_blank" rel="noopener">124. 二叉树中的最大路径和</a>   ⭐</li>
+<li><a href="https://leetcode-cn.com/problems/unique-paths-ii/" target="_blank" rel="noopener">63. 不同路径 II</a>   ⭐</li>
+<li><a href="https://leetcode-cn.com/problems/rotate-matrix-lcci/" target="_blank" rel="noopener">面试题 01.07. 旋转矩阵</a>   ⭐</li>
 </ol>
 <h5 id="5-7"><a href="#5-7" class="headerlink" title="5/7"></a>5/7</h5><ol>
+<li><a href="https://leetcode-cn.com/problems/fu-za-lian-biao-de-fu-zhi-lcof/" target="_blank" rel="noopener">面试题35. 复杂链表的复制</a></li>
+<li><a href="https://leetcode-cn.com/problems/xu-lie-hua-er-cha-shu-lcof/" target="_blank" rel="noopener">面试题37. 序列化二叉树</a></li>
+<li><a href="https://leetcode-cn.com/problems/dui-lie-de-zui-da-zhi-lcof/" target="_blank" rel="noopener">面试题59 - II. 队列的最大值</a></li>
 <li><a href="https://leetcode-cn.com/problems/ba-shu-zu-pai-cheng-zui-xiao-de-shu-lcof/" target="_blank" rel="noopener">面试题45. 把数组排成最小的数</a></li>
 <li><a href="https://leetcode-cn.com/problems/shu-zu-zhong-shu-zi-chu-xian-de-ci-shu-lcof/" target="_blank" rel="noopener">面试题56 - I. 数组中数字出现的次数</a></li>
 <li><a href="https://leetcode-cn.com/problems/shu-zu-zhong-shu-zi-chu-xian-de-ci-shu-ii-lcof/" target="_blank" rel="noopener">面试题56 - II. 数组中数字出现的次数 II</a></li>
-<li><a href="https://leetcode-cn.com/problems/li-wu-de-zui-da-jie-zhi-lcof/" target="_blank" rel="noopener">面试题47. 礼物的最大价值</a></li>
-<li><a href="https://leetcode-cn.com/problems/gu-piao-de-zui-da-li-run-lcof/" target="_blank" rel="noopener">面试题63. 股票的最大利润</a></li>
 </ol>
 <h5 id="5-8"><a href="#5-8" class="headerlink" title="5/8"></a>5/8</h5><ol>
 <li><a href="https://leetcode-cn.com/problems/zi-fu-chuan-de-pai-lie-lcof/" target="_blank" rel="noopener">面试题38. 字符串的排列</a></li>
@@ -579,7 +568,9 @@
 <li><a href="https://leetcode-cn.com/problems/zui-chang-bu-han-zhong-fu-zi-fu-de-zi-zi-fu-chuan-lcof/" target="_blank" rel="noopener">面试题48. 最长不含重复字符的子字符串</a></li>
 <li><a href="https://leetcode-cn.com/problems/biao-shi-shu-zhi-de-zi-fu-chuan-lcof/" target="_blank" rel="noopener">面试题20. 表示数值的字符串</a></li>
 </ol>
-<h4 id="5-9"><a href="#5-9" class="headerlink" title="5/9"></a>5/9</h4><ol>
+<h5 id="5-9"><a href="#5-9" class="headerlink" title="5/9"></a>5/9</h5><ol>
+<li><a href="https://leetcode-cn.com/problems/li-wu-de-zui-da-jie-zhi-lcof/" target="_blank" rel="noopener">面试题47. 礼物的最大价值</a></li>
+<li><a href="https://leetcode-cn.com/problems/gu-piao-de-zui-da-li-run-lcof/" target="_blank" rel="noopener">面试题63. 股票的最大利润</a></li>
 <li><a href="https://leetcode-cn.com/problems/shu-zhi-de-zheng-shu-ci-fang-lcof/" target="_blank" rel="noopener">面试题16. 数值的整数次方</a></li>
 <li><a href="https://leetcode-cn.com/problems/zheng-ze-biao-da-shi-pi-pei-lcof/" target="_blank" rel="noopener">面试题19. 正则表达式匹配</a></li>
 <li><a href="https://leetcode-cn.com/problems/shu-ju-liu-zhong-de-zhong-wei-shu-lcof/" target="_blank" rel="noopener">面试题41. 数据流中的中位数</a></li>
@@ -589,6 +580,44 @@
 <li><a href="https://leetcode-cn.com/problems/qiu-12n-lcof/" target="_blank" rel="noopener">面试题64. 求1+2+…+n</a></li>
 <li><a href="https://leetcode-cn.com/problems/bu-yong-jia-jian-cheng-chu-zuo-jia-fa-lcof/" target="_blank" rel="noopener">面试题65. 不用加减乘除做加法</a></li>
 <li><a href="https://leetcode-cn.com/problems/gou-jian-cheng-ji-shu-zu-lcof/" target="_blank" rel="noopener">面试题66. 构建乘积数组</a></li>
+</ol>
+<h5 id="中等"><a href="#中等" class="headerlink" title="中等"></a>中等</h5><ol>
+<li><p><a href="https://leetcode-cn.com/problems/one-away-lcci/" target="_blank" rel="noopener">面试题 01.05. 一次编辑</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/rotate-matrix-lcci/" target="_blank" rel="noopener">面试题 01.07. 旋转矩阵</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/zero-matrix-lcci/" target="_blank" rel="noopener">面试题 01.08. 零矩阵</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/partition-list-lcci/" target="_blank" rel="noopener">面试题 02.04. 分割链表</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/sum-lists-lcci/" target="_blank" rel="noopener">面试题 02.05. 链表求和</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/linked-list-cycle-lcci/" target="_blank" rel="noopener">面试题 02.08. 环路检测</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/stack-of-plates-lcci/" target="_blank" rel="noopener">面试题 03.03. 堆盘子</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/sort-of-stacks-lcci/" target="_blank" rel="noopener">面试题 03.05. 栈排序</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/route-between-nodes-lcci/" target="_blank" rel="noopener">面试题 04.01. 节点间通路</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/list-of-depth-lcci/" target="_blank" rel="noopener">面试题 04.03. 特定深度节点链表</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/legal-binary-search-tree-lcci/" target="_blank" rel="noopener">面试题 04.05. 合法二叉搜索树</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/successor-lcci/" target="_blank" rel="noopener">面试题 04.06. 后继者</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/first-common-ancestor-lcci/" target="_blank" rel="noopener">面试题 04.08. 首个共同祖先</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/check-subtree-lcci/" target="_blank" rel="noopener">面试题 04.10. 检查子树</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/paths-with-sum-lcci/" target="_blank" rel="noopener">面试题 04.12. 求和路径</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/bianry-number-to-string-lcci/" target="_blank" rel="noopener">面试题 05.02. 二进制数转字符串</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/closed-number-lcci/" target="_blank" rel="noopener">面试题 05.04. 下一个数</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/draw-line-lcci/" target="_blank" rel="noopener">面试题 05.08. 绘制直线</a></p>
+</li>
 </ol>
 <h4 id="决策树"><a href="#决策树" class="headerlink" title="决策树"></a>决策树</h4><h5 id="1-交叉熵"><a href="#1-交叉熵" class="headerlink" title="1. 交叉熵"></a>1. 交叉熵</h5><p>$X$ 离散型随机变量，概率分布函数 $p(x)=Pr(X=x),x\in \chi $</p>
 <p>$X=x_{0}$ 的<font color="red">信息量</font>为 $I(x_{0}) = -log(p(x_{0}))$ ，事件发生概率越大，携带信息量越少。</p>
@@ -796,6 +825,38 @@ C E H(p, q)=E_{p}[-\log q]=-\sum_{x \in \mathcal{X}} p(x) \log q(x)=H(p)+D_{K L}
 <p>介绍BN层<br>归一化的作用<br>了解哪些机器学习方法<br>推导逻辑回归过程<br>正则化是怎么防止过拟合的？<br>L1正则化和L2正则化的区别？<br>介绍一下XGboost。<br>LSTM和GRU区别<br>rf和gbdt的区别<br>GBDT原理<br>boosting和bagging怎么减小偏差的</p>
 <p>介绍一下决策树原理。介绍一下ID3、CART，逻辑树，描述一下交叉熵，通过交叉熵做loss 怎样体现，输入x1 x2 输出y1，y2 交叉熵如何计算，比如y1和y1’越接近loss为何越小 ，讲讲lr，svm（中间穿插提问，lr损失，svm损失，核函数，作用……） ，了解过svm？有哪些常用的核函数？介绍常用的loss，正负样本差异很大时怎么做（特征：归一化，样本上：采样：具体如何采样？？）， 出个题：概率题 （贝叶斯相关）  a,b丢硬币吃苹果，问吃到的概率 ，全连接层的定义 ，relu 好处 relu后面为0是为了什么（面试官说是为了解决梯度发散问题，小于0时梯度为负，而且可能负得越来越大），这个问题是这样解释吗？如果relu的左半轴为负那么它的梯度不是还是定值吗只是为负了….，常见的分类算法以及评估指标</p>
 <p>卷积参数量计算，尺寸计算<br>ADAM算法比SGD优化好在哪儿？<br>是否用过时间序列相关的模型<br>如果自己写一个LR的话，要包含哪些模块（我只说到了训练部分，面试官补充了还有分类预测的模块）<br>Followup：接着问了我在做特征工程时很多的实际操作。<br>如何评估我们的聚类结果，以及如何提升<br>还问了如何Embedding的具体操作<br>python 参数 <em> 和 *</em> 区别 </p>
+<p>  京东的了解 京东的竞争对手有哪些，京东有什么优势，还问跟阿里的比较， 中台 ， 京东和淘宝的商业模式区别？  身边人对你的评价？  自己的缺点 ， 为什么要考研 </p>
+<p>京东的了解：京东是“中国最大的自营式电商企业”，以及“中国第二大B2C电商”（ B2C电子商务指的是企业针对个人开展的电子商务活动的总称 ）旗下有京东商城，京东金融（京东数科）主要产品有 <a href="https://baike.baidu.com/item/京东众筹" target="_blank" rel="noopener">京东众筹</a>、<a href="https://baike.baidu.com/item/京东白条" target="_blank" rel="noopener">京东白条</a>。 ，</p>
+<p>自我介绍：您好，我是北京邮电大学研二学生潘琳，这次应聘的岗位是算法工程师暑期实习生，研究生期间在实验室的研究方向是机器学习，主要完成了两个相关的工作，第一个是自己参与的kaggle的一个比赛，主要是预测城市主要交通路口的红绿灯等待时间。第二个项目是实验室与一个牛场的合作项目，主要是基于牛场提供的奶牛数据进行发情检查，在这个项目中我主要承担了后期奶牛发情检测算法实现的工作，同时承担了部分的前期调研工作。以上这两个项目是与本次应聘的岗位密切相关的项目。</p>
+<p>我认为我是一个责任心强，乐于助人，适应能力和自理能力较强的一个人（从初中开始住校），同时逻辑思维能力好。学习能力强（实验室在机器学习人工智能领域的基础相对薄弱，项目从无到有独立完成）。</p>
+<p> 读研究生最大的收获是什么呢？ </p>
+<p>  （2）如果做一项工作，大部分是由你完成的，但是被同事邀功，你怎么办？（注意分条作答条理清呀～我：如果同事已经邀功成功，那要自我反省，为什么自己做了大部分工作，却可以被别人邀功？还没有邀功成功，那要为自己争取一下。）</p>
+<h4 id="微软"><a href="#微软" class="headerlink" title="微软"></a>微软</h4><p><a href="https://leetcode-cn.com/problems/single-number-ii/" target="_blank" rel="noopener">第一题leetcode137，写通用解法，要求时间复杂度O(n)，空间复杂度O(1)</a></p>
+<p>介绍bagging和boosting</p>
+<p>两个有序数组找第k大</p>
+<p>写快排，问时间复杂度和空间复杂度, 输出排序后对应元素的原下标 </p>
+<p>O（1）实现两个链表排序</p>
+<p>编辑距离</p>
+<p>如何判断两个链表是不是有交点 </p>
+<p>一个BST树的某节点删除， BST 的类定义，实现 delete </p>
+<p>最简单版的股票问题 </p>
+<p>在排序数组中用二分查找找到某数字的第一个位置 </p>
+<p>用栈模拟队列</p>
+<p>最小栈，空间优化</p>
+<p>算法题 1：原地移动数组，使得元素对应顺序不变，0 值移动到末尾，LeetCode 283</p>
+<p>算法题 2：二叉树直径，LeetCode 543</p>
+<p>lc79题，撕出来以后让写测试用例 </p>
+<p>BST转双向链表（写代码，剑指offer原题）</p>
+<p>lc原题：组合数的和，dfs回溯+剪枝。  </p>
+<p>旋转数组找target，给n构造全部括号。</p>
+<p>算法题：给一个数组 <code>A = [2, 4, 8, 3]</code> 输出一个数组 B，其中 <code>B[i]</code> 值为 A 中小于 <code>A[i]</code> 的元素值之和，B 应该为 <code>[0, 5, 9, 2]</code>（小于 2 的有 [0]，小于 4 的有 [2, 3] …） </p>
+<p>求数组最大值时，从前往后遍历，候选值会被更新若干次，求这个次数的数学期望（说思路，我算出来是1+1/2 +…+ 1/n） </p>
+<p>大数加法 </p>
+<p>模型融合的时候，如果每个分类器正确率为0.5，投票法能不能得到正确率0.95</p>
+<p>蓄水池采样及证明 </p>
+<p>给定二维平面一些点，问用一个半径为1的圆最多可框住多少个点（说思路：每两个点确定两个对称的圆，当然两点距离不能超过直径2）</p>
+<p><a href="https://blog.csdn.net/hanyajun0123/article/details/84320469" target="_blank" rel="noopener">第二题长度为n的环，走k步，从原点到原点有多少种走法</a></p>
+<p>网易游戏面试：Python 进程和线程，不知道函数的参数有多少个时如何处理，C++ namespace 意义</p>
 <h4 id="概率题："><a href="#概率题：" class="headerlink" title="概率题："></a>概率题：</h4><ol>
 <li><p><strong>50个红球和50个篮球，放入两个箱子，怎么样放置才能使拿到红球的概率最大？</strong></p>
 <p>两个箱子概率是1/2，选中某个箱子后又有选择的是不是红球的概率，所以最大概率就是一个红球放在一个箱子里，其余的99个球全放到另一个箱子。这样概率=0.5+0.5*（49/99）约等于0.75，这样为最大概率。 </p>
@@ -1077,7 +1138,7 @@ E = 0.5 * 0.5 * 2 + 0.5 *(E + 1) + 0.5* 0.5 *(E+2)</script><p>求解E=6</p>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#刷题"><span class="nav-number">1.</span> <span class="nav-text">刷题</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#4-22-剑指offer简单题："><span class="nav-number">1.1.</span> <span class="nav-text">4/22 剑指offer简单题：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-24"><span class="nav-number">1.2.</span> <span class="nav-text">4/24</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-25"><span class="nav-number">1.3.</span> <span class="nav-text">4/25</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-28"><span class="nav-number">1.4.</span> <span class="nav-text">4/28</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-29"><span class="nav-number">1.5.</span> <span class="nav-text">4/29</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-30"><span class="nav-number">1.6.</span> <span class="nav-text">4/30</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-1"><span class="nav-number">1.7.</span> <span class="nav-text">5/1</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-2"><span class="nav-number">1.8.</span> <span class="nav-text">5/2</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-3"><span class="nav-number">1.9.</span> <span class="nav-text">5/3</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-4"><span class="nav-number">1.10.</span> <span class="nav-text">5/4</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-6"><span class="nav-number">1.11.</span> <span class="nav-text">5/6</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-7"><span class="nav-number">1.12.</span> <span class="nav-text">5/7</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-8"><span class="nav-number">1.13.</span> <span class="nav-text">5/8</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-9"><span class="nav-number">2.</span> <span class="nav-text">5/9</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#决策树"><span class="nav-number">3.</span> <span class="nav-text">决策树</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-交叉熵"><span class="nav-number">3.1.</span> <span class="nav-text">1. 交叉熵</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#逻辑回归"><span class="nav-number">4.</span> <span class="nav-text">逻辑回归</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-LR"><span class="nav-number">4.1.</span> <span class="nav-text">1. LR</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LSTM"><span class="nav-number">5.</span> <span class="nav-text">LSTM</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#面试中涉及到的算法题："><span class="nav-number">6.</span> <span class="nav-text">面试中涉及到的算法题：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#什么时候使用归一化什么时候使用标准化"><span class="nav-number">7.</span> <span class="nav-text">什么时候使用归一化什么时候使用标准化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#项目相关问题"><span class="nav-number">8.</span> <span class="nav-text">项目相关问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#其他"><span class="nav-number">9.</span> <span class="nav-text">其他</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#知乎"><span class="nav-number">10.</span> <span class="nav-text">知乎</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#快手"><span class="nav-number">11.</span> <span class="nav-text">快手</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#京东"><span class="nav-number">12.</span> <span class="nav-text">京东</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#概率题："><span class="nav-number">13.</span> <span class="nav-text">概率题：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#刷题"><span class="nav-number">1.</span> <span class="nav-text">刷题</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#4-22-剑指offer简单题："><span class="nav-number">1.1.</span> <span class="nav-text">4/22 剑指offer简单题：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-24"><span class="nav-number">1.2.</span> <span class="nav-text">4/24</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-25"><span class="nav-number">1.3.</span> <span class="nav-text">4/25</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-28"><span class="nav-number">1.4.</span> <span class="nav-text">4/28</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-29"><span class="nav-number">1.5.</span> <span class="nav-text">4/29</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-30"><span class="nav-number">1.6.</span> <span class="nav-text">4/30</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-1"><span class="nav-number">1.7.</span> <span class="nav-text">5/1</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-2"><span class="nav-number">1.8.</span> <span class="nav-text">5/2</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-3"><span class="nav-number">1.9.</span> <span class="nav-text">5/3</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-4"><span class="nav-number">1.10.</span> <span class="nav-text">5/4</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-6"><span class="nav-number">1.11.</span> <span class="nav-text">5/6</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-7"><span class="nav-number">1.12.</span> <span class="nav-text">5/7</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-8"><span class="nav-number">1.13.</span> <span class="nav-text">5/8</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-9"><span class="nav-number">1.14.</span> <span class="nav-text">5/9</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#中等"><span class="nav-number">1.15.</span> <span class="nav-text">中等</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#决策树"><span class="nav-number">2.</span> <span class="nav-text">决策树</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-交叉熵"><span class="nav-number">2.1.</span> <span class="nav-text">1. 交叉熵</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#逻辑回归"><span class="nav-number">3.</span> <span class="nav-text">逻辑回归</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-LR"><span class="nav-number">3.1.</span> <span class="nav-text">1. LR</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LSTM"><span class="nav-number">4.</span> <span class="nav-text">LSTM</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#面试中涉及到的算法题："><span class="nav-number">5.</span> <span class="nav-text">面试中涉及到的算法题：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#什么时候使用归一化什么时候使用标准化"><span class="nav-number">6.</span> <span class="nav-text">什么时候使用归一化什么时候使用标准化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#项目相关问题"><span class="nav-number">7.</span> <span class="nav-text">项目相关问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#其他"><span class="nav-number">8.</span> <span class="nav-text">其他</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#知乎"><span class="nav-number">9.</span> <span class="nav-text">知乎</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#快手"><span class="nav-number">10.</span> <span class="nav-text">快手</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#京东"><span class="nav-number">11.</span> <span class="nav-text">京东</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#微软"><span class="nav-number">12.</span> <span class="nav-text">微软</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#概率题："><span class="nav-number">13.</span> <span class="nav-text">概率题：</span></a></li></ol></div>
             
 
           </div>
