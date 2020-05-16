@@ -101,7 +101,7 @@
 <meta property="og:image" content="http://pl741.github.io/2019/11/29/算法面试题/Users/warrior/AppData/Roaming/Typora/typora-user-images/image-20200419190210473.png">
 <meta property="og:image" content="http://pl741.github.io/2019/11/29/算法面试题/Users/warrior/AppData/Roaming/Typora/typora-user-images/image-20200419190232946.png">
 <meta property="og:image" content="http://pl741.github.io/2019/11/29/算法面试题/9.png">
-<meta property="og:updated_time" content="2020-05-08T04:44:15.901Z">
+<meta property="og:updated_time" content="2020-05-16T04:55:18.647Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="算法面试题">
 <meta name="twitter:description" content="刷题4/22 剑指offer简单题： 面试题27. 二叉树的镜像 面试题28. 对称的二叉树  ⭐ 面试题32 - II. 从上到下打印二叉树 II  ⭐ 面试题55 - I. 二叉树的深度 面试题54. 二叉搜索树的第k大节点   ⭐ 面试题55 - II. 平衡二叉树 面试题68 - I. 二叉搜索树的最近公共祖先  ⭐ 面试题68 - II. 二叉树的最近公共祖先  ⭐ 面试题58 - I.">
@@ -442,17 +442,9 @@
 <li><a href="https://leetcode-cn.com/problems/reverse-linked-list-ii/" target="_blank" rel="noopener">92. 反转链表 II</a>   ⭐</li>
 </ol>
 <h5 id="4-25"><a href="#4-25" class="headerlink" title="4/25"></a>4/25</h5><ol>
-<li><p><a href="https://leetcode-cn.com/problems/trapping-rain-water/" target="_blank" rel="noopener">42. 接雨水</a>  ⭐</p>
-</li>
-<li><p><a href="https://leetcode-cn.com/problems/median-of-two-sorted-arrays/" target="_blank" rel="noopener">4. 寻找两个有序数组的中位数</a>  ⭐⭐</p>
-</li>
-<li><p>两个有序数组找第k大  ⭐</p>
-<p>a. O(m + n) 的解法比较直观，直接merge 两个数组，然后求第k 大的元素；</p>
-<p>b. 可以用一个计数器，记录当前已经找到第m 大的元素了。同时使用两个指针pA 和pB，分别指向A 和B 数组的第一个元素，使用类似于merge sort 的原理，如果数组A 当前元素小，那么pA++，同时m++；如果数组B 当前元素小，那么pB++，同时m++。最终当m 等于k 的时候，就得到了我们的答案，O(k)时间，O(1) 空间。但是，当k 很接近m + n 的时候，这个方法还是O(m + n) 的。</p>
-<p>c. 可以考虑从 k 入手。如果每次都能够删除一些一定在第k 大元素之前的元素，那么只需要进行k 次。 由于A 和B 都是有序的，类似于二分查找。假设 A 和 B 的元素个数都大于k/2，将A 的第 k/2 个元素（即A[k/2-1]）和 B 的第 k/2<br>个元素（即B[k/2-1]）进行比较，有以下三种情况（为了简化这里先假设k 为偶数，所得到的结论对于k 是奇数也是成立的）：</p>
-<p>A[k/2-1] &lt; B[k/2-1]，意味着A[0] 到A[k/2-1] 的肯定在的top k 元素的范围内，换句话说，A[k/2-1] 不可能大于第k 大元素。删除A 数组的这k/2 个元素。</p>
-<p>A[k/2-1] &gt; B[k/2-1] 时，可以删除B 数组的k/2 个元素。<br>当A[k/2-1] == B[k/2-1] 时，说明找到了第k 大的元素，直接返回A[k/2-1] 或B[k/2-1]即可。</p>
-<div><div class="fold_hider"><div class="close hider_title">ViewCode</div></div><div class="fold">
+<li><a href="https://leetcode-cn.com/problems/trapping-rain-water/" target="_blank" rel="noopener">42. 接雨水</a>  ⭐</li>
+<li><a href="https://leetcode-cn.com/problems/median-of-two-sorted-arrays/" target="_blank" rel="noopener">4. 寻找两个有序数组的中位数</a>  ⭐⭐</li>
+<li>两个有序数组找第k大  ⭐<br>a. O(m + n) 的解法比较直观，直接merge 两个数组，然后求第k 大的元素；<br>b. 可以用一个计数器，记录当前已经找到第m 大的元素了。同时使用两个指针pA 和pB，分别指向A 和B 数组的第一个元素，使用类似于merge sort 的原理，如果数组A 当前元素小，那么pA++，同时m++；如果数组B 当前元素小，那么pB++，同时m++。最终当m 等于k 的时候，就得到了我们的答案，O(k)时间，O(1) 空间。但是，当k 很接近m + n 的时候，这个方法还是O(m + n) 的。<br>c. 可以考虑从 k 入手。如果每次都能够删除一些一定在第k 大元素之前的元素，那么只需要进行k 次。 由于A 和B 都是有序的，类似于二分查找。假设 A 和 B 的元素个数都大于k/2，将A 的第 k/2 个元素（即A[k/2-1]）和 B 的第 k/2个元素（即B[k/2-1]）进行比较，有以下三种情况（为了简化这里先假设k 为偶数，所得到的结论对于k 是奇数也是成立的）：<br>A[k/2-1] &lt; B[k/2-1]，意味着A[0] 到A[k/2-1] 的肯定在的top k 元素的范围内，换句话说，A[k/2-1] 不可能大于第k 大元素。删除A 数组的这k/2 个元素。<br>A[k/2-1] &gt; B[k/2-1] 时，可以删除B 数组的k/2 个元素。<br>当A[k/2-1] == B[k/2-1] 时，说明找到了第k 大的元素，直接返回A[k/2-1] 或B[k/2-1]即可。<div><div class="fold_hider"><div class="close hider_title">ViewCode</div></div><div class="fold">
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">Find_kth</span><span class="params">(self, nums1, nums2, k)</span>:</span></span><br><span class="line">		m = len(nums1)</span><br><span class="line">		n = len(nums2)</span><br><span class="line">		<span class="keyword">if</span> m &gt; n:</span><br><span class="line">			nums1, nums2, m, n = nums2, nums1, n, m</span><br><span class="line">		imin = <span class="number">0</span></span><br><span class="line">		imax = min(m, k)</span><br><span class="line">		<span class="keyword">while</span> imin &lt;= imax:</span><br><span class="line">			i = (imax + imin) // <span class="number">2</span></span><br><span class="line">			j = k - i</span><br><span class="line">			<span class="keyword">if</span> j &gt; n <span class="keyword">or</span> (i &lt; min(m, k) <span class="keyword">and</span> nums2[j<span class="number">-1</span>] &gt; nums1[i]):</span><br><span class="line">				imin = i + <span class="number">1</span></span><br><span class="line">			<span class="keyword">elif</span> i &gt; <span class="number">0</span> <span class="keyword">and</span> j &lt; n <span class="keyword">and</span> nums1[i<span class="number">-1</span>] &gt; nums2[j]:</span><br><span class="line">				imax = i - <span class="number">1</span></span><br><span class="line">			<span class="keyword">else</span>:</span><br><span class="line">				<span class="keyword">if</span> i == <span class="number">0</span>:<span class="keyword">return</span> nums2[j<span class="number">-1</span>]</span><br><span class="line">				<span class="keyword">elif</span> j == <span class="number">0</span>: <span class="keyword">return</span> nums1[i<span class="number">-1</span>]</span><br><span class="line">				<span class="keyword">else</span>:<span class="keyword">return</span> max(nums1[i<span class="number">-1</span>], nums2[j<span class="number">-1</span>])</span><br><span class="line">print(Solution().Find_kth([<span class="number">1</span>, <span class="number">2</span>, <span class="number">5</span>], [<span class="number">3</span>, <span class="number">4</span>, <span class="number">9</span>], <span class="number">6</span>))</span><br></pre></td></tr></table></figure>
 
 </div></div>
@@ -552,35 +544,41 @@
 <li><a href="https://leetcode-cn.com/problems/shu-zu-zhong-shu-zi-chu-xian-de-ci-shu-ii-lcof/" target="_blank" rel="noopener">面试题56 - II. 数组中数字出现的次数 II</a>   ⭐</li>
 </ol>
 <h5 id="5-8"><a href="#5-8" class="headerlink" title="5/8"></a>5/8</h5><ol>
-<li><a href="https://leetcode-cn.com/problems/zi-fu-chuan-de-pai-lie-lcof/" target="_blank" rel="noopener">面试题38. 字符串的排列</a></li>
-<li><a href="https://leetcode-cn.com/problems/ba-zi-fu-chuan-zhuan-huan-cheng-zheng-shu-lcof/" target="_blank" rel="noopener">面试题67. 把字符串转换成整数</a></li>
-<li><a href="https://leetcode-cn.com/problems/ba-shu-zi-fan-yi-cheng-zi-fu-chuan-lcof/" target="_blank" rel="noopener">面试题46. 把数字翻译成字符串</a></li>
-<li><a href="https://leetcode-cn.com/problems/zui-chang-bu-han-zhong-fu-zi-fu-de-zi-zi-fu-chuan-lcof/" target="_blank" rel="noopener">面试题48. 最长不含重复字符的子字符串</a></li>
-<li><a href="https://leetcode-cn.com/problems/biao-shi-shu-zhi-de-zi-fu-chuan-lcof/" target="_blank" rel="noopener">面试题20. 表示数值的字符串</a></li>
+<li><a href="https://leetcode-cn.com/problems/zi-fu-chuan-de-pai-lie-lcof/" target="_blank" rel="noopener">面试题38. 字符串的排列</a>     ⭐</li>
+<li><a href="https://leetcode-cn.com/problems/ba-zi-fu-chuan-zhuan-huan-cheng-zheng-shu-lcof/" target="_blank" rel="noopener">面试题67. 把字符串转换成整数</a>    ⭐</li>
+<li><a href="https://leetcode-cn.com/problems/ba-shu-zi-fan-yi-cheng-zi-fu-chuan-lcof/" target="_blank" rel="noopener">面试题46. 把数字翻译成字符串</a>    ⭐</li>
+<li><a href="https://leetcode-cn.com/problems/zui-chang-bu-han-zhong-fu-zi-fu-de-zi-zi-fu-chuan-lcof/" target="_blank" rel="noopener">面试题48. 最长不含重复字符的子字符串</a>   ⭐</li>
+<li><a href="https://leetcode-cn.com/problems/biao-shi-shu-zhi-de-zi-fu-chuan-lcof/" target="_blank" rel="noopener">面试题20. 表示数值的字符串</a>    ⭐</li>
 </ol>
 <h5 id="5-9"><a href="#5-9" class="headerlink" title="5/9"></a>5/9</h5><ol>
 <li><a href="https://leetcode-cn.com/problems/li-wu-de-zui-da-jie-zhi-lcof/" target="_blank" rel="noopener">面试题47. 礼物的最大价值</a></li>
 <li><a href="https://leetcode-cn.com/problems/gu-piao-de-zui-da-li-run-lcof/" target="_blank" rel="noopener">面试题63. 股票的最大利润</a></li>
-<li><a href="https://leetcode-cn.com/problems/shu-zhi-de-zheng-shu-ci-fang-lcof/" target="_blank" rel="noopener">面试题16. 数值的整数次方</a></li>
-<li><a href="https://leetcode-cn.com/problems/zheng-ze-biao-da-shi-pi-pei-lcof/" target="_blank" rel="noopener">面试题19. 正则表达式匹配</a></li>
-<li><a href="https://leetcode-cn.com/problems/shu-ju-liu-zhong-de-zhong-wei-shu-lcof/" target="_blank" rel="noopener">面试题41. 数据流中的中位数</a></li>
-<li><a href="https://leetcode-cn.com/problems/1nzheng-shu-zhong-1chu-xian-de-ci-shu-lcof/" target="_blank" rel="noopener">面试题43. 1～n整数中1出现的次数</a></li>
-<li><a href="https://leetcode-cn.com/problems/shu-zi-xu-lie-zhong-mou-yi-wei-de-shu-zi-lcof/" target="_blank" rel="noopener">面试题44. 数字序列中某一位的数字</a></li>
-<li><a href="https://leetcode-cn.com/problems/chou-shu-lcof/" target="_blank" rel="noopener">面试题49. 丑数</a></li>
-<li><a href="https://leetcode-cn.com/problems/qiu-12n-lcof/" target="_blank" rel="noopener">面试题64. 求1+2+…+n</a></li>
-<li><a href="https://leetcode-cn.com/problems/bu-yong-jia-jian-cheng-chu-zuo-jia-fa-lcof/" target="_blank" rel="noopener">面试题65. 不用加减乘除做加法</a></li>
-<li><a href="https://leetcode-cn.com/problems/gou-jian-cheng-ji-shu-zu-lcof/" target="_blank" rel="noopener">面试题66. 构建乘积数组</a></li>
+<li><a href="https://leetcode-cn.com/problems/shu-zhi-de-zheng-shu-ci-fang-lcof/" target="_blank" rel="noopener">面试题16. 数值的整数次方</a>    ⭐</li>
+<li><a href="https://leetcode-cn.com/problems/zheng-ze-biao-da-shi-pi-pei-lcof/" target="_blank" rel="noopener">面试题19. 正则表达式匹配</a>    ⭐</li>
+<li><a href="https://leetcode-cn.com/problems/shu-ju-liu-zhong-de-zhong-wei-shu-lcof/" target="_blank" rel="noopener">面试题41. 数据流中的中位数</a>   ⭐ heappushpop(a,x)在弹出最小值之前将x推送到a上 </li>
 </ol>
-<h5 id="中等"><a href="#中等" class="headerlink" title="中等"></a>中等</h5><ol>
-<li><p><a href="https://leetcode-cn.com/problems/one-away-lcci/" target="_blank" rel="noopener">面试题 01.05. 一次编辑</a></p>
+<h5 id="5-10"><a href="#5-10" class="headerlink" title="5/10"></a>5/10</h5><ol>
+<li><a href="https://leetcode-cn.com/problems/1nzheng-shu-zhong-1chu-xian-de-ci-shu-lcof/" target="_blank" rel="noopener">面试题43. 1～n整数中1出现的次数</a>   ⭐</li>
+<li><a href="https://leetcode-cn.com/problems/shu-zi-xu-lie-zhong-mou-yi-wei-de-shu-zi-lcof/" target="_blank" rel="noopener">面试题44. 数字序列中某一位的数字</a>   ⭐</li>
+<li><a href="https://leetcode-cn.com/problems/chou-shu-lcof/" target="_blank" rel="noopener">面试题49. 丑数</a>   ⭐</li>
+<li><a href="https://leetcode-cn.com/problems/qiu-12n-lcof/" target="_blank" rel="noopener">面试题64. 求1+2+…+n</a>   ⭐</li>
+<li><a href="https://leetcode-cn.com/problems/bu-yong-jia-jian-cheng-chu-zuo-jia-fa-lcof/" target="_blank" rel="noopener">面试题65. 不用加减乘除做加法</a>   ⭐</li>
+<li><a href="https://leetcode-cn.com/problems/gou-jian-cheng-ji-shu-zu-lcof/" target="_blank" rel="noopener">面试题66. 构建乘积数组</a>   ⭐</li>
+</ol>
+<h5 id="5-15"><a href="#5-15" class="headerlink" title="5/15"></a>5/15</h5><ol>
+<li><a href="https://leetcode-cn.com/problems/one-away-lcci/" target="_blank" rel="noopener">面试题 01.05. 一次编辑</a>   ⭐</li>
+<li><a href="https://leetcode-cn.com/problems/rotate-matrix-lcci/" target="_blank" rel="noopener">面试题 01.07. 旋转矩阵</a>  ⭐</li>
+<li><a href="https://leetcode-cn.com/problems/zero-matrix-lcci/" target="_blank" rel="noopener">面试题 01.08. 零矩阵</a></li>
+<li><a href="https://leetcode-cn.com/problems/partition-list-lcci/" target="_blank" rel="noopener">面试题 02.04. 分割链表</a>    ⭐</li>
+<li><a href="https://leetcode-cn.com/problems/sum-lists-lcci/" target="_blank" rel="noopener">面试题 02.05. 链表求和</a></li>
+<li><a href="https://leetcode-cn.com/problems/add-two-numbers-ii/" target="_blank" rel="noopener">445. 两数相加 II</a>  ⭐</li>
+</ol>
+<h5 id="5-16"><a href="#5-16" class="headerlink" title="5/16"></a>5/16</h5><ol>
+<li><p><a href="https://leetcode-cn.com/problems/backspace-string-compare/" target="_blank" rel="noopener">844. 比较含退格的字符串</a>   ⭐</p>
 </li>
-<li><p><a href="https://leetcode-cn.com/problems/rotate-matrix-lcci/" target="_blank" rel="noopener">面试题 01.07. 旋转矩阵</a></p>
+<li><p><a href="https://leetcode-cn.com/problems/unique-paths/" target="_blank" rel="noopener">62. 不同路径</a></p>
 </li>
-<li><p><a href="https://leetcode-cn.com/problems/zero-matrix-lcci/" target="_blank" rel="noopener">面试题 01.08. 零矩阵</a></p>
-</li>
-<li><p><a href="https://leetcode-cn.com/problems/partition-list-lcci/" target="_blank" rel="noopener">面试题 02.04. 分割链表</a></p>
-</li>
-<li><p><a href="https://leetcode-cn.com/problems/sum-lists-lcci/" target="_blank" rel="noopener">面试题 02.05. 链表求和</a></p>
+<li><p><a href="https://leetcode-cn.com/problems/shuffle-an-array/" target="_blank" rel="noopener">384. 打乱数组</a>   ⭐</p>
 </li>
 <li><p><a href="https://leetcode-cn.com/problems/linked-list-cycle-lcci/" target="_blank" rel="noopener">面试题 02.08. 环路检测</a></p>
 </li>
@@ -592,21 +590,334 @@
 </li>
 <li><p><a href="https://leetcode-cn.com/problems/list-of-depth-lcci/" target="_blank" rel="noopener">面试题 04.03. 特定深度节点链表</a></p>
 </li>
-<li><p><a href="https://leetcode-cn.com/problems/legal-binary-search-tree-lcci/" target="_blank" rel="noopener">面试题 04.05. 合法二叉搜索树</a></p>
-</li>
-<li><p><a href="https://leetcode-cn.com/problems/successor-lcci/" target="_blank" rel="noopener">面试题 04.06. 后继者</a></p>
-</li>
-<li><p><a href="https://leetcode-cn.com/problems/first-common-ancestor-lcci/" target="_blank" rel="noopener">面试题 04.08. 首个共同祖先</a></p>
-</li>
-<li><p><a href="https://leetcode-cn.com/problems/check-subtree-lcci/" target="_blank" rel="noopener">面试题 04.10. 检查子树</a></p>
-</li>
-<li><p><a href="https://leetcode-cn.com/problems/paths-with-sum-lcci/" target="_blank" rel="noopener">面试题 04.12. 求和路径</a></p>
-</li>
+</ol>
+<h5 id="5-17"><a href="#5-17" class="headerlink" title="5/17"></a>5/17</h5><ol>
+<li><a href="https://leetcode-cn.com/problems/legal-binary-search-tree-lcci/" target="_blank" rel="noopener">面试题 04.05. 合法二叉搜索树</a></li>
+<li><a href="https://leetcode-cn.com/problems/successor-lcci/" target="_blank" rel="noopener">面试题 04.06. 后继者</a></li>
+<li><a href="https://leetcode-cn.com/problems/first-common-ancestor-lcci/" target="_blank" rel="noopener">面试题 04.08. 首个共同祖先</a></li>
+<li><a href="https://leetcode-cn.com/problems/check-subtree-lcci/" target="_blank" rel="noopener">面试题 04.10. 检查子树</a></li>
+<li><a href="https://leetcode-cn.com/problems/paths-with-sum-lcci/" target="_blank" rel="noopener">面试题 04.12. 求和路径</a></li>
+</ol>
+<h5 id="5-18"><a href="#5-18" class="headerlink" title="5/18"></a>5/18</h5><ol>
 <li><p><a href="https://leetcode-cn.com/problems/bianry-number-to-string-lcci/" target="_blank" rel="noopener">面试题 05.02. 二进制数转字符串</a></p>
 </li>
 <li><p><a href="https://leetcode-cn.com/problems/closed-number-lcci/" target="_blank" rel="noopener">面试题 05.04. 下一个数</a></p>
 </li>
 <li><p><a href="https://leetcode-cn.com/problems/draw-line-lcci/" target="_blank" rel="noopener">面试题 05.08. 绘制直线</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/robot-in-a-grid-lcci/" target="_blank" rel="noopener">面试题 08.02. 迷路的机器人</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/power-set-lcci/" target="_blank" rel="noopener">面试题 08.04. 幂集</a></p>
+</li>
+</ol>
+<h5 id="5-19"><a href="#5-19" class="headerlink" title="5/19"></a>5/19</h5><ol>
+<li><p><a href="https://leetcode-cn.com/problems/recursive-mulitply-lcci/" target="_blank" rel="noopener">面试题 08.05. 递归乘法</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/permutation-i-lcci/" target="_blank" rel="noopener">面试题 08.07. 无重复字符串的排列组合</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/permutation-ii-lcci/" target="_blank" rel="noopener">面试题 08.08. 有重复字符串的排列组合</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/bracket-lcci/" target="_blank" rel="noopener">面试题 08.09. 括号</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/coin-lcci/" target="_blank" rel="noopener">面试题 08.11. 硬币</a></p>
+</li>
+</ol>
+<h5 id="5-20"><a href="#5-20" class="headerlink" title="5/20"></a>5/20</h5><ol>
+<li><p><a href="https://leetcode-cn.com/problems/boolean-evaluation-lcci/" target="_blank" rel="noopener">面试题 08.14. 布尔运算</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/group-anagrams-lcci/" target="_blank" rel="noopener">面试题 10.02. 变位词组</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/search-rotate-array-lcci/" target="_blank" rel="noopener">面试题 10.03. 搜索旋转数组</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/sorted-matrix-search-lcci/" target="_blank" rel="noopener">面试题 10.09. 排序矩阵查找</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/rank-from-stream-lcci/" target="_blank" rel="noopener">面试题 10.10. 数字流的秩</a></p>
+</li>
+</ol>
+<h5 id="5-21"><a href="#5-21" class="headerlink" title="5/21"></a>5/21</h5><ol>
+<li><p><a href="https://leetcode-cn.com/problems/peaks-and-valleys-lcci/" target="_blank" rel="noopener">面试题 10.11. 峰与谷</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/swap-numbers-lcci/" target="_blank" rel="noopener">面试题 16.01. 交换数字</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/words-frequency-lcci/" target="_blank" rel="noopener">面试题 16.02. 单词频率</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/tic-tac-toe-lcci/" target="_blank" rel="noopener">面试题 16.04. 井字游戏</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/smallest-difference-lcci/" target="_blank" rel="noopener">面试题 16.06. 最小差</a> </p>
+</li>
+</ol>
+<h5 id="5-22"><a href="#5-22" class="headerlink" title="5/22"></a>5/22</h5><ol>
+<li><p><a href="https://leetcode-cn.com/problems/operations-lcci/" target="_blank" rel="noopener">面试题 16.09. 运算</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/living-people-lcci/" target="_blank" rel="noopener">面试题 16.10. 生存人数</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/bisect-squares-lcci/" target="_blank" rel="noopener">面试题 16.13. 平分正方形</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/best-line-lcci/" target="_blank" rel="noopener">面试题 16.14. 最佳直线</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/sub-sort-lcci/" target="_blank" rel="noopener">面试题 16.16. 部分排序</a></p>
+</li>
+</ol>
+<h5 id="5-23"><a href="#5-23" class="headerlink" title="5/23"></a>5/23</h5><ol>
+<li><p><a href="https://leetcode-cn.com/problems/pattern-matching-lcci/" target="_blank" rel="noopener">面试题 16.18. 模式匹配</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/pond-sizes-lcci/" target="_blank" rel="noopener">面试题 16.19. 水域大小</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/t9-lcci/" target="_blank" rel="noopener">面试题 16.20. T9键盘</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/sum-swap-lcci/" target="_blank" rel="noopener">面试题 16.21. 交换和</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/langtons-ant-lcci/" target="_blank" rel="noopener">面试题 16.22. 兰顿蚂蚁</a></p>
+</li>
+</ol>
+<h5 id="5-24"><a href="#5-24" class="headerlink" title="5/24"></a>5/24</h5><ol>
+<li><p><a href="https://leetcode-cn.com/problems/pairs-with-sum-lcci/" target="_blank" rel="noopener">面试题 16.24. 数对和</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/lru-cache-lcci/" target="_blank" rel="noopener">面试题 16.25. LRU缓存</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/calculator-lcci/" target="_blank" rel="noopener">面试题 16.26. 计算器</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/find-longest-subarray-lcci/" target="_blank" rel="noopener">面试题 17.05.  字母与数字</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/number-of-2s-in-range-lcci/" target="_blank" rel="noopener">面试题 17.06. 2出现的次数</a></p>
+</li>
+</ol>
+<h5 id="5-25"><a href="#5-25" class="headerlink" title="5/25"></a>5/25</h5><ol>
+<li><p><a href="https://leetcode-cn.com/problems/baby-names-lcci/" target="_blank" rel="noopener">面试题 17.07. 婴儿名字</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/circus-tower-lcci/" target="_blank" rel="noopener">面试题 17.08. 马戏团人塔</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/get-kth-magic-number-lcci/" target="_blank" rel="noopener">面试题 17.09. 第 k 个数</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/find-closest-lcci/" target="_blank" rel="noopener">面试题 17.11. 单词距离</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/re-space-lcci/" target="_blank" rel="noopener">面试题 17.13. 恢复空格</a></p>
+</li>
+</ol>
+<h5 id="5-26"><a href="#5-26" class="headerlink" title="5/26"></a>5/26</h5><ol>
+<li><p><a href="https://leetcode-cn.com/problems/longest-word-lcci/" target="_blank" rel="noopener">面试题 17.15. 最长单词</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/multi-search-lcci/" target="_blank" rel="noopener">面试题 17.17. 多次搜索</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/shortest-supersequence-lcci/" target="_blank" rel="noopener">面试题 17.18. 最短超串</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/word-transformer-lcci/" target="_blank" rel="noopener">面试题 17.22. 单词转换</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/max-black-square-lcci/" target="_blank" rel="noopener">面试题 17.23. 最大黑方阵</a></p>
+</li>
+</ol>
+<h5 id="5-27"><a href="#5-27" class="headerlink" title="5/27"></a>5/27</h5><ol>
+<li><p><a href="https://leetcode-cn.com/problems/add-two-numbers/" target="_blank" rel="noopener">2. 两数相加</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/" target="_blank" rel="noopener">3. 无重复字符的最长子串</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/longest-palindromic-substring/" target="_blank" rel="noopener">5. 最长回文子串</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/container-with-most-water/" target="_blank" rel="noopener">11. 盛最多水的容器</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/3sum/" target="_blank" rel="noopener">15. 三数之和</a></p>
+</li>
+</ol>
+<h5 id="5-28"><a href="#5-28" class="headerlink" title="5/28"></a>5/28</h5><ol>
+<li><p><a href="https://leetcode-cn.com/problems/letter-combinations-of-a-phone-number/" target="_blank" rel="noopener">17. 电话号码的字母组合</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/" target="_blank" rel="noopener">19. 删除链表的倒数第N个节点</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/divide-two-integers/" target="_blank" rel="noopener">29. 两数相除</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/search-in-rotated-sorted-array/" target="_blank" rel="noopener">33. 搜索旋转排序数组</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/valid-sudoku/" target="_blank" rel="noopener">36. 有效的数独</a></p>
+</li>
+</ol>
+<h5 id="5-29"><a href="#5-29" class="headerlink" title="5/29"></a>5/29</h5><ol>
+<li><p><a href="https://leetcode-cn.com/problems/permutations/" target="_blank" rel="noopener">46. 全排列</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/rotate-image/" target="_blank" rel="noopener">48. 旋转图像</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/group-anagrams/" target="_blank" rel="noopener">49. 字母异位词分组</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/powx-n/" target="_blank" rel="noopener">50. Pow(x, n)</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/spiral-matrix/" target="_blank" rel="noopener">54. 螺旋矩阵</a></p>
+</li>
+</ol>
+<h5 id="5-30"><a href="#5-30" class="headerlink" title="5/30"></a>5/30</h5><ol>
+<li><p><a href="https://leetcode-cn.com/problems/jump-game/" target="_blank" rel="noopener">55. 跳跃游戏</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/merge-intervals/" target="_blank" rel="noopener">56. 合并区间</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/unique-paths/" target="_blank" rel="noopener">62. 不同路径</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/sort-colors/" target="_blank" rel="noopener">75. 颜色分类</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/subsets/" target="_blank" rel="noopener">78. 子集</a></p>
+</li>
+</ol>
+<h5 id="5-31"><a href="#5-31" class="headerlink" title="5/31"></a>5/31</h5><ol>
+<li><p><a href="https://leetcode-cn.com/problems/decode-ways/" target="_blank" rel="noopener">91. 解码方法</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/binary-tree-inorder-traversal/" target="_blank" rel="noopener">94. 二叉树的中序遍历</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/binary-tree-level-order-traversal/" target="_blank" rel="noopener">102. 二叉树的层序遍历</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/binary-tree-zigzag-level-order-traversal/" target="_blank" rel="noopener">103. 二叉树的锯齿形层次遍历</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/" target="_blank" rel="noopener">105. 从前序与中序遍历序列构造二叉树</a></p>
+</li>
+</ol>
+<h5 id="6-1"><a href="#6-1" class="headerlink" title="6/1"></a>6/1</h5><ol>
+<li><p><a href="https://leetcode-cn.com/problems/populating-next-right-pointers-in-each-node/" target="_blank" rel="noopener">116. 填充每个节点的下一个右侧节点指针</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/word-ladder/" target="_blank" rel="noopener">127. 单词接龙</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/surrounded-regions/" target="_blank" rel="noopener">130. 被围绕的区域</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/palindrome-partitioning/" target="_blank" rel="noopener">131. 分割回文串</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/gas-station/" target="_blank" rel="noopener">134. 加油站</a></p>
+</li>
+</ol>
+<h5 id="6-2"><a href="#6-2" class="headerlink" title="6/2"></a>6/2</h5><ol>
+<li><p><a href="https://leetcode-cn.com/problems/copy-list-with-random-pointer/" target="_blank" rel="noopener">138. 复制带随机指针的链表</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/word-break/" target="_blank" rel="noopener">139. 单词拆分</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/lru-cache/" target="_blank" rel="noopener">146. LRU缓存机制</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/sort-list/" target="_blank" rel="noopener">148. 排序链表</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/evaluate-reverse-polish-notation/" target="_blank" rel="noopener">150. 逆波兰表达式求值</a></p>
+</li>
+</ol>
+<h5 id="6-3"><a href="#6-3" class="headerlink" title="6/3"></a>6/3</h5><ol>
+<li><p><a href="https://leetcode-cn.com/problems/maximum-product-subarray/" target="_blank" rel="noopener">152. 乘积最大子数组</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/find-peak-element/" target="_blank" rel="noopener">162. 寻找峰值</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/fraction-to-recurring-decimal/" target="_blank" rel="noopener">166. 分数到小数</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/largest-number/" target="_blank" rel="noopener">179. 最大数</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/number-of-islands/" target="_blank" rel="noopener">200. 岛屿数量</a></p>
+</li>
+</ol>
+<h5 id="6-4"><a href="#6-4" class="headerlink" title="6/4"></a>6/4</h5><ol>
+<li><p><a href="https://leetcode-cn.com/problems/course-schedule/" target="_blank" rel="noopener">207. 课程表</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/implement-trie-prefix-tree/" target="_blank" rel="noopener">208. 实现 Trie (前缀树)</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/course-schedule-ii/" target="_blank" rel="noopener">210. 课程表 II</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/kth-largest-element-in-an-array/" target="_blank" rel="noopener">215. 数组中的第K个最大元素</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/basic-calculator-ii/" target="_blank" rel="noopener">227. 基本计算器 II</a></p>
+</li>
+</ol>
+<h5 id="6-5"><a href="#6-5" class="headerlink" title="6/5"></a>6/5</h5><ol>
+<li><p><a href="https://leetcode-cn.com/problems/kth-smallest-element-in-a-bst/" target="_blank" rel="noopener">230. 二叉搜索树中第K小的元素</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/lowest-common-ancestor-of-a-binary-tree/" target="_blank" rel="noopener">236. 二叉树的最近公共祖先</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/product-of-array-except-self/" target="_blank" rel="noopener">238. 除自身以外数组的乘积</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/search-a-2d-matrix-ii/" target="_blank" rel="noopener">240. 搜索二维矩阵 II</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/perfect-squares/" target="_blank" rel="noopener">279. 完全平方数</a></p>
+</li>
+</ol>
+<h5 id="6-6"><a href="#6-6" class="headerlink" title="6/6"></a>6/6</h5><ol>
+<li><p><a href="https://leetcode-cn.com/problems/find-the-duplicate-number/" target="_blank" rel="noopener">287. 寻找重复数</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/game-of-life/" target="_blank" rel="noopener">289. 生命游戏</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/coin-change/" target="_blank" rel="noopener">322. 零钱兑换</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/wiggle-sort-ii/" target="_blank" rel="noopener">324. 摆动排序 II</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/odd-even-linked-list/" target="_blank" rel="noopener">328. 奇偶链表</a></p>
+</li>
+</ol>
+<h5 id="6-7"><a href="#6-7" class="headerlink" title="6/7"></a>6/7</h5><ol>
+<li><p><a href="https://leetcode-cn.com/problems/increasing-triplet-subsequence/" target="_blank" rel="noopener">334. 递增的三元子序列</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/flatten-nested-list-iterator/" target="_blank" rel="noopener">341. 扁平化嵌套列表迭代器</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/top-k-frequent-elements/" target="_blank" rel="noopener">347. 前 K 个高频元素</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/kth-smallest-element-in-a-sorted-matrix/" target="_blank" rel="noopener">378. 有序矩阵中第K小的元素</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/insert-delete-getrandom-o1/" target="_blank" rel="noopener">380. 常数时间插入、删除和获取随机元素</a></p>
+</li>
+</ol>
+<h5 id="6-8"><a href="#6-8" class="headerlink" title="6/8"></a>6/8</h5><ol>
+<li><p><a href="https://leetcode-cn.com/problems/shuffle-an-array/" target="_blank" rel="noopener">384. 打乱数组</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/longest-substring-with-at-least-k-repeating-characters/" target="_blank" rel="noopener">395. 至少有K个重复字符的最长子串</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/4sum-ii/" target="_blank" rel="noopener">454. 四数相加 II</a></p>
+</li>
+</ol>
+<h4 id="困难"><a href="#困难" class="headerlink" title="困难"></a>困难</h4><h5 id="6-9"><a href="#6-9" class="headerlink" title="6/9"></a>6/9</h5><ol>
+<li><p><a href="https://leetcode-cn.com/problems/bst-sequences-lcci/" target="_blank" rel="noopener">面试题 04.09. 二叉搜索树序列</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/eight-queens-lcci/" target="_blank" rel="noopener">面试题 08.12. 八皇后</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/pile-box-lcci/" target="_blank" rel="noopener">面试题 08.13. 堆箱子</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/intersection-lcci/" target="_blank" rel="noopener">面试题 16.03. 交点</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/english-int-lcci/" target="_blank" rel="noopener">面试题 16.08. 整数的英语表示</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/missing-two-lcci/" target="_blank" rel="noopener">面试题 17.19. 消失的两个数字</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/continuous-median-lcci/" target="_blank" rel="noopener">面试题 17.20. 连续中值</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/volume-of-histogram-lcci/" target="_blank" rel="noopener">面试题 17.21. 直方图的水量</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/max-submatrix-lcci/" target="_blank" rel="noopener">面试题 17.24. 最大子矩阵</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/word-rectangle-lcci/" target="_blank" rel="noopener">面试题 17.25. 单词矩阵</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/sparse-similarity-lcci/" target="_blank" rel="noopener">面试题 17.26. 稀疏相似度</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/regular-expression-matching/" target="_blank" rel="noopener">10. 正则表达式匹配</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/longest-valid-parentheses/" target="_blank" rel="noopener">32. 最长有效括号</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/first-missing-positive/" target="_blank" rel="noopener">41. 缺失的第一个正数</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/wildcard-matching/" target="_blank" rel="noopener">44. 通配符匹配</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/minimum-window-substring/" target="_blank" rel="noopener">76. 最小覆盖子串</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/largest-rectangle-in-histogram/" target="_blank" rel="noopener">84. 柱状图中最大的矩形</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/maximal-rectangle/" target="_blank" rel="noopener">85. 最大矩形</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/longest-consecutive-sequence/" target="_blank" rel="noopener">128. 最长连续序列</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/word-break-ii/" target="_blank" rel="noopener">140. 单词拆分 II</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/max-points-on-a-line/" target="_blank" rel="noopener">149. 直线上最多的点数</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/word-search-ii/" target="_blank" rel="noopener">212. 单词搜索 II</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/the-skyline-problem/" target="_blank" rel="noopener">218. 天际线问题</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/sliding-window-maximum/" target="_blank" rel="noopener">239. 滑动窗口最大值</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/find-median-from-data-stream/" target="_blank" rel="noopener">295. 数据流的中位数</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/serialize-and-deserialize-binary-tree/" target="_blank" rel="noopener">297. 二叉树的序列化与反序列化</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/remove-invalid-parentheses/" target="_blank" rel="noopener">301. 删除无效的括号</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/burst-balloons/" target="_blank" rel="noopener">312. 戳气球</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/count-of-smaller-numbers-after-self/" target="_blank" rel="noopener">315. 计算右侧小于当前元素的个数</a></p>
+</li>
+<li><p><a href="https://leetcode-cn.com/problems/longest-increasing-path-in-a-matrix/" target="_blank" rel="noopener">329. 矩阵中的最长递增路径</a></p>
 </li>
 </ol>
 <h4 id="决策树"><a href="#决策树" class="headerlink" title="决策树"></a>决策树</h4><h5 id="1-交叉熵"><a href="#1-交叉熵" class="headerlink" title="1. 交叉熵"></a>1. 交叉熵</h5><p>$X$ 离散型随机变量，概率分布函数 $p(x)=Pr(X=x),x\in \chi $</p>
@@ -847,6 +1158,21 @@ C E H(p, q)=E_{p}[-\log q]=-\sum_{x \in \mathcal{X}} p(x) \log q(x)=H(p)+D_{K L}
 <p>给定二维平面一些点，问用一个半径为1的圆最多可框住多少个点（说思路：每两个点确定两个对称的圆，当然两点距离不能超过直径2）</p>
 <p><a href="https://blog.csdn.net/hanyajun0123/article/details/84320469" target="_blank" rel="noopener">第二题长度为n的环，走k步，从原点到原点有多少种走法</a></p>
 <p>网易游戏面试：Python 进程和线程，不知道函数的参数有多少个时如何处理，C++ namespace 意义</p>
+<h5 id="华为："><a href="#华为：" class="headerlink" title="华为："></a>华为：</h5><p>样本不平衡的理解，rebalance的具体做法，采样的不同的方法</p>
+<p>MSE和交叉熵的区别</p>
+<p>池化层的作用</p>
+<p>1*1卷积的作用</p>
+<p>写交叉熵</p>
+<p>深度学习的特点，和机器学习的不同，dl和ml的输入数据有什么不同。</p>
+<p> 实现浮点数转字符串：repr()函数可以将浮点数无损转换为字符串,也可能引入无效位<br>str(）函数会有精度损失 </p>
+<p> 手撕了一道代码题leetcode第五道最大回文子串 </p>
+<p> 数组连续序列的最大和 </p>
+<p>算法题：给一个字符串，找出出现次数最多的字符。如果存在几个出现次数相同的字符，返回最早出现的字符</p>
+<p> python编程：字符串大小写对换 </p>
+<p> 手写动态规划路径，机器人走路那个 </p>
+<p>手撕代码  “?”退格 比如  AAB？CC =AACC</p>
+<p> 白纸手写代码  把扑克牌打乱 </p>
+<p>手撕代码：树形运算节点，找出同时最大内存分配。</p>
 <h4 id="概率题："><a href="#概率题：" class="headerlink" title="概率题："></a>概率题：</h4><ol>
 <li><p><strong>50个红球和50个篮球，放入两个箱子，怎么样放置才能使拿到红球的概率最大？</strong></p>
 <p>两个箱子概率是1/2，选中某个箱子后又有选择的是不是红球的概率，所以最大概率就是一个红球放在一个箱子里，其余的99个球全放到另一个箱子。这样概率=0.5+0.5*（49/99）约等于0.75，这样为最大概率。 </p>
@@ -1128,7 +1454,7 @@ E = 0.5 * 0.5 * 2 + 0.5 *(E + 1) + 0.5* 0.5 *(E+2)</script><p>求解E=6</p>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#刷题"><span class="nav-number">1.</span> <span class="nav-text">刷题</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#4-22-剑指offer简单题："><span class="nav-number">1.1.</span> <span class="nav-text">4/22 剑指offer简单题：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-24"><span class="nav-number">1.2.</span> <span class="nav-text">4/24</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-25"><span class="nav-number">1.3.</span> <span class="nav-text">4/25</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-28"><span class="nav-number">1.4.</span> <span class="nav-text">4/28</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-29"><span class="nav-number">1.5.</span> <span class="nav-text">4/29</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-30"><span class="nav-number">1.6.</span> <span class="nav-text">4/30</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-1"><span class="nav-number">1.7.</span> <span class="nav-text">5/1</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-2"><span class="nav-number">1.8.</span> <span class="nav-text">5/2</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-3"><span class="nav-number">1.9.</span> <span class="nav-text">5/3</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-4"><span class="nav-number">1.10.</span> <span class="nav-text">5/4</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-6"><span class="nav-number">1.11.</span> <span class="nav-text">5/6</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-7"><span class="nav-number">1.12.</span> <span class="nav-text">5/7</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-8"><span class="nav-number">1.13.</span> <span class="nav-text">5/8</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-9"><span class="nav-number">1.14.</span> <span class="nav-text">5/9</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#中等"><span class="nav-number">1.15.</span> <span class="nav-text">中等</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#决策树"><span class="nav-number">2.</span> <span class="nav-text">决策树</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-交叉熵"><span class="nav-number">2.1.</span> <span class="nav-text">1. 交叉熵</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#逻辑回归"><span class="nav-number">3.</span> <span class="nav-text">逻辑回归</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-LR"><span class="nav-number">3.1.</span> <span class="nav-text">1. LR</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LSTM"><span class="nav-number">4.</span> <span class="nav-text">LSTM</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#面试中涉及到的算法题："><span class="nav-number">5.</span> <span class="nav-text">面试中涉及到的算法题：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#什么时候使用归一化什么时候使用标准化"><span class="nav-number">6.</span> <span class="nav-text">什么时候使用归一化什么时候使用标准化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#项目相关问题"><span class="nav-number">7.</span> <span class="nav-text">项目相关问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#其他"><span class="nav-number">8.</span> <span class="nav-text">其他</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#知乎"><span class="nav-number">9.</span> <span class="nav-text">知乎</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#快手"><span class="nav-number">10.</span> <span class="nav-text">快手</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#京东"><span class="nav-number">11.</span> <span class="nav-text">京东</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#微软"><span class="nav-number">12.</span> <span class="nav-text">微软</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#概率题："><span class="nav-number">13.</span> <span class="nav-text">概率题：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#刷题"><span class="nav-number">1.</span> <span class="nav-text">刷题</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#4-22-剑指offer简单题："><span class="nav-number">1.1.</span> <span class="nav-text">4/22 剑指offer简单题：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-24"><span class="nav-number">1.2.</span> <span class="nav-text">4/24</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-25"><span class="nav-number">1.3.</span> <span class="nav-text">4/25</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-28"><span class="nav-number">1.4.</span> <span class="nav-text">4/28</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-29"><span class="nav-number">1.5.</span> <span class="nav-text">4/29</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-30"><span class="nav-number">1.6.</span> <span class="nav-text">4/30</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-1"><span class="nav-number">1.7.</span> <span class="nav-text">5/1</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-2"><span class="nav-number">1.8.</span> <span class="nav-text">5/2</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-3"><span class="nav-number">1.9.</span> <span class="nav-text">5/3</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-4"><span class="nav-number">1.10.</span> <span class="nav-text">5/4</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-6"><span class="nav-number">1.11.</span> <span class="nav-text">5/6</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-7"><span class="nav-number">1.12.</span> <span class="nav-text">5/7</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-8"><span class="nav-number">1.13.</span> <span class="nav-text">5/8</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-9"><span class="nav-number">1.14.</span> <span class="nav-text">5/9</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-10"><span class="nav-number">1.15.</span> <span class="nav-text">5/10</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-15"><span class="nav-number">1.16.</span> <span class="nav-text">5/15</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-16"><span class="nav-number">1.17.</span> <span class="nav-text">5/16</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-17"><span class="nav-number">1.18.</span> <span class="nav-text">5/17</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-18"><span class="nav-number">1.19.</span> <span class="nav-text">5/18</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-19"><span class="nav-number">1.20.</span> <span class="nav-text">5/19</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-20"><span class="nav-number">1.21.</span> <span class="nav-text">5/20</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-21"><span class="nav-number">1.22.</span> <span class="nav-text">5/21</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-22"><span class="nav-number">1.23.</span> <span class="nav-text">5/22</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-23"><span class="nav-number">1.24.</span> <span class="nav-text">5/23</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-24"><span class="nav-number">1.25.</span> <span class="nav-text">5/24</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-25"><span class="nav-number">1.26.</span> <span class="nav-text">5/25</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-26"><span class="nav-number">1.27.</span> <span class="nav-text">5/26</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-27"><span class="nav-number">1.28.</span> <span class="nav-text">5/27</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-28"><span class="nav-number">1.29.</span> <span class="nav-text">5/28</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-29"><span class="nav-number">1.30.</span> <span class="nav-text">5/29</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-30"><span class="nav-number">1.31.</span> <span class="nav-text">5/30</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-31"><span class="nav-number">1.32.</span> <span class="nav-text">5/31</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-1"><span class="nav-number">1.33.</span> <span class="nav-text">6/1</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-2"><span class="nav-number">1.34.</span> <span class="nav-text">6/2</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-3"><span class="nav-number">1.35.</span> <span class="nav-text">6/3</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-4"><span class="nav-number">1.36.</span> <span class="nav-text">6/4</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-5"><span class="nav-number">1.37.</span> <span class="nav-text">6/5</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-6"><span class="nav-number">1.38.</span> <span class="nav-text">6/6</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-7"><span class="nav-number">1.39.</span> <span class="nav-text">6/7</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-8"><span class="nav-number">1.40.</span> <span class="nav-text">6/8</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#困难"><span class="nav-number">2.</span> <span class="nav-text">困难</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#6-9"><span class="nav-number">2.1.</span> <span class="nav-text">6/9</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#决策树"><span class="nav-number">3.</span> <span class="nav-text">决策树</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-交叉熵"><span class="nav-number">3.1.</span> <span class="nav-text">1. 交叉熵</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#逻辑回归"><span class="nav-number">4.</span> <span class="nav-text">逻辑回归</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-LR"><span class="nav-number">4.1.</span> <span class="nav-text">1. LR</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LSTM"><span class="nav-number">5.</span> <span class="nav-text">LSTM</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#面试中涉及到的算法题："><span class="nav-number">6.</span> <span class="nav-text">面试中涉及到的算法题：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#什么时候使用归一化什么时候使用标准化"><span class="nav-number">7.</span> <span class="nav-text">什么时候使用归一化什么时候使用标准化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#项目相关问题"><span class="nav-number">8.</span> <span class="nav-text">项目相关问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#其他"><span class="nav-number">9.</span> <span class="nav-text">其他</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#知乎"><span class="nav-number">10.</span> <span class="nav-text">知乎</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#快手"><span class="nav-number">11.</span> <span class="nav-text">快手</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#京东"><span class="nav-number">12.</span> <span class="nav-text">京东</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#微软"><span class="nav-number">13.</span> <span class="nav-text">微软</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#华为："><span class="nav-number">13.1.</span> <span class="nav-text">华为：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#概率题："><span class="nav-number">14.</span> <span class="nav-text">概率题：</span></a></li></ol></div>
             
 
           </div>
