@@ -96,7 +96,7 @@
 <meta property="og:image" content="http://pl741.github.io/2020/03/01/程序员代码面试指南/mergeSort.gif">
 <meta property="og:image" content="http://pl741.github.io/2020/03/01/程序员代码面试指南/heapSort.gif">
 <meta property="og:image" content="http://pl741.github.io/2020/03/01/程序员代码面试指南/2.jpg">
-<meta property="og:updated_time" content="2020-06-05T04:10:50.030Z">
+<meta property="og:updated_time" content="2020-06-05T04:12:39.494Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="程序员代码面试指南">
 <meta name="twitter:description" content="参考：所有动图来自牛客网（ https://www.nowcoder.com/discuss/198840?type=1 ）和 RUNOOB.COM 小知识点异或运算异或运算（无进位相加，相同为0， 不同为1）比正常加减速度快，异或运算的性质  a ⊕ b = b  ⊕ a；a  ⊕  (b  ⊕  c) = (a  ⊕  b)  ⊕  c；0  ⊕ N = N；N ⊕ N = 0交换两个数的值，">
@@ -412,8 +412,9 @@
 </div></div>
 </li>
 </ol>
-<h5 id="求中点"><a href="#求中点" class="headerlink" title="求中点"></a>求中点</h5><p>正常 (L + R)/2 有可能会溢出，—》 L + ((L-R）&gt;&gt;1)</p>
-<h5 id="递归行为时间复杂度"><a href="#递归行为时间复杂度" class="headerlink" title="递归行为时间复杂度"></a>递归行为时间复杂度</h5><p>master公式：$T(N) = a<em>T(N/b) + O(N^d)$<br>log(b, a) &gt; d 复杂度为 O(N</em>log(b, a))<br>log(b, a) = d 复杂度为 O(N^d*log N)<br>log(b, a) &lt; d 复杂度为 O(N^d)</p>
+<h5 id="求中点"><a href="#求中点" class="headerlink" title="求中点"></a>求中点</h5><p>正常 (L + R)/2 有可能会溢出，可使用 L + ((L-R）&gt;&gt;1)</p>
+<h5 id="递归行为时间复杂度"><a href="#递归行为时间复杂度" class="headerlink" title="递归行为时间复杂度"></a>递归行为时间复杂度</h5><p>master公式：$T(N) = a*T(N/b) + O(N^d)$</p>
+<script type="math/tex; mode=display">log(b, a) > d 复杂度为 O(N*log(b, a))</script><p>log(b, a) = d 复杂度为 O(N^d*log N)<br>log(b, a) &lt; d 复杂度为 O(N^d)</p>
 <h4 id="排序算法"><a href="#排序算法" class="headerlink" title="排序算法"></a>排序算法</h4><p>排序测试用例：</p>
 <ol>
 <li>已经排序好的数组</li>
